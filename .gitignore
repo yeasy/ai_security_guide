@@ -1,0 +1,5 @@
+# Scripts and build artifacts
+scripts/
+
+# OS files
+.DS_Store
