@@ -8,11 +8,13 @@
 
 2. NIST. (2024). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. https://www.nist.gov/itl/ai-risk-management-framework
 
-3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*.
+11: 3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
 4. MITRE. (2024). *ATLAS (Adversarial Threat Landscape for AI Systems)*. https://atlas.mitre.org/
 
 ## 研究论文
+
+以下是 LLM 安全领域的关键研究论文，按主题分类。
 
 ### 安全对齐
 
