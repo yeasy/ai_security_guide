@@ -8,7 +8,7 @@
 
 2. NIST. (2024). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. https://www.nist.gov/itl/ai-risk-management-framework
 
-11: 3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
 4. MITRE. (2024). *ATLAS (Adversarial Threat Landscape for AI Systems)*. https://atlas.mitre.org/
 
@@ -66,11 +66,11 @@
 
 ## 行业报告
 
-23. Gartner. (2024). *Hype Cycle for Artificial Intelligence*.
+23. Gartner. (2025). *Hype Cycle for Artificial Intelligence*.
 
-24. McKinsey. (2024). *The State of AI in 2024*.
+24. McKinsey. (2025). *The State of AI in 2025*.
 
-25. Stanford HAI. (2024). *Artificial Intelligence Index Report 2024*.
+25. Stanford HAI. (2025). *Artificial Intelligence Index Report 2025*.
 
 ## 法规与政策
 
@@ -90,4 +90,4 @@
 
 ---
 
-*参考文献截至2025年初，后续版本将持续更新。*
+*参考文献截至2026年初，后续版本将持续更新。*
