@@ -8,13 +8,13 @@
   * [1.1 大语言模型概述](01_intro/1.1_llm_overview.md)
   * [1.2 为什么大语言模型安全至关重要](01_intro/1.2_why_security_matters.md)
   * [1.3 大语言模型安全与传统安全的异同](01_intro/1.3_llm_vs_traditional.md)
-  * [1.4 大语言模型安全威胁全景](01_intro/1.4_threat_landscape.md)
+  * [1.4 大语言模型安全威胁全景图](01_intro/1.4_threat_landscape.md)
   * [本章小结](01_intro/summary.md)
 
 * [第二章：大语言模型安全基础](02_fundamentals/README.md)
   * [2.1 大语言模型架构与安全边界](02_fundamentals/2.1_architecture_boundary.md)
-  * [2.2 训练阶段的安全考量](02_fundamentals/2.2_training_security.md)
-  * [2.3 推理阶段的安全考量](02_fundamentals/2.3_inference_security.md)
+  * [2.2 训练过程中的安全考量](02_fundamentals/2.2_training_security.md)
+  * [2.3 推理阶段的安全挑战](02_fundamentals/2.3_inference_security.md)
   * [2.4 安全对齐技术入门](02_fundamentals/2.4_alignment_intro.md)
   * [本章小结](02_fundamentals/summary.md)
 
@@ -31,7 +31,7 @@
   * [4.1 提示注入原理与分类](04_prompt_injection/4.1_principles.md)
   * [4.2 直接提示注入技术](04_prompt_injection/4.2_direct_injection.md)
   * [4.3 间接提示注入技术](04_prompt_injection/4.3_indirect_injection.md)
-  * [4.4 真实案例分析](04_prompt_injection/4.4_case_studies.md)
+  * [4.4 公开案例与研究演示分析](04_prompt_injection/4.4_case_studies.md)
   * [本章小结](04_prompt_injection/summary.md)
 
 * [第五章：越狱与对抗攻击](05_jailbreak/README.md)

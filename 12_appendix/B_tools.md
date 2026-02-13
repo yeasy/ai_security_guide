@@ -11,8 +11,8 @@
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
 | Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | https://github.com/NVIDIA/garak |
-| PromptFoo | Prompt 测试和评估框架 | https://github.com/promptfoo/promptfoo |
-| PyRIT | 微软的 AI 红队自动化工具 | https://github.com/Azure/PyRIT |
+| Prompt 测试框架 | Prompt 测试和评估框架 | https://github.com/promptfoo/promptfoo |
+| 红队自动化工具 | AI 红队自动化工具 | https://github.com/Azure/PyRIT |
 | ART | IBM 的对抗鲁棒性工具箱 | https://github.com/Trusted-AI/adversarial-robustness-toolbox |
 | HarmBench | 针对 LLM 的自动化红队评估框架 | https://github.com/centerforaisafety/HarmBench |
 | HouYi | 针对 LLM 集成应用的自动化注入框架 | https://github.com/LLMSecurity/HouYi |
@@ -33,7 +33,7 @@
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
 | Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | https://huggingface.co/meta-llama/Prompt-Guard-86M |
-| Azure Prompt Shields | 微软云端提示注入攻击检测服务 | https://azure.microsoft.com/products/ai-services/ai-content-safety |
+| Prompt Injection Shields（云服务） | 云端提示注入攻击检测服务（示例） | https://azure.microsoft.com/products/ai-services/ai-content-safety |
 | ProtectAI Rebuff | 提示注入检测原型（参考） | https://github.com/protectai/rebuff |
 
 ### 内容审核
@@ -142,4 +142,4 @@
 
 ---
 
-*注意：工具和资源持续更新，本附录链接已于 2026 年 2 月验证。请访问官方网站获取最新信息，部分链接可能因产品更新而变化。*
+*注意：工具和资源持续更新。请访问官方网站获取最新信息，部分链接可能因产品更新而变化。*

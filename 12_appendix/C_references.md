@@ -4,9 +4,9 @@
 
 ## 标准与框架
 
-1. OWASP. (2025). *OWASP Top 10 for Large Language Model Applications 2025*. https://owasp.org/www-project-top-10-for-large-language-model-applications/
+1. OWASP. *OWASP Top 10 for Large Language Model Applications*. https://owasp.org/www-project-top-10-for-large-language-model-applications/
 
-2. NIST. (2024). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. https://www.nist.gov/itl/ai-risk-management-framework
+2. NIST. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. https://www.nist.gov/itl/ai-risk-management-framework
 
 3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
 
@@ -62,6 +62,8 @@
 
 21. Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
 
+## 补充论文
+
 22. Kurakin, A., Goodfellow, I., & Bengio, S. (2017). *Adversarial examples in the physical world*. ICLR Workshop.
 
 ## 行业报告
@@ -88,6 +90,14 @@
 
 31. OpenAI. *Safety & Alignment*. https://openai.com/safety
 
+## 事件通报与监管更新
+
+32. OpenAI. (2023). *March 20 ChatGPT outage: Here's what happened*. https://openai.com/research/march-20-chatgpt-outage
+
+33. The White House. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/
+
+34. Federal Register. (2025). *Executive Order 14179 filing and revocations*. https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence
+
 ---
 
-*参考文献截至2026年初，后续版本将持续更新。*
+*参考文献截至 2026 年初（并会随时间变化），后续版本将持续更新。*
