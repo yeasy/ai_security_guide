@@ -22,7 +22,6 @@
   * [3.1 OWASP 大语言模型十大风险解析](03_frameworks/3.1_owasp_top10.md)
   * [3.2 NIST AI 风险管理框架](03_frameworks/3.2_nist_framework.md)
   * [3.3 行业安全标准与最佳实践](03_frameworks/3.3_industry_standards.md)
-  * [3.4 大语言模型安全成熟度模型](03_frameworks/3.4_maturity_model.md)
   * [本章小结](03_frameworks/summary.md)
 
 ## 第二部分：攻击篇
@@ -38,7 +37,7 @@
   * [5.1 越狱攻击概述](05_jailbreak/5.1_jailbreak_overview.md)
   * [5.2 经典越狱技术剖析](05_jailbreak/5.2_classic_techniques.md)
   * [5.3 多模态越狱攻击](05_jailbreak/5.3_multimodal_attacks.md)
-  * [5.4 对抗样本与鲁棒性](05_jailbreak/5.4_adversarial_examples.md)
+  * [5.4 离散对抗攻击与模型鲁棒性](05_jailbreak/5.4_adversarial_examples.md)
   * [本章小结](05_jailbreak/summary.md)
 
 * [第六章：数据与模型攻击](06_data_model_attacks/README.md)
@@ -46,13 +45,13 @@
   * [6.2 后门攻击](06_data_model_attacks/6.2_backdoor_attacks.md)
   * [6.3 模型窃取与逆向工程](06_data_model_attacks/6.3_model_extraction.md)
   * [6.4 成员推理与隐私攻击](06_data_model_attacks/6.4_privacy_attacks.md)
+  * [6.5 供应链与基础设施环境安全](06_data_model_attacks/6.5_supply_chain.md)
   * [本章小结](06_data_model_attacks/summary.md)
 
 * [第七章：智能体与 RAG 安全](07_agent_rag_security/README.md)
   * [7.1 智能体系统安全风险](07_agent_rag_security/7.1_agent_risks.md)
   * [7.2 RAG 架构攻击面分析](07_agent_rag_security/7.2_rag_attacks.md)
   * [7.3 工具调用安全](07_agent_rag_security/7.3_tool_security.md)
-  * [7.4 供应链攻击](07_agent_rag_security/7.4_supply_chain.md)
   * [本章小结](07_agent_rag_security/summary.md)
 
 ## 第三部分：防御篇
@@ -62,6 +61,7 @@
   * [8.2 大语言模型安全架构模式](08_architecture/8.2_architecture_patterns.md)
   * [8.3 权限与访问控制](08_architecture/8.3_access_control.md)
   * [8.4 安全开发生命周期](08_architecture/8.4_security_sdlc.md)
+  * [8.5 隐私增强技术与数据保护](08_architecture/8.5_privacy_enhancing.md)
   * [本章小结](08_architecture/summary.md)
 
 * [第九章：输入输出安全防护](09_io_protection/README.md)
@@ -69,13 +69,14 @@
   * [9.2 提示注入防御实践](09_io_protection/9.2_injection_defense.md)
   * [9.3 输出内容安全审核](09_io_protection/9.3_output_moderation.md)
   * [9.4 敏感信息保护](09_io_protection/9.4_sensitive_data.md)
+  * [9.5 AI 生成内容鉴伪与水印技术](09_io_protection/9.5_watermarking_detection.md)
   * [本章小结](09_io_protection/summary.md)
 
 * [第十章：安全运营与监控](10_operations/README.md)
   * [10.1 安全监控体系](10_operations/10.1_monitoring.md)
   * [10.2 异常检测与告警](10_operations/10.2_anomaly_detection.md)
   * [10.3 事件响应流程](10_operations/10.3_incident_response.md)
-  * [10.4 持续安全评估](10_operations/10.4_assessment.md)
+  * [10.4 红队演练与自动化评估](10_operations/10.4_red_teaming.md)
   * [本章小结](10_operations/summary.md)
 
 ## 第四部分：治理与展望
@@ -84,7 +85,8 @@
   * [11.1 AI 法规与合规要求](11_governance/11.1_regulations.md)
   * [11.2 负责任 AI 实践](11_governance/11.2_responsible_ai.md)
   * [11.3 新兴威胁趋势](11_governance/11.3_emerging_threats.md)
-  * [11.4 未来安全技术方向](11_governance/11.4_future.md)
+  * [11.4 大语言模型安全成熟度模型](11_governance/11.4_maturity_model.md)
+  * [11.5 未来安全技术方向](11_governance/11.5_future.md)
   * [本章小结](11_governance/summary.md)
 
 ## 附录
