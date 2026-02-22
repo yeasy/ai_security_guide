@@ -8,47 +8,47 @@
 
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
-| Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | https://github.com/NVIDIA/garak |
-| promptfoo | Prompt 测试和评估框架 | https://github.com/promptfoo/promptfoo |
-| PyRIT | AI 红队自动化工具 | https://github.com/Azure/PyRIT |
-| ART | IBM 的对抗鲁棒性工具箱 | https://github.com/Trusted-AI/adversarial-robustness-toolbox |
-| HarmBench | 针对 LLM 的自动化红队评估框架 | https://github.com/centerforaisafety/HarmBench |
-| HouYi | 针对 LLM 集成应用的自动化注入框架 | https://github.com/LLMSecurity/HouYi |
-| AutoDAN | 基于遗传算法的自动化越狱生成 | https://github.com/SheltonLiu-N/AutoDAN |
+| Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
+| promptfoo | Prompt 测试和评估框架 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
+| PyRIT | AI 红队自动化工具 | [Azure/PyRIT](https://github.com/Azure/PyRIT) |
+| ART | IBM 的对抗鲁棒性工具箱 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
+| HarmBench | 针对 LLM 的自动化红队评估框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
+| HouYi | 针对 LLM 集成应用的自动化注入框架 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
+| AutoDAN | 基于遗传算法的自动化越狱生成 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
 
 
 ### 防护框架
 
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
-| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | https://github.com/NVIDIA/NeMo-Guardrails |
-| Guardrails AI | 输入/输出校验与结构化数据验证 | https://github.com/guardrails-ai/guardrails |
-| Invariant | 面向 Agent 的持续监控与策略执行 | https://invariantlabs.ai/ |
-| OpenAI Guardrails | OpenAI 的安全合规校验模块 | https://github.com/openai/guardrails |
+| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
+| Guardrails AI | 输入/输出校验与结构化数据验证 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
+| Invariant | 面向 Agent 的持续监控与策略执行 | [invariantlabs.ai](https://invariantlabs.ai/) |
+| OpenAI Guardrails | OpenAI 的安全合规校验模块 | [openai/guardrails](https://github.com/openai/guardrails) |
 
 ### 注入检测与防御
 
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
-| Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | https://huggingface.co/meta-llama/Prompt-Guard-86M |
-| Azure AI Content Safety | 微软云端内容安全服务（含注入检测） | https://azure.microsoft.com/products/ai-services/ai-content-safety |
-| Rebuff（已归档） | 提示注入检测与防御框架（维护状态：Archived） | https://github.com/protectai/rebuff |
+| Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | [meta-llama/Prompt-Guard-86M](https://huggingface.co/meta-llama/Prompt-Guard-86M) |
+| Azure AI Content Safety | 微软云端内容安全服务（含注入检测） | [Microsoft](https://azure.microsoft.com/products/ai-services/ai-content-safety) |
+| Rebuff（已归档） | 提示注入检测与防御框架（维护状态：Archived） | [protectai/rebuff](https://github.com/protectai/rebuff) |
 
 ### 内容审核
 
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
-| OpenAI Moderation API | 内容审核 API | https://platform.openai.com/docs/guides/moderation |
-| Perspective API | Google 的毒性检测 API | https://perspectiveapi.com/ |
-| Azure Content Safety | 微软内容安全服务 | https://azure.microsoft.com/services/ai-services/content-safety/ |
+| OpenAI Moderation API | 内容审核 API | [OpenAI 文档](https://platform.openai.com/docs/guides/moderation) |
+| Perspective API | Google 的毒性检测 API | [Perspective API](https://perspectiveapi.com/) |
+| Azure Content Safety | 微软内容安全服务 | [Microsoft](https://azure.microsoft.com/services/ai-services/content-safety/) |
 
 ### 隐私保护
 
 | 工具名称 | 描述 | 链接 |
 |----------|------|------|
-| Presidio | 微软的 PII 检测和脱敏工具 | https://github.com/microsoft/presidio |
-| PySyft | 隐私保护机器学习库 | https://github.com/OpenMined/PySyft |
-| Opacus | PyTorch 差分隐私库 | https://github.com/pytorch/opacus |
+| Presidio | 微软的 PII 检测和脱敏工具 | [microsoft/presidio](https://github.com/microsoft/presidio) |
+| PySyft | 隐私保护机器学习库 | [OpenMined/PySyft](https://github.com/OpenMined/PySyft) |
+| Opacus | PyTorch 差分隐私库 | [pytorch/opacus](https://github.com/pytorch/opacus) |
 
 ## 安全框架与指南
 
@@ -56,19 +56,19 @@
 
 | 名称 | 描述 | 链接 |
 |------|------|------|
-| OWASP LLM Top 10 | LLM 十大安全风险 | https://genai.owasp.org/llm-top-10/ |
-| NIST AI RMF | AI 风险管理框架 | https://www.nist.gov/itl/ai-risk-management-framework |
-| NIST AI 600-1 (GenAI Profile) | 生成式 AI 风险管理配置文件 | https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence |
-| MITRE ATLAS | AI 对抗威胁矩阵 | https://atlas.mitre.org/ |
-| ISO/IEC 42001 | AI 管理体系标准 | https://www.iso.org/standard/81230.html |
+| OWASP LLM Top 10 | LLM 十大安全风险 | [OWASP](https://genai.owasp.org/llm-top-10/) |
+| NIST AI RMF | AI 风险管理框架 | [NIST](https://www.nist.gov/itl/ai-risk-management-framework) |
+| NIST AI 600-1 (GenAI Profile) | 生成式 AI 风险管理配置文件 | [NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) |
+| MITRE ATLAS | AI 对抗威胁矩阵 | [MITRE ATLAS](https://atlas.mitre.org/) |
+| ISO/IEC 42001 | AI 管理体系标准 | [ISO](https://www.iso.org/standard/81230.html) |
 
 ### 最佳实践
 
 | 资源 | 描述 | 链接 |
 |------|------|------|
-| Google Secure AI Framework | Google 安全 AI 框架 | https://safety.google/cybersecurity-advancements/saif/ |
-| Microsoft Responsible AI | 微软负责任 AI | https://www.microsoft.com/ai/responsible-ai |
-| Anthropic Safety | Anthropic 安全研究 | https://www.anthropic.com/research |
+| Google Secure AI Framework | Google 安全 AI 框架 | [safety.google](https://safety.google/cybersecurity-advancements/saif/) |
+| Microsoft Responsible AI | 微软负责任 AI | [Microsoft](https://www.microsoft.com/ai/responsible-ai) |
+| Anthropic Safety | Anthropic 安全研究 | [Anthropic](https://www.anthropic.com/research) |
 
 ## 学习资源
 
@@ -76,9 +76,9 @@
 
 | 课程 | 平台 | 描述 | 链接 |
 |------|------|------|------|
-| AI Security | Coursera | AI 安全基础 | https://www.coursera.org/learn/ai-security |
-| LLM Security | edX | LLM 安全专项 | https://www.edx.org/learn/artificial-intelligence |
-| Prompt Engineering | DeepLearning.AI | 提示工程最佳实践 | https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/ |
+| AI Security | Coursera | AI 安全基础 | [Coursera](https://www.coursera.org/learn/ai-security) |
+| LLM Security | edX | LLM 安全专项 | [edX](https://www.edx.org/learn/artificial-intelligence) |
+| Prompt Engineering | DeepLearning.AI | 提示工程最佳实践 | [DeepLearning.AI](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) |
 
 ### 研究论文
 
@@ -93,10 +93,10 @@
 
 | 资源 | 描述 | 链接 |
 |------|------|------|
-| LLM Security Newsletter | 定期 LLM 安全资讯 | https://llmsecurity.net/ |
-| AI Safety Research | AI 安全研究进展 | https://www.alignmentforum.org/ |
-| Security Blog @ OpenAI | OpenAI 安全博客 | https://openai.com/safety/ |
-| Model Context Protocol | MCP 规范与安全实践 | https://modelcontextprotocol.io/specification/ |
+| LLM Security Newsletter | 定期 LLM 安全资讯 | [LLM Security Newsletter](https://llmsecurity.net/) |
+| AI Safety Research | AI 安全研究进展 | [Alignment Forum](https://www.alignmentforum.org/) |
+| Security Blog @ OpenAI | OpenAI 安全博客 | [OpenAI Safety](https://openai.com/safety/) |
+| Model Context Protocol | MCP 规范与安全实践 | [Model Context Protocol](https://modelcontextprotocol.io/specification/) |
 
 ## 监控与运维工具
 
@@ -135,3 +135,4 @@
 ---
 
 *注意：工具和资源持续更新。请访问官方网站获取最新信息，部分项目可能停更或归档。*
+

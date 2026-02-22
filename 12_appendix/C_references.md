@@ -4,13 +4,13 @@
 
 ## 标准与框架
 
-1. OWASP. *OWASP Top 10 for LLM Applications（项目主页）*. https://genai.owasp.org/
+1. OWASP. *OWASP Top 10 for LLM Applications（项目主页）*. [OWASP](https://genai.owasp.org/)
 
-2. NIST. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. https://www.nist.gov/itl/ai-risk-management-framework
+2. NIST. (2023). *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*. [NIST](https://www.nist.gov/itl/ai-risk-management-framework)
 
-3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+3. European Union. (2024). *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)*. [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 
-4. MITRE. (2024). *ATLAS (Adversarial Threat Landscape for AI Systems)*. https://atlas.mitre.org/
+4. MITRE. (2024). *ATLAS (Adversarial Threat Landscape for AI Systems)*. [MITRE ATLAS](https://atlas.mitre.org/)
 
 ## 研究论文
 
@@ -24,7 +24,7 @@
 
 ### 攻击技术
 
-8. Perez, F., & Ribeiro, I. (2023). *Ignore This Title and HackAPrompt: Exposing Systemic Vulnerabilities of LLMs through a Global Scale Prompt Hacking Competition*. EMNLP 2023. arXiv（检索）: https://arxiv.org/search/?query=Ignore+This+Title+and+HackAPrompt&searchtype=all ; ACL Anthology（检索）: https://aclanthology.org/search/?q=Ignore%20This%20Title%20and%20HackAPrompt
+8. Perez, F., & Ribeiro, I. (2023). *Ignore This Title and HackAPrompt: Exposing Systemic Vulnerabilities of LLMs through a Global Scale Prompt Hacking Competition*. EMNLP 2023. arXiv（检索）: [arxiv.org](https://arxiv.org/search/?query=Ignore+This+Title+and+HackAPrompt&searchtype=all) ; ACL Anthology（检索）: [aclanthology.org](https://aclanthology.org/search/?q=Ignore%20This%20Title%20and%20HackAPrompt)
 
 9. Greshake, K., et al. (2023). *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*. AISec 2023.
 
@@ -82,36 +82,37 @@
 
 ## 在线资源
 
-29. Hugging Face. *Security Documentation*. https://huggingface.co/docs/hub/security
+29. Hugging Face. *Security Documentation*. [docs/hub](https://huggingface.co/docs/hub/security)
 
-30. LangChain. *Security Best Practices*. https://python.langchain.com/docs/security
+30. LangChain. *Security Best Practices*. [python.langchain.com](https://python.langchain.com/docs/security)
 
-31. OpenAI. *Safety & Alignment*. https://openai.com/safety
+31. OpenAI. *Safety & Alignment*. [OpenAI Safety](https://openai.com/safety)
 
 ## 事件通报与监管更新
 
-32. OpenAI. (2023). *March 20 ChatGPT outage: Here's what happened*. https://openai.com/research/march-20-chatgpt-outage
+32. OpenAI. (2023). *March 20 ChatGPT outage: Here's what happened*. [OpenAI Research](https://openai.com/research/march-20-chatgpt-outage)
 
-33. The White House. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/
+33. The White House. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [White House](https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/)
 
-34. Federal Register. (2025). *Executive Order 14179 filing and revocations*. https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence
+34. Federal Register. (2025). *Executive Order 14179 filing and revocations*. [Federal Register](https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence)
 
 ## 2025-2026 更新补充
 
-35. OWASP. (2025). *Top 10 for LLM Applications 2025*. https://genai.owasp.org/llm-top-10/
+35. OWASP. (2025). *Top 10 for LLM Applications 2025*. [OWASP](https://genai.owasp.org/llm-top-10/)
 
-36. European Commission. (2025). *Timeline - AI Act implementation timeline*. https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+36. European Commission. (2025). *Timeline - AI Act implementation timeline*. [European Commission](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 
-37. NIST. (2024). *Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)*. https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence
+37. NIST. (2024). *Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)*. [NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
-38. Model Context Protocol. (2025). *Security Best Practices*. https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices
+38. Model Context Protocol. (2025). *Security Best Practices*. [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices)
 
-39. OpenAI. (2025). *New tools and features in the Responses API*（含 MCP 工具支持）. https://openai.com/index/new-tools-and-features-in-the-responses-api/
+39. OpenAI. (2025). *New tools and features in the Responses API*（含 MCP 工具支持）. [OpenAI 博客](https://openai.com/index/new-tools-and-features-in-the-responses-api/)
 
-40. Willison, S. (2023). *Delimiters won't save you from prompt injection*. https://simonwillison.net/2023/May/11/delimiters-wont-save-you/
+40. Willison, S. (2023). *Delimiters won't save you from prompt injection*. [Simon Willison](https://simonwillison.net/2023/May/11/delimiters-wont-save-you/)
 
-41. GitHub. (2025). *protectai/rebuff repository page*（标记为 archived）. https://github.com/protectai/rebuff
+41. GitHub. (2025). *protectai/rebuff repository page*（标记为 archived）. [protectai/rebuff](https://github.com/protectai/rebuff)
 
 ---
 
 *参考文献截至 2026-02-20（并会随时间变化），后续版本将持续更新。*
+

@@ -4,4 +4,4 @@ scripts/
 # OS files
 .DS_Store
 
-.agent
+.agents/
