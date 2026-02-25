@@ -1,0 +1,34 @@
+{
+    "name": "ai-security-guide",
+    "version": "1.0.0",
+    "description": "大模型安全权威指南 - 从原理到实践，全面掌握 LLM 安全攻防之道",
+    "scripts": {
+        "init": "honkit init",
+        "build": "honkit build",
+        "serve": "honkit serve",
+        "start": "honkit serve",
+        "clean": "rimraf _book",
+        "pdf": "honkit pdf ./ ./ai_security_guide.pdf"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yeasy/ai_security_guide.git"
+    },
+    "author": "yeasy",
+    "license": "CC-BY-NC-SA-4.0",
+    "bugs": {
+        "url": "https://github.com/yeasy/ai_security_guide/issues"
+    },
+    "homepage": "https://github.com/yeasy/ai_security_guide#readme",
+    "devDependencies": {
+        "gitbook-plugin-back-to-top-button": "^0.1.4",
+        "gitbook-plugin-chapter-fold": "^0.0.4",
+        "gitbook-plugin-code": "^0.1.0",
+        "gitbook-plugin-mermaid-gb3": "^2.1.0",
+        "gitbook-plugin-page-toc-button": "^0.1.1",
+        "gitbook-plugin-splitter": "^0.0.8",
+        "honkit": "^6.1.4",
+        "honkit-plugin-prism": "^2.5.4",
+        "rimraf": "^6.0.1"
+    }
+}

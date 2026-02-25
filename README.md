@@ -1,4 +1,14 @@
+<div align="center">
+
 # 大模型安全权威指南
+
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![GitHub stars](https://img.shields.io/github/stars/yeasy/ai_security_guide?style=social)](https://github.com/yeasy/ai_security_guide)
+[![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/ai_security_guide)
+
+<img src="_images/cover.jpg" width="300" alt="AI Security Guide Cover">
+
+</div>
 
 > 从原理到实践，全面掌握 LLM 安全攻防之道
 
@@ -76,3 +86,37 @@
 
 ---
 
+## 快速开始
+
+### 在线阅读
+
+👉 **推荐**：[GitBook 在线版](https://yeasy.gitbook.io/ai_security_guide/)
+
+### 本地阅读
+
+使用 [HonKit](https://github.com/honkit/honkit) 构建本地阅读环境：
+
+```bash
+npm install        # 安装依赖
+npx honkit serve   # 启动本地服务
+```
+
+启动后访问 http://localhost:4000 即可阅读。
+
+---
+
+## 参与贡献
+
+欢迎贡献！您可以通过以下方式参与：
+
+- 🐛 [提交 Issue](https://github.com/yeasy/ai_security_guide/issues) — 报告错误或提出建议
+- 📝 [提交 PR](https://github.com/yeasy/ai_security_guide/pulls) — 改进内容或修复 typo
+- ⭐ Star 本项目 — 帮助更多人发现这本书
+
+---
+
+## 许可证
+
+本书采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可证。
+
+您可以自由分享和演绎，但需署名、非商业使用、相同方式共享。
