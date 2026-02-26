@@ -112,7 +112,19 @@
 
 41. GitHub. (2025). *protectai/rebuff repository page*（标记为 archived）. [protectai/rebuff](https://github.com/protectai/rebuff)
 
+42. NSFOCUS. (2025). *LLM Data Leakage Incidents: ChatGPT Keyword Filter Bypass via Word Games*. [NSFOCUS Global](https://nsfocusglobal.com/)
+
+43. Aim Security. (2025). *EchoLeak: Zero-Click Agentic Vulnerability in Microsoft 365 Copilot*. [Aim Security](https://aim.security/)
+
+44. NSFOCUS. (2025). *Cursor IDE Prompt Injection Vulnerabilities (CVE-2025-54135, CVE-2025-54136)*. [NSFOCUS Global](https://nsfocusglobal.com/)
+
+45. Security Boulevard. (2026). *Microsoft Copilot Reprompt Attack: Session Hijacking via URL Prompt Parameter Manipulation*. [Security Boulevard](https://securityboulevard.com/)
+
+46. PCMag. (2026). *Meta AI Agent Deletes 200+ Emails After Context Window Compaction Loses Safety Instructions*. [PCMag](https://www.pcmag.com/)
+
+47. Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS 2017. [arXiv](https://arxiv.org/abs/1706.03762)
+
 ---
 
-*参考文献截至 2026-02-20（并会随时间变化），后续版本将持续更新。*
+*参考文献截至 2026-02-25（并会随时间变化），后续版本将持续更新。*
 

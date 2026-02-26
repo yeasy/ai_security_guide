@@ -23,7 +23,7 @@
 |----------|------|------|
 | NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
 | Guardrails AI | 输入/输出校验与结构化数据验证 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
-| Invariant | 面向 Agent 的持续监控与策略执行 | [invariantlabs.ai](https://invariantlabs.ai/) |
+| Invariant | 面向智能体的持续监控与策略执行 | [invariantlabs.ai](https://invariantlabs.ai/) |
 | OpenAI Guardrails | OpenAI 的安全合规校验模块 | [openai/guardrails](https://github.com/openai/guardrails) |
 
 ### 注入检测与防御

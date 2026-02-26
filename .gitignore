@@ -5,3 +5,5 @@ scripts/
 .DS_Store
 
 .agent/
+_book/
+node_modules/

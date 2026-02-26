@@ -6,11 +6,11 @@
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/ai_security_guide?style=social)](https://github.com/yeasy/ai_security_guide)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/ai_security_guide)
 
+> 从原理到实践，全面掌握大语言模型的安全攻防之道
+
 <img src="_images/cover.jpg" width="300" alt="AI Security Guide Cover">
 
 </div>
-
-> 从原理到实践，全面掌握 LLM 安全攻防之道
 
 ---
 
@@ -43,7 +43,7 @@
 
 2. **识别与分析 LLM 攻击手段**
  - 深入理解提示注入、越狱、数据投毒等核心攻击技术
- - 掌握针对 Agent 系统、RAG 架构的新型攻击向量
+ - 掌握针对智能体系统、RAG 架构的新型攻击向量
  - 学会使用红队测试方法评估模型安全性
 
 3. **构建安全的 LLM 应用**

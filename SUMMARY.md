@@ -38,6 +38,7 @@
   * [5.1 越狱攻击概述](05_jailbreak/5.1_jailbreak_overview.md)
   * [5.2 经典越狱技术剖析](05_jailbreak/5.2_classic_techniques.md)
   * [5.3 多模态越狱攻击](05_jailbreak/5.3_multimodal_attacks.md)
+  * [5.4 越狱检测与防御实践](05_jailbreak/5.4_jailbreak_defense.md)
   * [本章小结](05_jailbreak/summary.md)
 
 * [第六章 数据与模型攻击](06_data_model_attacks/README.md)
@@ -52,6 +53,7 @@
   * [7.1 智能体系统安全风险](07_agent_rag_security/7.1_agent_risks.md)
   * [7.2 RAG 架构攻击面分析](07_agent_rag_security/7.2_rag_attacks.md)
   * [7.3 工具调用安全](07_agent_rag_security/7.3_tool_security.md)
+  * [7.4 智能体技能与生态安全](07_agent_rag_security/7.4_agent_skills.md)
   * [本章小结](07_agent_rag_security/summary.md)
 
 ## 第三部分：防御篇
