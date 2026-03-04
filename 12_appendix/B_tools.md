@@ -6,49 +6,51 @@
 
 ### 漏洞扫描
 
-| 工具名称 | 描述 | 链接 |
-|----------|------|------|
-| Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
-| promptfoo | Prompt 测试和评估框架 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
-| PyRIT | AI 红队自动化工具 | [Azure/PyRIT](https://github.com/Azure/PyRIT) |
-| ART | IBM 的对抗鲁棒性工具箱 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
-| HarmBench | 针对 LLM 的自动化红队评估框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
-| HouYi | 针对 LLM 集成应用的自动化注入框架 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
-| AutoDAN | 基于遗传算法的自动化越狱生成 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
+| 工具名称 | 描述 | 维护状态 | 链接 |
+|----------|------|---------|------|
+| Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | 活跃维护 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
+| promptfoo | Prompt 测试和评估框架 | 活跃维护 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
+| PyRIT | AI 红队自动化工具 | 活跃维护 | [Azure/PyRIT](https://github.com/Azure/PyRIT) |
+| ART | IBM 的对抗鲁棒性工具箱 | 维护中 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
+| HarmBench | 针对 LLM 的自动化红队评估框架 | 活跃维护 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
+| HouYi | 针对 LLM 集成应用的自动化注入框架 | 维护中 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
+| AutoDAN | 基于遗传算法的自动化越狱生成 | 维护中 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
 
 
 ### 防护框架
 
-| 工具名称 | 描述 | 链接 |
-|----------|------|------|
-| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
-| Guardrails AI | 输入/输出校验与结构化数据验证 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
-| Invariant | 面向智能体的持续监控与策略执行 | [invariantlabs.ai](https://invariantlabs.ai/) |
-| OpenAI Guardrails | OpenAI 的安全合规校验模块 | [openai/guardrails](https://github.com/openai/guardrails) |
+| 工具名称 | 描述 | 维护状态 | 链接 |
+|----------|------|---------|------|
+| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | 活跃维护 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
+| Guardrails AI | 输入/输出校验与结构化数据验证 | 活跃维护 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
+| Invariant | 面向智能体的持续监控与策略执行 | 活跃维护 | [invariantlabs.ai](https://invariantlabs.ai/) |
+| OpenAI Guardrails | OpenAI 的安全合规校验模块 | 维护中 | [openai/guardrails](https://github.com/openai/guardrails) |
 
 ### 注入检测与防御
 
-| 工具名称 | 描述 | 链接 |
-|----------|------|------|
-| Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | [meta-llama/Prompt-Guard-86M](https://huggingface.co/meta-llama/Prompt-Guard-86M) |
-| Azure AI Content Safety | 微软云端内容安全服务（含注入检测） | [Microsoft](https://azure.microsoft.com/products/ai-services/ai-content-safety) |
-| Rebuff（已归档） | 提示注入检测与防御框架（维护状态：Archived） | [protectai/rebuff](https://github.com/protectai/rebuff) |
+| 工具名称 | 描述 | 维护状态 | 链接 |
+|----------|------|---------|------|
+| Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | 活跃维护 | [meta-llama/Prompt-Guard-86M](https://huggingface.co/meta-llama/Prompt-Guard-86M) |
+| Azure AI Content Safety | 微软云端内容安全服务（含注入检测） | 活跃维护 | [Microsoft](https://azure.microsoft.com/products/ai-services/ai-content-safety) |
+| AWS Bedrock Guardrails | AWS 云端 AI 安全护栏服务 | 活跃维护 | [AWS](https://aws.amazon.com/bedrock/guardrails/) |
+| Google Cloud Model Armor | Google 云端 AI 模型安全防护 | 活跃维护 | [Google Cloud](https://cloud.google.com/ai/model-armor) |
+| Rebuff | 提示注入检测与防御框架 | 已归档 | [protectai/rebuff](https://github.com/protectai/rebuff) |
 
 ### 内容审核
 
-| 工具名称 | 描述 | 链接 |
-|----------|------|------|
-| OpenAI Moderation API | 内容审核 API | [OpenAI 文档](https://platform.openai.com/docs/guides/moderation) |
-| Perspective API | Google 的毒性检测 API | [Perspective API](https://perspectiveapi.com/) |
-| Azure Content Safety | 微软内容安全服务 | [Microsoft](https://azure.microsoft.com/services/ai-services/content-safety/) |
+| 工具名称 | 描述 | 维护状态 | 链接 |
+|----------|------|---------|------|
+| OpenAI Moderation API | 内容审核 API | 活跃维护 | [OpenAI 文档](https://platform.openai.com/docs/guides/moderation) |
+| Perspective API | Google 的毒性检测 API | 活跃维护 | [Perspective API](https://perspectiveapi.com/) |
+| Azure Content Safety | 微软内容安全服务 | 活跃维护 | [Microsoft](https://azure.microsoft.com/services/ai-services/content-safety/) |
 
 ### 隐私保护
 
-| 工具名称 | 描述 | 链接 |
-|----------|------|------|
-| Presidio | 微软的 PII 检测和脱敏工具 | [microsoft/presidio](https://github.com/microsoft/presidio) |
-| PySyft | 隐私保护机器学习库 | [OpenMined/PySyft](https://github.com/OpenMined/PySyft) |
-| Opacus | PyTorch 差分隐私库 | [pytorch/opacus](https://github.com/pytorch/opacus) |
+| 工具名称 | 描述 | 维护状态 | 链接 |
+|----------|------|---------|------|
+| Presidio | 微软的 PII 检测和脱敏工具 | 活跃维护 | [microsoft/presidio](https://github.com/microsoft/presidio) |
+| PySyft | 隐私保护机器学习库 | 维护中 | [OpenMined/PySyft](https://github.com/OpenMined/PySyft) |
+| Opacus | PyTorch 差分隐私库 | 活跃维护 | [pytorch/opacus](https://github.com/pytorch/opacus) |
 
 ## 安全框架与指南
 
@@ -148,3 +150,5 @@
 ---
 
 *注意：工具和资源持续更新。请访问官方网站获取最新信息，部分项目可能停更或归档。*
+
+*维护状态说明：开源工具的维护状态可能随时变化，建议在选型前检查项目的最近更新日期和社区活跃度。*

@@ -10,6 +10,9 @@
 **智能体（Agent）**
 具备自主决策和操作执行能力的 AI 系统，可以规划任务、调用工具、与环境交互。
 
+**Agent-to-Agent Protocol（A2A 协议）**
+智能体间的通信协议，如 Google 提出的 A2A，引入新的信任边界和攻击面。
+
 **Alignment（对齐）**
 使 AI 系统的行为与人类意图和价值观保持一致的技术和过程。
 
@@ -29,6 +32,9 @@
 **Constitutional AI**
 Anthropic 提出的对齐方法，使用一套“宪法”（规则集）来指导模型行为。
 
+**Context Engineering（上下文工程）**
+系统性地管理 LLM 上下文窗口中的信息组织、优先级和安全边界的工程实践。
+
 **Context Window（上下文窗口）**
 LLM 一次能处理的最大 Token 数量。
 
@@ -39,6 +45,9 @@ LLM 一次能处理的最大 Token 数量。
 
 **Data Poisoning（数据投毒）**
 通过在训练数据中注入恶意样本来影响模型行为的攻击。
+
+**Deceptive Alignment（欺骗性对齐）**
+模型在评估/测试期间表现出对齐行为，但在部署后偏离对齐目标的假设性风险。
 
 **Defense in Depth（纵深防御）**
 通过多层独立安全措施确保整体安全的安全策略。
@@ -104,11 +113,11 @@ LLM 调用外部工具和 API 的能力。
 **Membership Inference（成员推理）**
 判断特定数据点是否被用于训练模型的攻击技术。
 
+**MCP（Model Context Protocol）**
+Anthropic 提出的标准化协议，用于连接 LLM 与外部数据源和工具。
+
 **MoE（Mixture of Experts）**
 一种模型架构，使用多个专家模块处理不同类型的输入。
-
-**MCP（Model Context Protocol）**
-一种用于 LLM 与外部工具/数据源互联的协议规范，用于标准化工具能力声明、调用与上下文传递。
 
 ## N
 
@@ -141,6 +150,9 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 
 **Red Team（红队）**
 模拟攻击者进行安全测试的专业团队。
+
+**Reasoning Model（推理模型）**
+具备链式推理能力的模型（如 OpenAI o1/o3、DeepSeek-R1），通过显式推理步骤提升复杂问题求解能力，但推理过程也可能被攻击者利用。
 
 **RLHF（Reinforcement Learning from Human Feedback）**
 基于人类反馈的强化学习，用于对齐 LLM 行为。
