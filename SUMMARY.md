@@ -16,6 +16,7 @@
   * [2.2 训练过程中的安全考量](02_fundamentals/2.2_training_security.md)
   * [2.3 推理阶段的安全挑战](02_fundamentals/2.3_inference_security.md)
   * [2.4 安全对齐技术入门](02_fundamentals/2.4_alignment_intro.md)
+  * [2.5 推理模型安全深度分析](02_fundamentals/2.5_reasoning_model_security.md)
   * [本章小结](02_fundamentals/summary.md)
 
 * [第三章 安全框架与标准](03_frameworks/README.md)
@@ -32,6 +33,7 @@
   * [4.3 间接提示注入技术](04_prompt_injection/4.3_indirect_injection.md)
   * [4.4 公开案例与研究演示分析](04_prompt_injection/4.4_case_studies.md)
   * [4.5 提示注入防御实践](04_prompt_injection/4.5_injection_defense.md)
+  * [4.6 长上下文特有的安全风险与防御](04_prompt_injection/4.6_long_context_risks.md)
   * [本章小结](04_prompt_injection/summary.md)
 
 * [第五章 越狱攻击](05_jailbreak/README.md)
@@ -39,6 +41,8 @@
   * [5.2 经典越狱技术剖析](05_jailbreak/5.2_classic_techniques.md)
   * [5.3 多模态越狱攻击](05_jailbreak/5.3_multimodal_attacks.md)
   * [5.4 越狱检测与防御实践](05_jailbreak/5.4_jailbreak_defense.md)
+  * [5.5 多模态安全防御体系](05_jailbreak/5.5_multimodal_defense.md)
+  * [5.6 自动化越狱方法论完整对标](05_jailbreak/5.6_automated_jailbreak_methods.md)
   * [本章小结](05_jailbreak/summary.md)
 
 * [第六章 数据与模型攻击](06_data_model_attacks/README.md)
@@ -47,6 +51,7 @@
   * [6.3 模型窃取与逆向工程](06_data_model_attacks/6.3_model_extraction.md)
   * [6.4 成员推理与隐私攻击](06_data_model_attacks/6.4_privacy_attacks.md)
   * [6.5 离散对抗攻击与模型鲁棒性](06_data_model_attacks/6.5_adversarial_robustness.md)
+  * [6.6 微调与PEFT的安全风险](06_data_model_attacks/6.6_finetuning_peft_security.md)
   * [本章小结](06_data_model_attacks/summary.md)
 
 * [第七章 智能体与 RAG 安全](07_agent_rag_security/README.md)
@@ -54,6 +59,8 @@
   * [7.2 RAG 架构攻击面分析](07_agent_rag_security/7.2_rag_attacks.md)
   * [7.3 工具调用安全](07_agent_rag_security/7.3_tool_security.md)
   * [7.4 智能体技能与生态安全](07_agent_rag_security/7.4_agent_skills.md)
+  * [7.5 多智能体协作系统的安全架构](07_agent_rag_security/7.5_multi_agent_security.md)
+  * [7.6 Agents Rule of Two与智能体安全设计原则](07_agent_rag_security/7.6_agents_rule_of_two.md)
   * [本章小结](07_agent_rag_security/summary.md)
 
 ## 第三部分：防御篇
@@ -80,6 +87,7 @@
   * [10.3 事件响应流程](10_operations/10.3_incident_response.md)
   * [10.4 红队演练与自动化评估](10_operations/10.4_red_teaming.md)
   * [10.5 服务降级与 Fallback 策略](10_operations/10.5_fallback_strategy.md)
+  * [10.6 DeepTeam与现代红队工具链](10_operations/10.6_modern_redteam_tools.md)
   * [本章小结](10_operations/summary.md)
 
 ## 第四部分：治理与展望
@@ -90,6 +98,7 @@
   * [11.3 新兴威胁趋势](11_governance/11.3_emerging_threats.md)
   * [11.4 大语言模型安全成熟度模型](11_governance/11.4_maturity_model.md)
   * [11.5 未来安全技术方向](11_governance/11.5_future.md)
+  * [11.6 AI 安全合规的可操作性指南](11_governance/11.6_compliance_operational.md)
   * [本章小结](11_governance/summary.md)
 
 ## 附录
