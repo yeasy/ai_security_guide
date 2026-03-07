@@ -98,6 +98,7 @@
 | [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) | 理解智能体系统的架构，为智能体安全提供背景 |
 | [《Claude 技术指南》](https://github.com/yeasy/claude_guide) | 了解 Claude 的安全设计理念（宪法式 AI）与工具安全 |
 | [《OpenClaw 从入门到精通》](https://github.com/yeasy/openclaw_guide) | 智能体框架的安全基线与审计流程实践 |
+| [《大模型原理与架构》](https://github.com/yeasy/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
 
 ---
 
