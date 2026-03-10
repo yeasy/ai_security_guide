@@ -55,3 +55,6 @@ graph TB
 ### 下章预告
 
 [第九章](../09_io_protection/README.md)将介绍输入输出安全防护，详细讲解输入验证、输出过滤、内容安全审核等实操技术。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

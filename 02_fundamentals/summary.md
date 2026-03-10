@@ -75,3 +75,6 @@ graph TB
 ### 下章预告
 
 [第三章](../03_frameworks/README.md)将介绍 LLM 安全领域的重要框架和标准，包括 OWASP LLM Top 10 的详细解读、NIST AI 风险管理框架，以及行业安全最佳实践。这些框架为安全评估和防护提供了系统化的指导。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

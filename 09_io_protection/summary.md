@@ -95,3 +95,6 @@ flowchart LR
 ### 下章预告
 
 [第十章](../10_operations/README.md)将介绍安全运营与监控，包括全景安全监控覆盖、异常响应、以及至关重要的服务降级和 Fallback 兜底机制构建。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

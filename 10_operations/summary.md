@@ -56,3 +56,6 @@ graph TB
 ### 下章预告
 
 [第十一章](../11_governance/README.md)将介绍治理与未来展望，包括 AI 法规与合规要求、负责任 AI 实践、新兴威胁趋势、以及 LLM 安全的未来发展方向。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

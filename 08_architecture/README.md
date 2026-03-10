@@ -22,3 +22,7 @@ flowchart TB
     D["安全开发"] --> E
     end
 ```
+
+---
+
+> **📚 延伸阅读**：关于 ClawHub 技能生态的供应链安全风险（Leaky Skills、ClawHavoc 事件），参见 [《OpenClaw 从入门到精通》第 5.3 节和第 11.4 节](https://github.com/yeasy/openclaw_guide)。

@@ -66,3 +66,6 @@ graph TB
 ### 下章预告
 
 [**第六章**](../06_data_model_attacks/README.md)将介绍数据与模型攻击，包括训练数据投毒、后门攻击、模型窃取、隐私攻击及对抗样本鲁棒性评估。这些攻击发生在更底层的位置，可能造成更持久和深远的影响。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

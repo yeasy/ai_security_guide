@@ -56,3 +56,6 @@ graph TB
 ### 下章预告
 
 [第二章](../02_fundamentals/README.md)将深入探讨 LLM 安全的基础知识，包括模型架构与安全边界、训练与推理阶段的安全考量，以及安全对齐技术的入门知识。这将为理解后续的攻击与防御技术提供必要的技术背景。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

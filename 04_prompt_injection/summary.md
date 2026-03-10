@@ -68,3 +68,6 @@ graph TB
 ### 下章预告
 
 [第五章](../05_jailbreak/README.md)将介绍越狱攻击。越狱攻击试图绕过 LLM 的安全对齐机制，诱导模型生成被禁止的内容。将深入分析经典越狱技术和多模态越狱，进一步丰富对 LLM 攻击手段的理解。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

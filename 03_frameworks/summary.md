@@ -56,3 +56,6 @@ flowchart TB
 ### 下章预告
 
 [第四章](../04_prompt_injection/README.md)将进入“攻击篇”，深入剖析提示注入这一核心威胁。将详细介绍直接注入和间接注入的技术原理、攻击手法和真实案例。
+---
+
+> 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。
