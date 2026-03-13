@@ -7,3 +7,7 @@ scripts/
 .agent/
 _book/
 node_modules/
+
+# Office documents (internal work files)
+*.docx
+*.doc
