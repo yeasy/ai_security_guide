@@ -107,7 +107,7 @@ graph LR
     style C fill:#ff7043
     style D fill:#ffab91
     style E fill:#ffccbc
-```text
+```
 
 ### 学习角色对比
 
