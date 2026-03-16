@@ -32,7 +32,7 @@
   * [4.2 直接提示注入技术](04_prompt_injection/4.2_direct_injection.md)
   * [4.3 间接提示注入技术](04_prompt_injection/4.3_indirect_injection.md)
   * [4.4 公开案例与研究演示分析](04_prompt_injection/4.4_case_studies.md)
-  * [4.5 提示注入防御实践](04_prompt_injection/4.5_injection_defense.md)
+  * [4.5 分层防御：构建可复制的安全门控架构](04_prompt_injection/4.5_injection_defense.md)
   * [4.6 长上下文特有的安全风险与防御](04_prompt_injection/4.6_long_context_risks.md)
   * [本章小结](04_prompt_injection/summary.md)
 
@@ -71,7 +71,7 @@
   * [8.3 权限与访问控制](08_architecture/8.3_access_control.md)
   * [8.4 安全开发生命周期](08_architecture/8.4_security_sdlc.md)
   * [8.5 隐私增强技术与数据保护](08_architecture/8.5_privacy_enhancing.md)
-  * [8.6 供应链与基础设施安全](08_architecture/8.6_supply_chain.md)
+  * [8.6 供应链与基础设施环境安全](08_architecture/8.6_supply_chain.md)
   * [本章小结](08_architecture/summary.md)
 
 * [第九章 输入输出安全防护](09_io_protection/README.md)
@@ -84,10 +84,10 @@
 * [第十章 安全运营与监控](10_operations/README.md)
   * [10.1 安全监控体系](10_operations/10.1_monitoring.md)
   * [10.2 异常检测与告警](10_operations/10.2_anomaly_detection.md)
-  * [10.3 事件响应流程](10_operations/10.3_incident_response.md)
+  * [10.3 运行时安全与事件响应](10_operations/10.3_incident_response.md)
   * [10.4 红队演练与自动化评估](10_operations/10.4_red_teaming.md)
   * [10.5 服务降级与 Fallback 策略](10_operations/10.5_fallback_strategy.md)
-  * [10.6 DeepTeam与现代红队工具链](10_operations/10.6_modern_redteam_tools.md)
+  * [10.6 DeepTeam 与现代红队工具链](10_operations/10.6_modern_redteam_tools.md)
   * [本章小结](10_operations/summary.md)
 
 ## 第四部分：治理与展望
