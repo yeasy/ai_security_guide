@@ -34,7 +34,7 @@
 
 ### 防御技术
 
-12. Guo, C., et al. (2026). *IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs*. arXiv preprint. ``
+12. Guo, C., et al. (2026). *IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs*. arXiv preprint. `arXiv:2603.10521`
 
 ### 隐私与数据安全
 
