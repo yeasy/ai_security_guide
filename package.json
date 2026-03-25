@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "description": "大模型安全权威指南 - 从原理到实践，全面掌握 LLM 安全攻防之道",
     "scripts": {
-        "init": "honkit init",
-        "build": "honkit build",
-        "serve": "honkit serve",
-        "start": "honkit serve",
-        "clean": "rimraf _book",
-        "pdf": "honkit pdf ./ ./ai_security_guide.pdf"
+        "init": "mdpress init",
+        "build": "rm -rf _site _site_site && mdpress build --format site --output _site && rm -rf _site && mv _site_site _site",
+        "serve": "mdpress serve",
+        "start": "mdpress serve",
+        "clean": "rimraf _book _site",
+        "pdf": "mdpress build --format pdf"
     },
     "repository": {
         "type": "git",
@@ -27,7 +27,6 @@
         "gitbook-plugin-mermaid-gb3": "^2.1.0",
         "gitbook-plugin-page-toc-button": "^0.1.1",
         "gitbook-plugin-splitter": "^0.0.8",
-        "honkit": "^6.1.6",
         "honkit-plugin-prism": "^2.5.4",
         "rimraf": "^6.1.3"
     }
