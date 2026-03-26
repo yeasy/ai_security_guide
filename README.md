@@ -5,6 +5,7 @@
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/ai_security_guide?style=social)](https://github.com/yeasy/ai_security_guide)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/ai_security_guide)
+[![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/ai_security_guide/releases/latest/download/ai_security_guide.pdf)
 
 > 从原理到实践，全面掌握大语言模型的安全攻防之道
 
