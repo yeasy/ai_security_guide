@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/yeasy/ai_security_guide?style=social)](https://github.com/yeasy/ai_security_guide)
 [![Release](https://img.shields.io/github/release/yeasy/ai_security_guide.svg)](https://github.com/yeasy/ai_security_guide/releases)
 [![Online Reading](https://img.shields.io/badge/在线阅读-GitBook-brightgreen)](https://yeasy.gitbook.io/ai_security_guide)
-[![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/ai_security_guide/releases/latest/download/ai_security_guide.pdf)
+[![PDF](https://img.shields.io/badge/PDF-下载-orange)](https://github.com/yeasy/ai_security_guide/releases/latest)
 
 > 从原理到实践，全面掌握大语言模型的安全攻防之道
 
