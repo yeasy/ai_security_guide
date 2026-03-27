@@ -51,7 +51,7 @@
   * [6.3 模型窃取与逆向工程](06_data_model_attacks/6.3_model_extraction.md)
   * [6.4 成员推理与隐私攻击](06_data_model_attacks/6.4_privacy_attacks.md)
   * [6.5 离散对抗攻击与模型鲁棒性](06_data_model_attacks/6.5_adversarial_robustness.md)
-  * [6.6 微调与PEFT的安全风险](06_data_model_attacks/6.6_finetuning_peft_security.md)
+  * [6.6 微调与 PEFT 的安全风险](06_data_model_attacks/6.6_finetuning_peft_security.md)
   * [本章小结](06_data_model_attacks/summary.md)
 
 * [第七章 智能体与 RAG 安全](07_agent_rag_security/README.md)
@@ -60,7 +60,7 @@
   * [7.3 工具调用安全](07_agent_rag_security/7.3_tool_security.md)
   * [7.4 智能体技能与生态安全](07_agent_rag_security/7.4_agent_skills.md)
   * [7.5 多智能体协作系统的安全架构](07_agent_rag_security/7.5_multi_agent_security.md)
-  * [7.6 Agents Rule of Two与智能体安全设计原则](07_agent_rag_security/7.6_agents_rule_of_two.md)
+  * [7.6 Agents Rule of Two 与智能体安全设计原则](07_agent_rag_security/7.6_agents_rule_of_two.md)
   * [本章小结](07_agent_rag_security/summary.md)
 
 ## 第三部分：防御篇

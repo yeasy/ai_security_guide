@@ -68,6 +68,7 @@ graph TB
 ### 下章预告
 
 [第七章](../07_agent_rag_security/README.md)将介绍智能体与 RAG 安全。随着 LLM 被赋予工具调用能力和外部知识访问能力，新的安全风险也随之出现。将深入分析智能体系统面临的信任边界扩大和漏洞放大。
+
 ---
 
 > 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

@@ -69,7 +69,8 @@ graph TB
 
 ### 下章预告
 
-[第八章](../08_architecture/README.md)将进入“防御篇”，介绍安全架构设计的原则和模式。包括纵深防御、安全架构模式、权限与访问控制、安全开发生命周期等内容，为构建安全的 LLM 应用提供系统性指导。
+[第八章](../08_architecture/README.md)将进入”防御篇”，介绍安全架构设计的原则和模式。包括纵深防御、安全架构模式、权限与访问控制、安全开发生命周期等内容，为构建安全的 LLM 应用提供系统性指导。
+
 ---
 
 > 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。
