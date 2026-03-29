@@ -16,7 +16,6 @@
 | HouYi | 针对 LLM 集成应用的自动化注入框架 | 维护中 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
 | AutoDAN | 基于遗传算法的自动化越狱生成 | 维护中 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
 
-
 ### 防护框架
 
 | 工具名称 | 描述 | 维护状态 | 链接 |
