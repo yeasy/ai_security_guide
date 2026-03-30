@@ -152,7 +152,7 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 模拟攻击者进行安全测试的专业团队。
 
 **Reasoning Model（推理模型）**
-具备链式推理能力的模型（如 OpenAI o1/o3、DeepSeek-R1），通过显式推理步骤提升复杂问题求解能力，但推理过程也可能被攻击者利用。
+具备链式推理能力的模型（如 OpenAI o 系列、DeepSeek-R1），通过显式推理步骤提升复杂问题求解能力，但推理过程也可能被攻击者利用。
 
 **RLHF（Reinforcement Learning from Human Feedback）**
 基于人类反馈的强化学习，用于对齐 LLM 行为。
