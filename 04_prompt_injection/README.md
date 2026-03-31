@@ -31,4 +31,4 @@ flowchart TB
 
 ---
 
-> **📚 延伸阅读**：OpenClaw 的三层纵深防御机制（工具策略、沙箱、审批联动），参见 [《OpenClaw 从入门到精通》第 11 章](https://github.com/yeasy/openclaw_guide)。
+> **📚 延伸阅读**：OpenClaw 的三层纵深防御机制（工具策略、沙箱、审批联动），参见 [《OpenClaw 从入门到精通》第 11 章](https://yeasy.gitbook.io/openclaw_guide)。

@@ -134,13 +134,13 @@ graph LR
 
 | 书名 | 与本书的关系 |
 |------|------------|
-| [《零基础学 AI》](https://github.com/yeasy/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
-| [《大模型提示词工程指南》](https://github.com/yeasy/prompt_engineering_guide) | 理解提示词注入攻击的前置知识 |
-| [《大模型上下文工程权威指南》](https://github.com/yeasy/context_engineering_guide) | 深入理解 RAG 安全的上下文工程基础 |
-| [《智能体 AI 权威指南》](https://github.com/yeasy/agentic_ai_guide) | 理解智能体系统的架构，为智能体安全提供背景 |
-| [《Claude 技术指南》](https://github.com/yeasy/claude_guide) | 了解 Claude 的安全设计理念（宪法式 AI）与工具安全 |
-| [《OpenClaw 从入门到精通》](https://github.com/yeasy/openclaw_guide) | 智能体框架的安全基线与审计流程实践 |
-| [《大模型原理与架构》](https://github.com/yeasy/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
+| [《零基础学 AI》](https://yeasy.gitbook.io/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
+| [《大模型提示词工程指南》](https://yeasy.gitbook.io/prompt_engineering_guide) | 理解提示词注入攻击的前置知识 |
+| [《大模型上下文工程权威指南》](https://yeasy.gitbook.io/context_engineering_guide) | 深入理解 RAG 安全的上下文工程基础 |
+| [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) | 理解智能体系统的架构，为智能体安全提供背景 |
+| [《Claude 技术指南》](https://yeasy.gitbook.io/claude_guide) | 了解 Claude 的安全设计理念（宪法式 AI）与工具安全 |
+| [《OpenClaw 从入门到精通》](https://yeasy.gitbook.io/openclaw_guide) | 智能体框架的安全基线与审计流程实践 |
+| [《大模型原理与架构》](https://yeasy.gitbook.io/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
 
 ---
 
