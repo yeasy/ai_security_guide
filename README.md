@@ -141,6 +141,7 @@ graph LR
 | [《Claude 技术指南》](https://yeasy.gitbook.io/claude_guide) | 了解 Claude 的安全设计理念（宪法式 AI）与工具安全 |
 | [《OpenClaw 从入门到精通》](https://yeasy.gitbook.io/openclaw_guide) | 智能体框架的安全基线与审计流程实践 |
 | [《大模型原理与架构》](https://yeasy.gitbook.io/llm_internals) | 深入理解大语言模型底层逻辑与架构 |
+| [《智能体 Harness 工程指南》](https://yeasy.gitbook.io/harness_engineering_guide) | 智能体 Harness 层的安全体系设计与沙箱隔离实践 |
 
 ---
 
@@ -165,7 +166,7 @@ brew tap yeasy/tap && brew install mdpress
 mdpress serve
 ```
 
-启动后访问 [本地阅读地址](http://localhost:4000) 即可阅读。
+启动后访问 [本地阅读地址](http://localhost:9000) 即可阅读。
 
 ---
 
