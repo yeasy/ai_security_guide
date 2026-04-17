@@ -79,6 +79,7 @@
   * [9.2 输出内容安全审核](09_io_protection/9.2_output_moderation.md)
   * [9.3 敏感信息保护](09_io_protection/9.3_sensitive_data.md)
   * [9.4 AI 生成内容鉴伪与水印技术](09_io_protection/9.4_watermarking_detection.md)
+  * [9.5 下一代 Constitutional Classifiers：级联架构与激活模式检测](09_io_protection/9.5_constitutional_classifiers.md)
   * [本章小结](09_io_protection/summary.md)
 
 * [第十章 安全运营与监控](10_operations/README.md)
@@ -88,6 +89,7 @@
   * [10.4 红队演练与自动化评估](10_operations/10.4_red_teaming.md)
   * [10.5 服务降级与 Fallback 策略](10_operations/10.5_fallback_strategy.md)
   * [10.6 DeepTeam 与现代红队工具链](10_operations/10.6_modern_redteam_tools.md)
+  * [10.7 隐蔽破坏检测：SHADE-Arena 基准与 Agent 监控](10_operations/10.4_sabotage_monitoring.md)
   * [本章小结](10_operations/summary.md)
 
 ## 第四部分：治理与展望
@@ -96,9 +98,11 @@
   * [11.1 AI 法规与合规要求](11_governance/11.1_regulations.md)
   * [11.2 负责任 AI 实践](11_governance/11.2_responsible_ai.md)
   * [11.3 新兴威胁趋势](11_governance/11.3_emerging_threats.md)
-  * [11.4 大语言模型安全成熟度模型](11_governance/11.4_maturity_model.md)
-  * [11.5 未来安全技术方向](11_governance/11.5_future.md)
-  * [11.6 AI 安全合规的可操作性指南](11_governance/11.6_compliance_operational.md)
+  * [11.4 Agent 错位威胁：从压力测试到防护框架](11_governance/11.4_agentic_misalignment.md)
+  * [11.5 大语言模型安全成熟度模型](11_governance/11.4_maturity_model.md)
+  * [11.6 未来安全技术方向](11_governance/11.5_future.md)
+  * [11.7 AI 安全合规的可操作性指南](11_governance/11.6_compliance_operational.md)
+  * [11.8 可信 Agent 框架：五大核心原则与生态标准化](11_governance/11.7_trustworthy_agents.md)
   * [本章小结](11_governance/summary.md)
 
 ## 附录
