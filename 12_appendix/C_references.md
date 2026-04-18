@@ -24,7 +24,7 @@
 
 ### 攻击技术
 
-8. Perez, F., & Ribeiro, I. (2023). *Ignore This Title and HackAPrompt: Exposing Systemic Vulnerabilities of LLMs through a Global Scale Prompt Hacking Competition*. EMNLP 2023. arXiv（检索）: [arxiv.org](https://arxiv.org/search/?query=Ignore+This+Title+and+HackAPrompt&searchtype=all) ; ACL Anthology（检索）: [aclanthology.org](https://aclanthology.org/search/?q=Ignore%20This%20Title%20and%20HackAPrompt) ``
+8. Schulhoff, S., Pinto, J., Khan, A., et al. (2023). *Ignore This Title and HackAPrompt: Exposing Systemic Vulnerabilities of LLMs through a Global Scale Prompt Hacking Competition*. EMNLP 2023. [ACL Anthology](https://aclanthology.org/2023.emnlp-main.302/) ``
 
 9. Greshake, K., et al. (2023). *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*. AISec 2023. ``
 
