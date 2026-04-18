@@ -113,6 +113,9 @@ LLM 调用外部工具和 API 的能力。
 **Membership Inference（成员推理）**
 判断特定数据点是否被用于训练模型的攻击技术。
 
+**Multimodal LLM（多模态大语言模型）**
+能够同时处理文本、图像、音频等多种输入模态的大语言模型，能力更广但也引入了跨模态注入等新的安全威胁面。
+
 **MCP（Model Context Protocol）**
 Anthropic 提出的标准化协议，用于连接 LLM 与外部数据源和工具。
 
@@ -143,6 +146,11 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 **Pre-training（预训练）**
 在大规模数据上训练模型的初始阶段。
 
+## Q
+
+**Quantization（量化）**
+将模型参数从高精度（如 FP32）转换为低精度（如 INT8/INT4）的优化技术，用于减少模型体积和加速推理，但可能改变模型的安全行为特性。
+
 ## R
 
 **RAG（Retrieval-Augmented Generation，检索增强生成）**
@@ -170,6 +178,9 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 
 **SIEM（Security Information and Event Management）**
 安全信息和事件管理系统。
+
+**Supply Chain Risk（供应链风险）**
+在 AI 模型的开发、训练、部署全生命周期中，由第三方依赖、数据源、预训练权重等引入的安全威胁。
 
 **System Prompt（系统提示）**
 定义 LLM 角色和行为规则的配置提示。
