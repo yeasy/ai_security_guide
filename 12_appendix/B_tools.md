@@ -78,7 +78,7 @@
 | 课程 | 平台 | 描述 | 链接 |
 |------|------|------|------|
 | AI Security | Coursera | AI 安全基础 | [Coursera](https://www.coursera.org/learn/ai-security) |
-| LLM Security | edX | LLM 安全专项 | [edX](https://www.edx.org/learn/artificial-intelligence) |
+| AI 学习资源 | edX | edX 的 AI 课程聚合页，可作为继续检索相关课程的入口 | [edX](https://www.edx.org/learn/artificial-intelligence) |
 | Prompt Engineering | DeepLearning.AI | 提示工程最佳实践 | [DeepLearning.AI](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) |
 
 ### 研究论文
