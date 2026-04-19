@@ -34,7 +34,7 @@
 
 ### 防御技术
 
-12. Guo, C., et al. (2026). *IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs*. arXiv preprint. `arXiv:2603.10521`
+12. Guo, C., et al. (2026). *IH-Challenge: A Training Dataset to Improve Instruction Hierarchy on Frontier LLMs*. arXiv preprint. [arXiv:2603.10521](https://arxiv.org/abs/2603.10521)
 
 ### 隐私与数据安全
 
@@ -54,11 +54,11 @@
 
 18. OpenAI. (2023). *GPT-4 System Card*. OpenAI Technical Report.
 
-19. Anthropic. (2024). *Claude's Constitution*. Anthropic Research.
+19. Anthropic. (2023). *Claude's Constitution*. [Anthropic](https://www.anthropic.com/news/claudes-constitution/)
 
-20. Google. (2023). *Secure AI Framework (SAIF)*. Google Security Blog.
+20. Google. (2023). *Secure AI Framework (SAIF)*. [Google Cloud](https://cloud.google.com/use-cases/secure-ai-framework)
 
-21. Microsoft. (2024). *Responsible AI Standard, v2*. Microsoft.
+21. Microsoft. (2024). *Responsible AI Standard, v2*. [Microsoft](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/bade/documents/products-and-services/en-us/ai/RAIS-Reference-Guide-v2.pdf)
 
 ## 书籍
 
@@ -93,7 +93,7 @@
 
 30. 中华人民共和国国家互联网信息办公室. (2023). *生成式人工智能服务管理暂行办法*.
 
-31. White House. (2023). *Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后续已被新行政命令替代）.
+31. White House. (2023). *Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后于 2025 年由 Executive Order 14179 撤销）. [White House](https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/)
 
 32. UK AI Safety Institute. (2024). *International Scientific Report on the Safety of Advanced AI*.
 
@@ -111,7 +111,7 @@
 
 37. The White House. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [White House](https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/)
 
-38. Federal Register. (2025). *Executive Order 14179 filing and revocations*. [Federal Register](https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence)
+38. Federal Register. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [Federal Register](https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence)
 
 ## 2025-2026 更新补充
 
@@ -121,7 +121,7 @@
 
 41. NIST. (2024). *Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)*. [NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
-42. Model Context Protocol. (2025). *Security Best Practices*. [Model Context Protocol](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices)
+42. Model Context Protocol. (2025). *Security Best Practices*. [Model Context Protocol](https://modelcontextprotocol.io/docs/tutorials/security/security_best_practices)
 
 43. OpenAI. (2025). *New tools and features in the Responses API*（含 MCP 工具支持）. [OpenAI 博客](https://openai.com/index/new-tools-and-features-in-the-responses-api/)
 
@@ -129,16 +129,16 @@
 
 45. GitHub. (2025). *protectai/rebuff repository page*（标记为 archived）. [protectai/rebuff](https://github.com/protectai/rebuff)
 
-46. NSFOCUS. (2025). *LLM Data Leakage Incidents: ChatGPT Keyword Filter Bypass via Word Games*. [NSFOCUS Global](https://nsfocusglobal.com/)
+46. Anthropic. (2025). *Agentic Misalignment: How LLMs could be insider threats*. [Anthropic Research](https://www.anthropic.com/research/agentic-misalignment)
 
-47. Aim Security. (2025). *EchoLeak: Zero-Click Agentic Vulnerability in Microsoft 365 Copilot*. [Aim Security](https://aim.security/)
+47. Aim Security. (2025). *Breaking down ‘EchoLeak’, the First Zero-Click AI Vulnerability Enabling Data Exfiltration from Microsoft 365 Copilot*. [Aim Security](https://www.aim.security/post/echoleak-blogpost)
 
-48. Cursor. (2025). *Cursor security advisories for CVE-2025-54135 and CVE-2025-54136*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-4cxx-hrm3-49rm)
+48. GitHub. (2025). *Arbitrary code execution from Cursor Agent through a prompt injection via MCP Special Files*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-4cxx-hrm3-49rm)
 
-49. Security Boulevard. (2026). *AI Security Incident Roundup – January 2026*. [Security Boulevard](https://securityboulevard.com/2026/01/ai-security-incident-roundup-january-2026/)
+49. Anthropic. (2026). *Trustworthy agents in practice*. [Anthropic Research](https://www.anthropic.com/research/trustworthy-agents)
 
 50. Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS 2017. [arXiv](https://arxiv.org/abs/1706.03762)
 
 ---
 
-*参考文献截至 2026-04-18（并会随时间变化），后续版本将持续更新。*
+*参考文献截至 2026-04-19（并会随时间变化），后续版本将持续更新。*

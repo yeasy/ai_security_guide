@@ -1,52 +1,52 @@
 # 附录 B：安全工具与资源
 
-本附录收录 LLM 安全相关的工具和学习资源。
+本附录收录 LLM 安全相关的工具和学习资源。以下条目同时包含开源项目、研究原型与云服务产品，选型前应以官方文档、仓库状态和发布日期为准。
 
 ## 安全测试工具
 
-### 漏洞扫描
+### 红队测试与安全评估
 
-| 工具名称 | 描述 | 维护状态 | 链接 |
-|----------|------|---------|------|
-| Garak | NVIDIA 开发的 LLM 漏洞扫描工具 | 活跃维护 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
-| promptfoo | Prompt 测试和评估框架 | 活跃维护 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
-| PyRIT | AI 红队自动化工具 | 活跃维护 | [Azure/PyRIT](https://github.com/Azure/PyRIT) |
-| ART | IBM 的对抗鲁棒性工具箱 | 维护中 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
-| HarmBench | 针对 LLM 的自动化红队评估框架 | 活跃维护 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
-| HouYi | 针对 LLM 集成应用的自动化注入框架 | 维护中 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
-| AutoDAN | 基于遗传算法的自动化越狱生成 | 维护中 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
+| 工具名称 | 描述 | 状态 | 链接 |
+|----------|------|------|------|
+| Garak | NVIDIA 的 LLM 漏洞探测与红队评估工具 | 活跃维护 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
+| promptfoo | Prompt 测试、评估与红队框架 | 活跃维护 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
+| PyRIT | Microsoft 的生成式 AI 红队框架（Python Risk Identification Tool） | 活跃维护 | [microsoft/PyRIT](https://github.com/microsoft/PyRIT) |
+| ART | 面向机器学习安全的工具箱，覆盖对抗样本、投毒、模型提取等；非 LLM 专用 | 活跃维护 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
+| HarmBench | 自动化红队与拒答鲁棒性的标准化评估框架 | 研究框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
+| HouYi | 面向 LLM 集成应用的自动化提示注入框架 | 研究原型 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
+| AutoDAN | 自动化越狱生成方法的研究实现 | 研究实现 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
 
 ### 防护框架
 
-| 工具名称 | 描述 | 维护状态 | 链接 |
-|----------|------|---------|------|
+| 工具名称 | 描述 | 状态 | 链接 |
+|----------|------|------|------|
 | NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | 活跃维护 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
-| Guardrails AI | 输入/输出校验与结构化数据验证 | 活跃维护 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
-| Invariant | 面向智能体的持续监控与策略执行 | 活跃维护 | [invariantlabs.ai](https://invariantlabs.ai/) |
-| OpenAI Guardrails | OpenAI 的安全合规校验模块 | 维护中 | [openai/guardrails](https://github.com/openai/guardrails) |
+| Guardrails AI | 输入/输出校验与结构化验证框架 | 活跃维护 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
+| Invariant | 面向智能体的安全监测与策略控制产品 | 活跃维护 | [Invariant Labs](https://invariantlabs.ai/) |
+| OpenAI Guardrails | OpenAI 的 Guardrails Python 包，提供可配置的输入/输出校验与审核 | Preview | [openai/openai-guardrails-python](https://github.com/openai/openai-guardrails-python) |
 
 ### 注入检测与防御
 
-| 工具名称 | 描述 | 维护状态 | 链接 |
-|----------|------|---------|------|
+| 工具名称 | 描述 | 状态 | 链接 |
+|----------|------|------|------|
 | Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | 活跃维护 | [meta-llama/Prompt-Guard-86M](https://huggingface.co/meta-llama/Prompt-Guard-86M) |
-| Azure AI Content Safety | 微软云端内容安全服务（含注入检测） | 活跃维护 | [Microsoft](https://azure.microsoft.com/products/ai-services/ai-content-safety) |
-| AWS Bedrock Guardrails | AWS 云端 AI 安全护栏服务 | 活跃维护 | [AWS](https://aws.amazon.com/bedrock/guardrails/) |
-| Google Cloud Model Armor | Google 云端 AI 模型安全防护 | 活跃维护 | [Google Cloud](https://cloud.google.com/ai/model-armor) |
+| Azure AI Content Safety | 微软云端内容安全服务（含 Prompt Shields） | 活跃维护 | [Microsoft](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety) |
+| AWS Bedrock Guardrails | AWS 云端护栏服务，含内容过滤、PII 与 prompt attack detection | 活跃维护 | [AWS](https://aws.amazon.com/bedrock/guardrails/) |
+| Google Cloud Model Armor | Google Cloud 运行时防护服务，可筛查提示、响应与 agent 交互 | 活跃维护 | [Google Cloud](https://cloud.google.com/security/products/model-armor) |
 | Rebuff | 提示注入检测与防御框架 | 已归档 | [protectai/rebuff](https://github.com/protectai/rebuff) |
 
 ### 内容审核
 
-| 工具名称 | 描述 | 维护状态 | 链接 |
-|----------|------|---------|------|
+| 工具名称 | 描述 | 状态 | 链接 |
+|----------|------|------|------|
 | OpenAI Moderation API | 内容审核 API | 活跃维护 | [OpenAI 文档](https://platform.openai.com/docs/guides/moderation) |
 | Perspective API | Google 的毒性检测 API | 活跃维护 | [Perspective API](https://perspectiveapi.com/) |
-| Azure Content Safety | 微软内容安全服务 | 活跃维护 | [Microsoft](https://azure.microsoft.com/services/ai-services/content-safety/) |
+| Azure AI Content Safety | 微软内容安全服务 | 活跃维护 | [Microsoft](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety) |
 
 ### 隐私保护
 
-| 工具名称 | 描述 | 维护状态 | 链接 |
-|----------|------|---------|------|
+| 工具名称 | 描述 | 状态 | 链接 |
+|----------|------|------|------|
 | Presidio | 微软的 PII 检测和脱敏工具 | 活跃维护 | [microsoft/presidio](https://github.com/microsoft/presidio) |
 | PySyft | 隐私保护机器学习库 | 维护中 | [OpenMined/PySyft](https://github.com/OpenMined/PySyft) |
 | Opacus | PyTorch 差分隐私库 | 活跃维护 | [pytorch/opacus](https://github.com/pytorch/opacus) |
@@ -67,7 +67,7 @@
 
 | 资源 | 描述 | 链接 |
 |------|------|------|
-| Google Secure AI Framework | Google 安全 AI 框架 | [safety.google](https://safety.google/cybersecurity-advancements/saif/) |
+| Google Secure AI Framework | Google 安全 AI 框架 | [Google Cloud](https://cloud.google.com/use-cases/secure-ai-framework) |
 | Microsoft Responsible AI | 微软负责任 AI | [Microsoft](https://www.microsoft.com/ai/responsible-ai) |
 | Anthropic Safety | Anthropic 安全研究 | [Anthropic](https://www.anthropic.com/research) |
 
@@ -141,8 +141,8 @@
 |------------------|-----------------------|-------------------------|------------------------|
 | **模型训练/微调** | LLM03 (供应链风险)<br>LLM04 (数据投毒) | Great Expectations<br>ModelScan | 数据清洗质量强制卡点验证、第三方模型权重后门漏洞扫描（第 6 章） |
 | **应用架构设计** | LLM06 (过度自主权)<br>LLM07 (系统提示泄露) | Microsoft Responsible AI<br>Google SAIF | 会话分层架构设计、RBAC 与人机协同（HITL）审批流预发设计（第 8 章） |
-| **知识检索 (RAG)** | LLM08 (向量与嵌入弱点)<br>LLM09 (错误信息) | LangChain (Sec-Config)<br>LlamaIndex | 外部文档切块入库前的洗消验签、基于多租户身份的检索结果过滤（第 7 章） |
-| **网关边界拦截** | LLM01 (提示注入)<br>LLM10 (无边界消耗) | Prompt Guard<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测越狱，并实施 Token 熔断限流（第 4 章） |
+| **知识检索 (RAG)** | LLM08 (向量与嵌入弱点)<br>LLM09 (错误信息) | LlamaIndex<br>自建入库前校验与元数据过滤基线 | 外部文档切块入库前的洗消验签、基于多租户身份的检索结果过滤（第 7 章） |
+| **网关边界拦截** | LLM01 (提示注入)<br>LLM10 (无边界消耗) | Meta Llama Prompt Guard<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测越狱，并实施 Token 熔断限流（第 4 章） |
 | **输出校验与脱敏**| LLM02 (敏感数据泄露)<br>LLM05 (输出处理不当) | Microsoft Presidio<br>Guardrails AI | 双向 PII 实体检测与掩码还原，强制输出转为受控 Schema 并严格阻断执行链（第 9 章） |
 | **CI/CD 安全门禁** | LLM01 (注入绕过)<br>通用安全性回归 | promptfoo<br>Garak<br>HarmBench | 迭代上线前构建自动化对抗评估，将最新漏洞形成集成测试硬拦截门禁（第 10 章） |
 
@@ -150,4 +150,4 @@
 
 *注意：工具和资源持续更新。请访问官方网站获取最新信息，部分项目可能停更或归档。*
 
-*维护状态说明：开源工具的维护状态可能随时变化，建议在选型前检查项目的最近更新日期和社区活跃度。*
+*状态说明：开源工具、研究项目与云服务的状态可能随时变化，建议在选型前检查项目的最近更新日期、官方说明和社区活跃度。*
