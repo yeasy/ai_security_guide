@@ -2,29 +2,5 @@
     "title": "大模型安全权威指南",
     "description": "大模型安全权威指南 - 从原理到实践，全面掌握 LLM 安全攻防之道",
     "author": "yeasy",
-    "language": "zh-hans",
-    "plugins": [
-        "-highlight",
-        "prism",
-        "mermaid-gb3",
-        "chapter-fold",
-        "back-to-top-button",
-        "code",
-        "splitter",
-        "page-toc-button"
-    ],
-    "pluginsConfig": {
-        "prism": {
-            "css": [
-                "prismjs/themes/prism-tomorrow.css"
-            ]
-        },
-        "mermaid-gb3": {
-            "theme": "default"
-        },
-        "page-toc-button": {
-            "maxTocDepth": 3,
-            "minTocSize": 2
-        }
-    }
+    "language": "zh-hans"
 }
