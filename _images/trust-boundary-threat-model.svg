@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="700" viewBox="0 0 1080 700" role="img" aria-labelledby="title desc">
+  <title id="title">带信任边界的威胁模型图</title>
+  <desc id="desc">展示用户、外部内容与工具返回如何跨越信任边界进入 LLM 应用，并影响模型、工具网关和敏感资产。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 32px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #16212b; }
+      .body { font: 500 17px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #3c4d5d; }
+      .zone { fill: #ffffff; stroke: #cfd9e3; stroke-width: 2; rx: 20; }
+      .zone-priv { fill: #fff7e8; stroke: #e5b55b; stroke-width: 2; rx: 20; }
+      .boundary { fill: none; stroke: #dd6b20; stroke-width: 4; stroke-dasharray: 14 10; }
+      .box { fill: #edf4ff; stroke: #5b84c4; stroke-width: 2; rx: 16; }
+      .box2 { fill: #eef7f1; stroke: #5a9d7b; stroke-width: 2; rx: 16; }
+      .box3 { fill: #fff2ef; stroke: #d06d63; stroke-width: 2; rx: 16; }
+      .text { font: 600 18px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; text-anchor: middle; dominant-baseline: middle; }
+      .note { font: 600 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #67452a; }
+      .arrow { stroke: #304255; stroke-width: 3; fill: none; marker-end: url(#arrowHead); }
+      .attack { stroke: #cc4b37; stroke-width: 3; fill: none; stroke-dasharray: 8 8; marker-end: url(#attackHead); }
+      .trust { font: 700 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #c05621; }
+      .legend { font: 500 15px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #334455; }
+    </style>
+    <marker id="arrowHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#304255"/>
+    </marker>
+    <marker id="attackHead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#cc4b37"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1080" height="700" rx="28"/>
+  <text class="title" x="56" y="60">带 Trust Boundary 的 LLM 应用威胁模型</text>
+  <text class="body" x="56" y="94">不可信输入在跨越信任边界后，如果未经标记、隔离和审批，就可能触发数据泄露、越权工具调用与权限放大。</text>
+
+  <rect class="zone" x="40" y="150" width="260" height="470" rx="24"/>
+  <text class="body" x="64" y="182">边界外：不可信来源</text>
+
+  <rect class="box3" x="70" y="220" width="200" height="82" rx="18"/>
+  <text class="text" x="170" y="261">用户输入</text>
+
+  <rect class="box3" x="70" y="334" width="200" height="96" rx="18"/>
+  <text class="text" x="170" y="374">网页 / 邮件 / 检索文档</text>
+
+  <rect class="box3" x="70" y="466" width="200" height="96" rx="18"/>
+  <text class="text" x="170" y="506">第三方工具返回值</text>
+
+  <rect class="zone" x="330" y="150" width="520" height="470" rx="24"/>
+  <rect class="boundary" x="350" y="170" width="480" height="430" rx="22"/>
+  <text class="trust" x="370" y="198">Trust Boundary</text>
+  <text class="body" x="370" y="226">应用必须在这里把“输入”与“指令”分开，并显式做权限与来源治理。</text>
+
+  <rect class="box" x="382" y="248" width="190" height="90" rx="18"/>
+  <text class="text" x="477" y="293">应用编排层</text>
+
+  <rect class="box" x="608" y="248" width="190" height="90" rx="18"/>
+  <text class="text" x="703" y="293">Prompt Builder</text>
+
+  <rect class="box2" x="495" y="380" width="190" height="90" rx="18"/>
+  <text class="text" x="590" y="425">模型运行时</text>
+
+  <rect class="box" x="382" y="500" width="190" height="72" rx="18"/>
+  <text class="text" x="477" y="536">策略 / 审计</text>
+
+  <rect class="box2" x="608" y="500" width="190" height="72" rx="18"/>
+  <text class="text" x="703" y="536">工具网关</text>
+
+  <rect class="zone-priv" x="880" y="150" width="160" height="470" rx="24"/>
+  <text class="note" x="902" y="182">高价值资产</text>
+
+  <rect class="box2" x="905" y="242" width="110" height="82" rx="18"/>
+  <text class="text" x="960" y="283">敏感数据</text>
+
+  <rect class="box2" x="905" y="358" width="110" height="82" rx="18"/>
+  <text class="text" x="960" y="399">特权工具</text>
+
+  <rect class="box2" x="905" y="474" width="110" height="82" rx="18"/>
+  <text class="text" x="960" y="515">凭据 / 密钥</text>
+
+  <path class="arrow" d="M 270 261 C 320 261, 336 293, 382 293"/>
+  <path class="arrow" d="M 270 382 C 334 382, 430 425, 495 425"/>
+  <path class="arrow" d="M 270 514 C 340 514, 360 536, 382 536"/>
+  <path class="arrow" d="M 572 293 C 596 293, 584 293, 608 293"/>
+  <path class="arrow" d="M 703 338 C 703 360, 648 386, 648 386"/>
+  <path class="arrow" d="M 685 425 C 715 425, 740 500, 703 500"/>
+  <path class="arrow" d="M 798 536 C 848 536, 854 515, 905 515"/>
+  <path class="arrow" d="M 798 536 C 848 536, 854 399, 905 399"/>
+  <path class="arrow" d="M 648 425 C 750 425, 825 283, 905 283"/>
+
+  <path class="attack" d="M 270 382 C 340 350, 410 270, 608 293"/>
+  <path class="attack" d="M 270 514 C 352 470, 430 425, 495 425"/>
+  <path class="attack" d="M 270 261 C 388 210, 676 516, 905 399"/>
+
+  <rect x="56" y="640" width="968" height="34" rx="17" fill="#ffffff" opacity="0.88"/>
+  <line x1="76" y1="657" x2="116" y2="657" class="arrow"/>
+  <text class="legend" x="126" y="662">正常数据 / 控制流</text>
+  <line x1="328" y1="657" x2="368" y2="657" class="attack"/>
+  <text class="legend" x="378" y="662">潜在攻击路径</text>
+  <text class="legend" x="548" y="662">重点控制：来源标记、上下文隔离、审批闸门、最小权限、审计留痕</text>
+</svg>

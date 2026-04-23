@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+  <title id="title">攻击者画像矩阵</title>
+  <desc id="desc">以资源与能力、动机与影响为两个维度展示常见 LLM 安全攻击者画像。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf5; }
+      .panel-a { fill: #eaf4ea; }
+      .panel-b { fill: #fff2d8; }
+      .panel-c { fill: #eef4fb; }
+      .panel-d { fill: #fde8e5; }
+      .axis { stroke: #28323c; stroke-width: 3; }
+      .grid { stroke: #b7c2cd; stroke-width: 1.5; stroke-dasharray: 6 6; }
+      .label { font: 600 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
+      .small { font: 500 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #435466; }
+      .quad { font: 700 24px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #20303c; }
+      .node { stroke: #ffffff; stroke-width: 3; }
+      .node-text { font: 700 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; dominant-baseline: middle; }
+      .title { font: 700 30px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #18232c; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="960" height="620" rx="24"/>
+  <text class="title" x="52" y="56">攻击者画像矩阵</text>
+  <text class="small" x="52" y="88">横轴表示资源与能力，纵轴表示动机强度与潜在影响，用于辅助优先级研判。</text>
+
+  <rect class="panel-a" x="120" y="140" width="340" height="180" rx="20"/>
+  <rect class="panel-b" x="460" y="140" width="340" height="180" rx="20"/>
+  <rect class="panel-c" x="120" y="320" width="340" height="180" rx="20"/>
+  <rect class="panel-d" x="460" y="320" width="340" height="180" rx="20"/>
+
+  <line class="axis" x1="120" y1="500" x2="840" y2="500"/>
+  <line class="axis" x1="120" y1="520" x2="120" y2="120"/>
+  <line class="grid" x1="460" y1="140" x2="460" y2="500"/>
+  <line class="grid" x1="120" y1="320" x2="800" y2="320"/>
+
+  <polygon fill="#28323c" points="840,500 824,492 824,508"/>
+  <polygon fill="#28323c" points="120,120 112,136 128,136"/>
+
+  <text class="label" x="650" y="544">资源与能力更高</text>
+  <text class="label" x="202" y="544">资源与能力较低</text>
+  <text class="label" x="42" y="260" transform="rotate(-90 42 260)">动机更强 / 影响更高</text>
+  <text class="label" x="42" y="454" transform="rotate(-90 42 454)">动机较弱 / 影响较低</text>
+
+  <text class="quad" x="160" y="176">低资源 · 低影响</text>
+  <text class="quad" x="500" y="176">高资源 · 高影响</text>
+  <text class="quad" x="160" y="356">低资源 · 中高扰动</text>
+  <text class="quad" x="500" y="356">高资源 · 中高目标性</text>
+
+  <circle class="node" cx="260" cy="410" r="40" fill="#4f83cc"/>
+  <text class="node-text" x="260" y="410">好奇探索者</text>
+
+  <circle class="node" cx="360" cy="360" r="42" fill="#e38b2c"/>
+  <text class="node-text" x="360" y="360">恶意用户</text>
+
+  <circle class="node" cx="430" cy="250" r="44" fill="#d96b6b"/>
+  <text class="node-text" x="430" y="250">竞争对手</text>
+
+  <circle class="node" cx="585" cy="260" r="44" fill="#2e8b70"/>
+  <text class="node-text" x="585" y="260">安全研究员</text>
+
+  <circle class="node" cx="660" cy="208" r="48" fill="#c95151"/>
+  <text class="node-text" x="660" y="208">网络犯罪分子</text>
+
+  <circle class="node" cx="735" cy="180" r="54" fill="#7e3f98"/>
+  <text class="node-text" x="735" y="180">国家级行为者</text>
+
+  <text class="small" x="822" y="182">高</text>
+  <text class="small" x="822" y="498">低</text>
+  <text class="small" x="120" y="574">低</text>
+  <text class="small" x="828" y="574">高</text>
+
+  <rect x="120" y="548" width="680" height="36" rx="18" fill="#ffffff" opacity="0.82"/>
+  <text class="small" x="140" y="571">阅读方式：越靠右上，越应优先投入威胁建模、权限隔离、检测与溯源能力。</text>
+</svg>

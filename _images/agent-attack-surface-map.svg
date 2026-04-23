@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="760" viewBox="0 0 1080 760" role="img" aria-labelledby="title desc">
+  <title id="title">智能体系统攻击面地图</title>
+  <desc id="desc">展示智能体系统中输入面、上下文面、工具面、执行面与治理面的主要风险入口。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f9fbfd; }
+      .title { font: 700 32px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #16212b; }
+      .body { font: 500 17px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #465769; }
+      .ring-a { fill: #eef5ff; stroke: #7ba3d9; stroke-width: 2; }
+      .ring-b { fill: #eef8f1; stroke: #70a887; stroke-width: 2; }
+      .ring-c { fill: #fff5e8; stroke: #d8a354; stroke-width: 2; }
+      .ring-d { fill: #fff0ed; stroke: #d67868; stroke-width: 2; }
+      .ring-e { fill: #f5f0ff; stroke: #9273c9; stroke-width: 2; }
+      .core { fill: #1d3557; }
+      .core-title { font: 700 28px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; }
+      .core-body { font: 500 17px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #dbe7f3; text-anchor: middle; }
+      .label { font: 700 22px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; text-anchor: middle; }
+      .item { font: 500 17px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #324556; }
+      .callout { fill: #ffffff; stroke: #d4dde7; stroke-width: 2; rx: 16; }
+      .line { stroke: #8797a8; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8797a8"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1080" height="760" rx="28"/>
+  <text class="title" x="56" y="58">智能体系统攻击面地图</text>
+  <text class="body" x="56" y="92">攻击面不只在提示词本身，而是分散在输入、上下文、工具、执行环境与治理链路上。</text>
+
+  <ellipse class="ring-a" cx="540" cy="210" rx="220" ry="110"/>
+  <ellipse class="ring-b" cx="800" cy="370" rx="210" ry="120"/>
+  <ellipse class="ring-c" cx="710" cy="585" rx="210" ry="118"/>
+  <ellipse class="ring-d" cx="360" cy="585" rx="220" ry="118"/>
+  <ellipse class="ring-e" cx="280" cy="370" rx="210" ry="120"/>
+
+  <circle class="core" cx="540" cy="390" r="122"/>
+  <text class="core-title" x="540" y="372">Agent Runtime</text>
+  <text class="core-body" x="540" y="404">规划、记忆、推理、调度</text>
+  <text class="core-body" x="540" y="430">在这里汇聚并放大风险</text>
+
+  <text class="label" x="540" y="160">输入面</text>
+  <text class="item" x="540" y="188">用户输入、上传文件、网页内容、邮件、语音、图像</text>
+  <text class="item" x="540" y="214">风险：直接/间接注入、对抗样本、超长上下文挤压</text>
+
+  <text class="label" x="800" y="330">工具面</text>
+  <text class="item" x="800" y="360">函数调用、MCP Server、插件、第三方 API</text>
+  <text class="item" x="800" y="386">风险：参数幻觉、越权调用、返回值注入、供应链污染</text>
+
+  <text class="label" x="710" y="542">执行面</text>
+  <text class="item" x="710" y="570">Shell、数据库、邮件、支付、网络访问、文件系统</text>
+  <text class="item" x="710" y="596">风险：破坏性副作用、数据外带、资源耗尽、横向移动</text>
+
+  <text class="label" x="360" y="542">治理面</text>
+  <text class="item" x="360" y="570">审批流、审计、告警、回滚、策略版本、发布门禁</text>
+  <text class="item" x="360" y="596">风险：日志缺失、审批旁路、回归漏测、恢复失效</text>
+
+  <text class="label" x="280" y="330">上下文面</text>
+  <text class="item" x="280" y="360">系统提示、会话历史、长期记忆、RAG 召回、缓存</text>
+  <text class="item" x="280" y="386">风险：记忆污染、系统提示泄露、跨会话串扰、检索投毒</text>
+
+  <path class="line" d="M 540 268 C 540 288, 540 302, 540 312"/>
+  <path class="line" d="M 650 340 C 676 352, 696 360, 716 370"/>
+  <path class="line" d="M 625 492 C 646 516, 664 536, 676 548"/>
+  <path class="line" d="M 454 494 C 430 520, 412 536, 394 550"/>
+  <path class="line" d="M 432 338 C 404 350, 384 360, 364 370"/>
+
+  <rect class="callout" x="82" y="120" width="186" height="82" rx="16"/>
+  <text class="item" x="102" y="150">优先加固顺序：</text>
+  <text class="item" x="102" y="176">1. 工具与执行面</text>
+  <text class="item" x="102" y="198">2. 上下文与输入面</text>
+
+  <rect class="callout" x="810" y="112" width="214" height="98" rx="16"/>
+  <text class="item" x="832" y="144">对应控制：</text>
+  <text class="item" x="832" y="170">来源标记、最小权限、审批闸门</text>
+  <text class="item" x="832" y="194">审计追踪、隔离回放、回归测试</text>
+</svg>
