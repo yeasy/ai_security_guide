@@ -93,7 +93,7 @@
 
 30. 中华人民共和国国家互联网信息办公室. (2023). *生成式人工智能服务管理暂行办法*.
 
-31. Federal Register. (2023). *Executive Order 14110: Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后于 2025 年由 Executive Order 14179 撤销）. [Federal Register](https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence)
+31. White House. (2023). *Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后于 2025 年由 Executive Order 14179 撤销）. [White House](https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/)
 
 32. UK AI Safety Institute. (2024). *International Scientific Report on the Safety of Advanced AI*.
 
@@ -101,7 +101,7 @@
 
 33. Hugging Face. *Security Documentation*. [docs/hub](https://huggingface.co/docs/hub/security)
 
-34. LangChain. *Security Policy*. [LangChain Docs](https://docs.langchain.com/oss/python/security-policy)
+34. LangChain. *Security Best Practices*. [python.langchain.com](https://python.langchain.com/docs/security)
 
 35. OpenAI. *Safety & Alignment*. [OpenAI Safety](https://openai.com/safety)
 
@@ -111,7 +111,7 @@
 
 37. The White House. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [White House](https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/)
 
-38. Federal Register. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [Federal Register](https://www.federalregister.gov/documents/2025/01/31/2025-02172/removing-barriers-to-american-leadership-in-artificial-intelligence)
+38. Federal Register. (2025). *Executive Order 14179: Removing Barriers to American Leadership in Artificial Intelligence*. [Federal Register](https://www.federalregister.gov/documents/2025/01/31/2025-02103/removing-barriers-to-american-leadership-in-artificial-intelligence)
 
 ## 2025-2026 更新补充
 
