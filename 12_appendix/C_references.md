@@ -139,6 +139,12 @@
 
 50. Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS 2017. [arXiv](https://arxiv.org/abs/1706.03762)
 
+51. TechSpot. (2025). *Here's how ChatGPT was tricked into revealing Windows product keys*. [TechSpot](https://www.techspot.com/news/108637-here-how-chatgpt-tricked-revealing-windows-product-keys.html)
+
+52. Malwarebytes. (2026). *"Reprompt" attack lets attackers steal data from Microsoft Copilot*. [Malwarebytes Labs](https://www.malwarebytes.com/blog/news/2026/01/reprompt-attack-lets-attackers-steal-data-from-microsoft-copilot)
+
+53. PCWorld. (2026). *Her AI agent nuked 200 emails. This guardrail stops the next disaster*. [PCWorld](https://www.pcworld.com/article/3070207/an-ai-agent-nuked-200-emails-this-guardrail-stops-the-next-disaster.html)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
