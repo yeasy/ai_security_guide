@@ -11,7 +11,8 @@
 | Garak | NVIDIA 的 LLM 漏洞探测与红队评估工具 | 活跃维护 | [NVIDIA/garak](https://github.com/NVIDIA/garak) |
 | promptfoo | Prompt 测试、评估与红队框架 | 活跃维护 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
 | PyRIT | Microsoft 的生成式 AI 红队框架（Python Risk Identification Tool） | 活跃维护 | [microsoft/PyRIT](https://github.com/microsoft/PyRIT) |
-| Claude Security | Anthropic 的代码漏洞扫描与修复工具，基于 Opus 4.7 推理式代码审计 | Public Beta | [Anthropic](https://www.anthropic.com/news/claude-security) |
+| DeepTeam | Confident AI 的开源 LLM 红队框架，覆盖漏洞模板、攻击编排与报告 | 活跃维护 | [confident-ai/deepteam](https://github.com/confident-ai/deepteam) |
+| Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，公开测试版说明称使用 Opus 4.7 | Public Beta（Claude Enterprise） | [Anthropic](https://www.anthropic.com/product/security) |
 | ART | 面向机器学习安全的工具箱，覆盖对抗样本、投毒、模型提取等；非 LLM 专用 | 活跃维护 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
 | HarmBench | 自动化红队与拒答鲁棒性的标准化评估框架 | 研究框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
 | HouYi | 面向 LLM 集成应用的自动化提示注入框架 | 研究原型 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
