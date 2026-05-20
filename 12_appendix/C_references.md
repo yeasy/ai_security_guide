@@ -139,7 +139,7 @@
 
 50. Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS 2017. [arXiv](https://arxiv.org/abs/1706.03762)
 
-51. TechSpot. (2025). *Here's how ChatGPT was tricked into revealing Windows product keys*. [TechSpot](https://www.techspot.com/news/108637-here-how-chatgpt-tricked-revealing-windows-product-keys.html)
+51. 0DIN / Marco Figueroa. (2025). *ChatGPT guessing game leads to users extracting free Windows OS keys & more*. [0DIN](https://0din.ai/blog/chatgpt-guessing-game-leads-to-users-extracting-free-windows-os-keys-more)
 
 52. Malwarebytes. (2026). *"Reprompt" attack lets attackers steal data from Microsoft Copilot*. [Malwarebytes Labs](https://www.malwarebytes.com/blog/news/2026/01/reprompt-attack-lets-attackers-steal-data-from-microsoft-copilot)
 
@@ -158,6 +158,8 @@
 59. Microsoft. *PyRIT Documentation*. [PyRIT](https://microsoft.github.io/PyRIT/)
 
 60. Center for AI Safety. *HarmBench*. [GitHub](https://github.com/centerforaisafety/HarmBench)
+
+61. GitHub. (2025). *Bypass re-approval for modified MCP configuration in Cursor*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-24mc-g4xr-4395)
 
 ---
 
