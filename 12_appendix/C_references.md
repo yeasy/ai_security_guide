@@ -147,6 +147,18 @@
 
 54. Cline. (2026). *Post-mortem: Unauthorized Cline CLI npm publish on February 17, 2026*. [Cline Blog](https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm)
 
+55. Anthropic. (2024). *Many-shot jailbreaking*. [Anthropic Research](https://www.anthropic.com/research/many-shot-jailbreaking)
+
+56. Microsoft. (2024). *Mitigating Skeleton Key, a new type of generative AI jailbreak technique*. [Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/2024/06/26/mitigating-skeleton-key-a-new-type-of-generative-ai-jailbreak-technique/)
+
+57. Anthropic. (2026). *Next-generation Constitutional Classifiers: More efficient protection against universal jailbreaks*. [Anthropic Research](https://www.anthropic.com/research/next-generation-constitutional-classifiers)
+
+58. NVIDIA. *garak: the LLM vulnerability scanner*. [GitHub](https://github.com/NVIDIA/garak)
+
+59. Microsoft. *PyRIT Documentation*. [PyRIT](https://microsoft.github.io/PyRIT/)
+
+60. Center for AI Safety. *HarmBench*. [GitHub](https://github.com/centerforaisafety/HarmBench)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
