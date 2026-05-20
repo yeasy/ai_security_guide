@@ -84,7 +84,7 @@
 
 28. 中国信通院. (2024). *大模型安全报告*. [中国信通院](https://www.caict.ac.cn/)
 
-29. 国家人工智能标准化总体组. *AI 安全标准相关文件*. [国标委](http://www.standardization.gov.cn/)
+29. 国家人工智能标准化总体组. *AI 安全标准相关文件*. [全国标准信息公共服务平台](https://www.sac.gov.cn/)
 
 **中文学术资源**：
 读者应当查阅 CNKI（中国知网）、万方数据等中文学术数据库，获取最新的 LLM 安全相关研究论文和行业报告。
@@ -144,6 +144,8 @@
 52. Malwarebytes. (2026). *"Reprompt" attack lets attackers steal data from Microsoft Copilot*. [Malwarebytes Labs](https://www.malwarebytes.com/blog/news/2026/01/reprompt-attack-lets-attackers-steal-data-from-microsoft-copilot)
 
 53. PCWorld. (2026). *Her AI agent nuked 200 emails. This guardrail stops the next disaster*. [PCWorld](https://www.pcworld.com/article/3070207/an-ai-agent-nuked-200-emails-this-guardrail-stops-the-next-disaster.html)
+
+54. Cline. (2026). *Post-mortem: Unauthorized Cline CLI npm publish on February 17, 2026*. [Cline Blog](https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm)
 
 ---
 
