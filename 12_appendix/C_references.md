@@ -58,7 +58,7 @@
 
 20. Google. (2023). *Secure AI Framework (SAIF)*. [Google Cloud](https://cloud.google.com/use-cases/secure-ai-framework)
 
-21. Microsoft. (2024). *Responsible AI Standard, v2*. [Microsoft](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/bade/documents/products-and-services/en-us/ai/RAIS-Reference-Guide-v2.pdf)
+21. Microsoft. (2022). *Responsible AI Standard, v2*. [Microsoft](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/bade/documents/products-and-services/en-us/ai/RAIS-Reference-Guide-v2.pdf)
 
 ## 书籍
 
@@ -117,7 +117,7 @@
 
 39. OWASP. (2025). *Top 10 for LLM Applications 2025*. [OWASP](https://genai.owasp.org/llm-top-10/)
 
-40. European Commission. (2025). *Timeline - AI Act implementation timeline*. [European Commission](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+40. European Commission. (2026). *AI Act implementation timeline*. [European Commission](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 
 41. NIST. (2024). *Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST AI 600-1)*. [NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)
 
