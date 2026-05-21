@@ -161,6 +161,10 @@
 
 61. GitHub. (2025). *Bypass re-approval for modified MCP configuration in Cursor*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-24mc-g4xr-4395)
 
+62. McGraw, G., Figueroa, H., McMahon, K., & Bonett, R. (2026). *No Security Meter for AI*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/docs/no-security-meter-ai.pdf)
+
+63. McGraw, G., Figueroa, H., Bonett, R., & McMahon, K. (2024). *An Architectural Risk Analysis of Large Language Models: Applied Machine Learning Security*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/results/BIML-LLM24.pdf)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
