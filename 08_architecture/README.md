@@ -13,6 +13,10 @@
 
 通过本章的学习，读者将掌握设计安全 LLM 系统的核心原则和方法。
 
+> **本章定位**：第八章聚焦**宏观架构**与**系统性原则**——纵深防御如何分层、架构模式如何选型、权限如何切分。具体的输入/输出技术控制（验证、过滤、审核、水印、Constitutional Classifier）放在第九章。两章是"架构原则 → 战术控制"的递进关系，不存在内容重叠。
+>
+> **与攻击章的对应**：本章的架构模式（[§8.2](8.2_architecture_patterns.md)）需结合 [§4 提示注入](../04_prompt_injection/README.md)、[§5 越狱](../05_jailbreak/README.md)、[§7 智能体/RAG 攻击](../07_agent_rag_security/README.md) 的威胁模型进行选型。
+
 ```mermaid
 flowchart TB
     subgraph "安全架构框架"
