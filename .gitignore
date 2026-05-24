@@ -12,3 +12,7 @@ node_modules/
 # Office documents (internal work files)
 *.docx
 *.doc
+
+# Python bytecode
+__pycache__/
+*.pyc
