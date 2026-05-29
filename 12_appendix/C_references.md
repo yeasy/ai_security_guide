@@ -173,6 +173,12 @@
 
 66. Andriushchenko, M., et al. (2024). *AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents*. ICLR 2025. [arXiv:2410.09024](https://arxiv.org/abs/2410.09024)
 
+## RAG 与嵌入安全
+
+67. Zou, W., Geng, R., Wang, B., & Jia, J. (2024). *PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models*. USENIX Security 2025. [arXiv:2402.07867](https://arxiv.org/abs/2402.07867)
+
+68. Morris, J. X., Kuleshov, V., Shmatikov, V., & Rush, A. M. (2023). *Text Embeddings Reveal (Almost) As Much As Text*. EMNLP 2023. [arXiv:2310.06816](https://arxiv.org/abs/2310.06816)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
