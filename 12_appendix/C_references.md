@@ -195,6 +195,14 @@
 
 73. *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. (2025). [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
 
+## 前沿安全治理框架
+
+74. Anthropic. (2024). *Anthropic's Responsible Scaling Policy*. [Anthropic](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)
+
+75. OpenAI. (2025). *Updating our Preparedness Framework (Version 2)*. [OpenAI](https://openai.com/index/updating-our-preparedness-framework/)
+
+76. Google DeepMind. (2025). *Frontier Safety Framework (Version 2.0)*. [Google DeepMind](https://deepmind.google/blog/updating-the-frontier-safety-framework/)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
