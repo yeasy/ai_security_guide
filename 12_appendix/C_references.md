@@ -207,6 +207,12 @@
 
 77. OWASP. (2025). *Agentic AI – Threats and Mitigations*. [OWASP](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
 
+## RLHF 与偏好数据安全
+
+78. *BadGPT: Exploring Security Vulnerabilities of ChatGPT via Backdoor Attacks to InstructGPT*. (2023). [arXiv:2304.12298](https://arxiv.org/abs/2304.12298)
+
+79. Rando, J., & Tramèr, F. (2023). *Universal Jailbreak Backdoors from Poisoned Human Feedback*. [arXiv:2311.14455](https://arxiv.org/abs/2311.14455)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
