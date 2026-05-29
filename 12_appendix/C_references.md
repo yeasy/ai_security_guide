@@ -203,6 +203,10 @@
 
 76. Google DeepMind. (2025). *Frontier Safety Framework (Version 2.0)*. [Google DeepMind](https://deepmind.google/blog/updating-the-frontier-safety-framework/)
 
+## 智能体威胁分类
+
+77. OWASP. (2025). *Agentic AI – Threats and Mitigations*. [OWASP](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
