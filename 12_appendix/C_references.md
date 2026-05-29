@@ -165,6 +165,14 @@
 
 63. McGraw, G., Figueroa, H., Bonett, R., & McMahon, K. (2024). *An Architectural Risk Analysis of Large Language Models: Applied Machine Learning Security*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/results/BIML-LLM24.pdf)
 
+## 智能体安全评测基准
+
+64. Debenedetti, E., et al. (2024). *AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents*. [arXiv:2406.13352](https://arxiv.org/abs/2406.13352)
+
+65. Zhan, Q., Liang, Z., Ying, Z., & Kang, D. (2024). *InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents*. [arXiv:2403.02691](https://arxiv.org/abs/2403.02691)
+
+66. Andriushchenko, M., et al. (2024). *AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents*. ICLR 2025. [arXiv:2410.09024](https://arxiv.org/abs/2410.09024)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
