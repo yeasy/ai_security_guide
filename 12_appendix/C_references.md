@@ -187,6 +187,14 @@
 
 70. ReversingLabs. (2025). *Malicious ML models discovered on Hugging Face platform (nullifAI)*. [ReversingLabs](https://www.reversinglabs.com/blog/rl-identifies-malware-ml-model-hosted-on-hugging-face)
 
+## 智能体与前沿威胁
+
+71. Cohen, S., Bitton, R., & Nassi, B. (2024). *Here Comes The AI Worm: Unleashing Zero-click Worms that Target GenAI-Powered Applications*（Morris II / ComPromptMized）. [arXiv:2403.02817](https://arxiv.org/abs/2403.02817)
+
+72. van der Weij, T., Hofstätter, F., Jaffe, O., Brown, S. F., & Ward, F. R. (2024). *AI Sandbagging: Language Models can Strategically Underperform on Evaluations*. [arXiv:2406.07358](https://arxiv.org/abs/2406.07358)
+
+73. *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. (2025). [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
