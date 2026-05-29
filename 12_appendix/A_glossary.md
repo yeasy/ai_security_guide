@@ -79,11 +79,11 @@ LLM 调用外部工具和 API 的能力。
 **GCG（Greedy Coordinate Gradient）**
 一种通过梯度优化生成对抗性后缀的攻击方法。
 
-**Guardrails（护栏）**
-为 LLM 设置的安全边界和限制。
-
 **GPAI（General-Purpose AI，通用 AI）**
 具备广泛适用能力、可被下游系统复用的基础 AI 模型或系统类别，EU AI Act 对其设置了专门义务。
+
+**Guardrails（护栏）**
+为 LLM 设置的安全边界和限制。
 
 ## H
 
@@ -110,17 +110,17 @@ LLM 调用外部工具和 API 的能力。
 
 ## M
 
-**Membership Inference（成员推理）**
-判断特定数据点是否被用于训练模型的攻击技术。
-
-**Multimodal LLM（多模态大语言模型）**
-能够同时处理文本、图像、音频等多种输入模态的大语言模型，能力更广但也引入了跨模态注入等新的安全威胁面。
-
 **MCP（Model Context Protocol）**
 Anthropic 提出的标准化协议，用于连接 LLM 与外部数据源和工具。
 
+**Membership Inference（成员推理）**
+判断特定数据点是否被用于训练模型的攻击技术。
+
 **MoE（Mixture of Experts）**
 一种模型架构，使用多个专家模块处理不同类型的输入。
+
+**Multimodal LLM（多模态大语言模型）**
+能够同时处理文本、图像、音频等多种输入模态的大语言模型，能力更广但也引入了跨模态注入等新的安全威胁面。
 
 ## N
 
@@ -140,11 +140,11 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 **PII（Personally Identifiable Information，个人身份信息）**
 可用于识别个人身份的信息，如姓名、身份证号等。
 
-**Prompt Injection（提示注入）**
-通过恶意输入改变 LLM 行为的攻击技术。
-
 **Pre-training（预训练）**
 在大规模数据上训练模型的初始阶段。
+
+**Prompt Injection（提示注入）**
+通过恶意输入改变 LLM 行为的攻击技术。
 
 ## Q
 
@@ -156,11 +156,11 @@ OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实
 **RAG（Retrieval-Augmented Generation，检索增强生成）**
 结合外部知识检索来增强 LLM 生成能力的技术。
 
-**Red Team（红队）**
-模拟攻击者进行安全测试的专业团队。
-
 **Reasoning Model（推理模型）**
 具备链式推理能力的模型（如 OpenAI o 系列、DeepSeek-R1），通过显式推理步骤提升复杂问题求解能力，但推理过程也可能被攻击者利用。
+
+**Red Team（红队）**
+模拟攻击者进行安全测试的专业团队。
 
 **RLHF（Reinforcement Learning from Human Feedback）**
 基于人类反馈的强化学习，用于对齐 LLM 行为。
