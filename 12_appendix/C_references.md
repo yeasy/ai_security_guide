@@ -183,6 +183,10 @@
 
 69. Invariant Labs. (2025). *MCP Security Notification: Tool Poisoning Attacks*. [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 
+## 模型工件与反序列化安全
+
+70. ReversingLabs. (2025). *Malicious ML models discovered on Hugging Face platform (nullifAI)*. [ReversingLabs](https://www.reversinglabs.com/blog/rl-identifies-malware-ml-model-hosted-on-hugging-face)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*

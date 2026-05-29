@@ -23,6 +23,7 @@
   * [3.1 OWASP 大语言模型十大风险解析](03_frameworks/3.1_owasp_top10.md)
   * [3.2 NIST AI 风险管理框架](03_frameworks/3.2_nist_framework.md)
   * [3.3 行业安全标准与最佳实践](03_frameworks/3.3_industry_standards.md)
+  * [3.4 MITRE ATLAS：AI 系统对抗战术与技术矩阵](03_frameworks/3.4_mitre_atlas.md)
   * [本章小结](03_frameworks/summary.md)
 
 ## 第二部分：攻击篇
@@ -52,6 +53,7 @@
   * [6.4 成员推理与隐私攻击](06_data_model_attacks/6.4_privacy_attacks.md)
   * [6.5 离散对抗攻击与模型鲁棒性](06_data_model_attacks/6.5_adversarial_robustness.md)
   * [6.6 微调与 PEFT 的安全风险](06_data_model_attacks/6.6_finetuning_peft_security.md)
+  * [6.7 恶意模型工件与反序列化攻击](06_data_model_attacks/6.7_malicious_model_artifacts.md)
   * [本章小结](06_data_model_attacks/summary.md)
 
 * [第七章 智能体与 RAG 安全](07_agent_rag_security/README.md)
