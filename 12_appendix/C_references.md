@@ -179,6 +179,10 @@
 
 68. Morris, J. X., Kuleshov, V., Shmatikov, V., & Rush, A. M. (2023). *Text Embeddings Reveal (Almost) As Much As Text*. EMNLP 2023. [arXiv:2310.06816](https://arxiv.org/abs/2310.06816)
 
+## MCP 与工具生态安全
+
+69. Invariant Labs. (2025). *MCP Security Notification: Tool Poisoning Attacks*. [Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
