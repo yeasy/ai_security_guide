@@ -142,7 +142,7 @@
 | 开发生命周期阶段 | 防御的核心 OWASP 风险 | 推荐部署的开源工具/基线 | 典型落地场景与章节指引 |
 |------------------|-----------------------|-------------------------|------------------------|
 | **模型训练/微调** | LLM03 (供应链风险)<br>LLM04 (数据投毒) | Great Expectations<br>ModelScan | 数据清洗质量强制卡点验证、第三方模型权重后门漏洞扫描（第 6 章） |
-| **应用架构设计** | LLM06 (过度自主权)<br>LLM07 (系统提示泄露) | Microsoft Responsible AI<br>Google SAIF | 会话分层架构设计、RBAC 与人机协同（HITL）审批流预发设计（第 8 章） |
+| **应用架构设计** | LLM06 (过度自主权)<br>LLM07 (系统提示泄露) | Microsoft Responsible AI<br>Google SAIF | 会话分层架构设计、RBAC 与人工审核（HITL）审批流预发设计（第 8 章） |
 | **知识检索 (RAG)** | LLM08 (向量与嵌入弱点)<br>LLM09 (错误信息) | LlamaIndex<br>自建入库前校验与元数据过滤基线 | 外部文档切块入库前的洗消验签、基于多租户身份的检索结果过滤（第 7 章） |
 | **网关边界拦截** | LLM01 (提示注入)<br>LLM10 (无边界消耗) | Meta Llama Prompt Guard<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测越狱，并实施 Token 熔断限流（第 4 章） |
 | **输出校验与脱敏**| LLM02 (敏感数据泄露)<br>LLM05 (输出处理不当) | Microsoft Presidio<br>Guardrails AI | 双向 PII 实体检测与掩码还原，强制输出转为受控 Schema 并严格阻断执行链（第 9 章） |
