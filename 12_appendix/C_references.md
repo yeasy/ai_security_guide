@@ -213,6 +213,20 @@
 
 79. Rando, J., & Tramèr, F. (2023). *Universal Jailbreak Backdoors from Poisoned Human Feedback*. [arXiv:2311.14455](https://arxiv.org/abs/2311.14455)
 
+## 2026 官方更新补充
+
+80. Anthropic. (2026). *What we learned mapping a year's worth of AI-enabled cyber threats*. [Anthropic News](https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack)
+
+81. OpenAI. (2026). *A shared playbook for trustworthy third party evaluations*. [OpenAI](https://openai.com/index/trustworthy-third-party-evaluations-foundations/)
+
+82. Anthropic. (2026). *Expanding Project Glasswing*. [Anthropic News](https://www.anthropic.com/news/expanding-project-glasswing)
+
+83. OpenAI. (2026). *Frontier Governance Framework*. [OpenAI](https://openai.com/index/openai-frontier-governance-framework/)
+
+84. OpenAI. (2026). *Introducing new capabilities to GPT-Rosalind*. [OpenAI](https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/)
+
+85. OpenAI. (2026). *Biodefense in the Intelligence Age*. [OpenAI](https://openai.com/index/biodefense-in-the-intelligence-age/)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
