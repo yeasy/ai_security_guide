@@ -31,7 +31,7 @@
 
 | 工具名称 | 描述 | 状态 | 链接 |
 |----------|------|------|------|
-| Meta Llama Prompt Guard | 专门检测提示注入和越狱的模型 | 活跃维护 | [meta-llama/Prompt-Guard-86M](https://huggingface.co/meta-llama/Prompt-Guard-86M) |
+| Meta Llama Prompt Guard 2 | 检测提示注入与越狱的多语言分类器（86M / 22M，mDeBERTa，2025-04 随 Llama 4 发布） | 活跃维护 | [meta-llama/Llama-Prompt-Guard-2-86M](https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M) |
 | Azure AI Content Safety | 微软云端内容安全服务（含 Prompt Shields） | 活跃维护 | [Microsoft](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety) |
 | AWS Bedrock Guardrails | AWS 云端护栏服务，含内容过滤、PII 与 prompt attack detection | 活跃维护 | [AWS](https://aws.amazon.com/bedrock/guardrails/) |
 | Google Cloud Model Armor | Google Cloud 运行时防护服务，可筛查提示、响应与 agent 交互 | 活跃维护 | [Google Cloud](https://cloud.google.com/security/products/model-armor) |
@@ -144,7 +144,7 @@
 | **模型训练/微调** | LLM03 (供应链风险)<br>LLM04 (数据投毒) | Great Expectations<br>ModelScan | 数据清洗质量强制卡点验证、第三方模型权重后门漏洞扫描（第 6 章） |
 | **应用架构设计** | LLM06 (过度自主权)<br>LLM07 (系统提示泄露) | Microsoft Responsible AI<br>Google SAIF | 会话分层架构设计、RBAC 与人工审核（HITL）审批流预发设计（第 8 章） |
 | **知识检索 (RAG)** | LLM08 (向量与嵌入弱点)<br>LLM09 (错误信息) | LlamaIndex<br>自建入库前校验与元数据过滤基线 | 外部文档切块入库前的洗消验签、基于多租户身份的检索结果过滤（第 7 章） |
-| **网关边界拦截** | LLM01 (提示注入)<br>LLM10 (无边界消耗) | Meta Llama Prompt Guard<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测越狱，并实施 Token 熔断限流（第 4 章） |
+| **网关边界拦截** | LLM01 (提示注入)<br>LLM10 (无边界消耗) | Meta Llama Prompt Guard 2<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测越狱，并实施 Token 熔断限流（第 4 章） |
 | **输出校验与脱敏**| LLM02 (敏感数据泄露)<br>LLM05 (输出处理不当) | Microsoft Presidio<br>Guardrails AI | 双向 PII 实体检测与掩码还原，强制输出转为受控 Schema 并严格阻断执行链（第 9 章） |
 | **CI/CD 安全门禁** | LLM01 (注入绕过)<br>通用安全性回归 | promptfoo<br>Garak<br>HarmBench | 迭代上线前构建自动化对抗评估，将最新漏洞形成集成测试硬拦截门禁（第 10 章） |
 
