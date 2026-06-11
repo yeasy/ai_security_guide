@@ -209,7 +209,7 @@
 
 ## RLHF 与偏好数据安全
 
-78. *BadGPT: Exploring Security Vulnerabilities of ChatGPT via Backdoor Attacks to InstructGPT*. (2023). [arXiv:2304.12298](https://arxiv.org/abs/2304.12298)
+78. Shi, J., Liu, Y., Zhou, P., & Sun, L. (2023). *BadGPT: Exploring Security Vulnerabilities of ChatGPT via Backdoor Attacks to InstructGPT*. [arXiv:2304.12298](https://arxiv.org/abs/2304.12298)
 
 79. Rando, J., & Tramèr, F. (2023). *Universal Jailbreak Backdoors from Poisoned Human Feedback*. [arXiv:2311.14455](https://arxiv.org/abs/2311.14455)
 
@@ -226,6 +226,14 @@
 84. OpenAI. (2026). *Introducing new capabilities to GPT-Rosalind*. [OpenAI](https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/)
 
 85. OpenAI. (2026). *Biodefense in the Intelligence Age*. [OpenAI](https://openai.com/index/biodefense-in-the-intelligence-age/)
+
+## 数据投毒补充
+
+86. Souly, A., Rando, J., et al. (2025). *Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples*. [arXiv:2510.07192](https://arxiv.org/abs/2510.07192)
+
+## 智能体安全设计原则
+
+87. Meta AI. (2025). *Agents Rule of Two: A Practical Approach to AI Agent Security*. [Meta AI Blog](https://ai.meta.com/blog/practical-ai-agent-security/)
 
 ---
 
