@@ -90,6 +90,9 @@ LLM 调用外部工具和 API 的能力。
 **Hallucination（幻觉）**
 模型生成看似合理但实际不正确或虚构的内容。
 
+**HITL（Human-in-the-Loop，人工审核）**
+在 AI 决策或输出流程中引入人工审核/确认环节，对高风险或不可逆动作设置人工把关。本书统一译为「人工审核（HITL）」。
+
 ## I
 
 **Indirect Prompt Injection（间接提示注入）**
