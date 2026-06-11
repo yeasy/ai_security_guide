@@ -135,7 +135,7 @@ graph LR
 | 书名 | 与本书的关系 |
 |------|------------|
 | [《零基础学 AI》](https://yeasy.gitbook.io/ai_beginner_guide) | AI 零基础入门，适合缺乏 AI 背景的读者 |
-| [《大模型提示词工程指南》](https://yeasy.gitbook.io/prompt_engineering_guide) | 理解提示词注入攻击的前置知识 |
+| [《大模型提示词工程指南》](https://yeasy.gitbook.io/prompt_engineering_guide) | 理解提示注入攻击的前置知识 |
 | [《大模型上下文工程权威指南》](https://yeasy.gitbook.io/context_engineering_guide) | 深入理解 RAG 安全的上下文工程基础 |
 | [《智能体 AI 权威指南》](https://yeasy.gitbook.io/agentic_ai_guide) | 理解智能体系统的架构，为智能体安全提供背景 |
 | [《Claude 技术指南》](https://yeasy.gitbook.io/claude_guide) | 了解 Claude 的安全设计理念（宪法式 AI）与工具安全 |
