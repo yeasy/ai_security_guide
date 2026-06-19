@@ -21,6 +21,8 @@ SKIP_DIRS = {
 }
 LINK_RE = re.compile(r"(!?)\[[^\]]*\]\(([^)\s]+(?:\s+\"[^\"]*\")?)\)")
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})")
+APPENDIX_C_ENTRY_RE = re.compile(r"^(\d+)\.\s+")
+APPENDIX_C_CITE_RE = re.compile(r"附录\s*C-(\d+)")
 
 
 def iter_markdown_files() -> list[Path]:
@@ -118,6 +120,46 @@ def check_summary_links() -> list[str]:
     return check_links(summary, summary.read_text(encoding="utf-8", errors="ignore"))
 
 
+def check_appendix_c_references(files: list[Path]) -> list[str]:
+    issues: list[str] = []
+    appendix = ROOT / "12_appendix" / "C_references.md"
+    if not appendix.exists():
+        return issues
+
+    entries: dict[int, int] = {}
+    text = appendix.read_text(encoding="utf-8", errors="ignore")
+    for line_no, line in enumerate(text.splitlines(), 1):
+        match = APPENDIX_C_ENTRY_RE.match(line)
+        if not match:
+            continue
+        number = int(match.group(1))
+        if number in entries:
+            issues.append(
+                f"{appendix.relative_to(ROOT)}:{line_no}: duplicate appendix C reference number: C-{number} "
+                f"(first seen line {entries[number]})"
+            )
+        entries[number] = line_no
+
+    if entries:
+        missing = sorted(set(range(1, max(entries) + 1)) - set(entries))
+        if missing:
+            formatted = ", ".join(f"C-{number}" for number in missing)
+            issues.append(
+                f"{appendix.relative_to(ROOT)}: missing appendix C reference number(s): {formatted}"
+            )
+
+    for path in files:
+        body = strip_fenced_blocks(path.read_text(encoding="utf-8", errors="ignore"))
+        for match in APPENDIX_C_CITE_RE.finditer(body):
+            number = int(match.group(1))
+            if number not in entries:
+                line_no = body[: match.start()].count("\n") + 1
+                issues.append(
+                    f"{path.relative_to(ROOT)}:{line_no}: missing appendix C reference: C-{number}"
+                )
+    return issues
+
+
 def main() -> int:
     issues: list[str] = []
     files = iter_markdown_files()
@@ -126,6 +168,7 @@ def main() -> int:
         issues.extend(check_fences(path, text))
         issues.extend(check_links(path, text))
     issues.extend(check_summary_links())
+    issues.extend(check_appendix_c_references(files))
 
     if issues:
         print("\n".join(sorted(set(issues))))

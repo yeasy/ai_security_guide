@@ -221,19 +221,27 @@
 
 82. Anthropic. (2026). *Expanding Project Glasswing*. [Anthropic News](https://www.anthropic.com/news/expanding-project-glasswing)
 
-83. OpenAI. (2026). *Frontier Governance Framework*. [OpenAI](https://openai.com/index/openai-frontier-governance-framework/)
+83. Anthropic. (2026). *Introducing Claude Fable 5 and Claude Mythos 5*. [Anthropic News](https://www.anthropic.com/news/claude-fable-5-mythos-5)
 
-84. OpenAI. (2026). *Introducing new capabilities to GPT-Rosalind*. [OpenAI](https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/)
+84. Anthropic. (2026). *Fable and Mythos access statement*. [Anthropic News](https://www.anthropic.com/news/fable-mythos-access)
 
-85. OpenAI. (2026). *Biodefense in the Intelligence Age*. [OpenAI](https://openai.com/index/biodefense-in-the-intelligence-age/)
+85. Anthropic. (2026). *Claude Fable 5 and Claude Mythos 5 API documentation*. [Claude Docs](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5)
+
+86. Anthropic. (2026). *Model deprecations*. [Claude Docs](https://platform.claude.com/docs/en/about-claude/model-deprecations)
+
+87. OpenAI. (2026). *Frontier Governance Framework*. [OpenAI](https://openai.com/index/openai-frontier-governance-framework/)
+
+88. OpenAI. (2026). *Introducing new capabilities to GPT-Rosalind*. [OpenAI](https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/)
+
+89. OpenAI. (2026). *Biodefense in the Intelligence Age*. [OpenAI](https://openai.com/index/biodefense-in-the-intelligence-age/)
 
 ## 数据投毒补充
 
-86. Souly, A., Rando, J., et al. (2025). *Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples*. [arXiv:2510.07192](https://arxiv.org/abs/2510.07192)
+90. Souly, A., Rando, J., et al. (2025). *Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples*. [arXiv:2510.07192](https://arxiv.org/abs/2510.07192)
 
 ## 智能体安全设计原则
 
-87. Meta AI. (2025). *Agents Rule of Two: A Practical Approach to AI Agent Security*. [Meta AI Blog](https://ai.meta.com/blog/practical-ai-agent-security/)
+91. Meta AI. (2025). *Agents Rule of Two: A Practical Approach to AI Agent Security*. [Meta AI Blog](https://ai.meta.com/blog/practical-ai-agent-security/)
 
 ---
 
