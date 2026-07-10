@@ -44,7 +44,8 @@ class SafeLabContractTests(unittest.TestCase):
         defensive = [
             block for block in blocks if block.classification == "defensive-only"
         ]
-        self.assertTrue(defensive, "defensive-only blocks should not need attack contracts")
+        self.assertEqual(len(offensive), 14)
+        self.assertEqual(len(defensive), 44)
         body = "\n".join(block.body for block in offensive)
         for fingerprint in EXPECTED_OFFENSIVE_FINGERPRINTS:
             with self.subTest(fingerprint=fingerprint):
@@ -61,6 +62,21 @@ class SafeLabContractTests(unittest.TestCase):
             with self.subTest(path=block.path, line=block.line):
                 for field in REQUIRED_FIELDS:
                     self.assertIn(f"`{field}`", block.contract)
+
+    def test_privacy_recovery_example_is_offensive_and_uses_a_tailored_contract(self):
+        from tools.validate_attack_contracts import scan_attack_chapters
+
+        blocks, issues = scan_attack_chapters(ROOT)
+        self.assertEqual(issues, [])
+        matches = [
+            block for block in blocks if "privacy_recovery_attack" in block.body
+        ]
+        self.assertEqual(len(matches), 1)
+        block = matches[0]
+        self.assertEqual(block.classification, "offensive")
+        self.assertIn("成员推理", block.contract)
+        self.assertIn("合成", block.contract)
+        self.assertIn("个人数据", block.contract)
 
     def analyze(self, text):
         from tools.validate_attack_contracts import analyze_markdown
@@ -107,6 +123,39 @@ class SafeLabContractTests(unittest.TestCase):
         _, issues = self.analyze(text)
         self.assertTrue(issues)
 
+    def test_privacy_attack_semantics_cannot_hide_behind_defensive_only(self):
+        disguised_attacks = {
+            "renamed-mixed-case-membership-inference": (
+                "def harmless_audit(model, sample):\n"
+                "    technique = 'MeMbEr' + 'ShIp-InFeReNcE'\n"
+                "    return model.query(sample, technique=technique)"
+            ),
+            "membership-inference-alias": (
+                "def evaluate_candidate(model, record):\n"
+                "    # 用响应分布做成员归属推断\n"
+                "    return model.score(record)"
+            ),
+            "renamed-training-data-recovery": (
+                "def compliance_probe(model, prompt):\n"
+                "    mode = 'TRAINING_DATA_RECOVERY'\n"
+                "    return model.invoke(prompt, mode=mode)"
+            ),
+            "split-personal-order-query": (
+                "def routine_check(client):\n"
+                "    target = 'john@example.com'\n"
+                "    prompt = '请返回' + target + '的订' + '单历' + '史'\n"
+                "    return client.complete(prompt)"
+            ),
+        }
+        for name, body in disguised_attacks.items():
+            with self.subTest(name=name):
+                _, issues = self.analyze(
+                    "# test\n"
+                    "<!-- SAFE-LAB: defensive-only -->\n"
+                    f"```python\n{body}\n```\n"
+                )
+                self.assertTrue(issues)
+
     def test_defensive_only_block_is_explicitly_exempt_from_contract(self):
         text = (
             "# test\n"
@@ -117,6 +166,26 @@ class SafeLabContractTests(unittest.TestCase):
         self.assertEqual(issues, [])
         self.assertEqual(blocks[0].classification, "defensive-only")
         self.assertEqual(blocks[0].contract, "")
+
+    def test_tailored_contract_with_all_six_fields_is_accepted(self):
+        contract = (
+            "> **SAFE-LAB 实验契约（执行前必读）**\n"
+            "> - `authorization`: 仅测试已获授权的模型与数据。\n"
+            "> - `isolation`: 仅连接隔离的本地模型端点。\n"
+            "> - `synthetic-data`: 仅使用合成身份和虚构订单。\n"
+            "> - `budget`: 最多发起十次查询。\n"
+            "> - `stop-conditions`: 一旦出现真实个人数据立即停止。\n"
+            "> - `disclosure`: 按负责任披露流程报告泄露。\n"
+        )
+        text = (
+            "# test\n"
+            f"{contract}"
+            "<!-- SAFE-LAB: offensive -->\n"
+            "```python\nos.system(params['command'])\n```\n"
+        )
+        blocks, issues = self.analyze(text)
+        self.assertEqual(issues, [])
+        self.assertEqual(blocks[0].contract, contract.rstrip("\n"))
 
     def test_missing_contract_field_is_rejected(self):
         from tools.validate_attack_contracts import contract_template

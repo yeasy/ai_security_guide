@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -59,6 +60,7 @@ REQUIRED_FIELDS = (
     "stop-conditions",
     "disclosure",
 )
+CONTRACT_HEADER = "> **SAFE-LAB 实验契约（执行前必读）**"
 OFFENSIVE_PATTERNS = tuple(
     re.compile(pattern, re.IGNORECASE | re.DOTALL)
     for pattern in (
@@ -73,6 +75,32 @@ OFFENSIVE_PATTERNS = tuple(
         r"https?://attacker\.com(?:/|\b)",
         r"0xAttacker\b",
     )
+)
+PRIVACY_ATTACK_MARKERS = (
+    "membershipinference",
+    "privacyrecovery",
+    "privacyextraction",
+    "trainingdatarecovery",
+    "trainingdataextraction",
+    "trainingdatareconstruction",
+    "成员推理",
+    "成员归属推断",
+    "成员身份推断",
+    "训练数据恢复",
+    "训练数据提取",
+    "微调数据恢复",
+    "隐私恢复攻击",
+)
+PERSONAL_RECORD_MARKERS = (
+    "orderhistory",
+    "purchasehistory",
+    "transactionhistory",
+    "订单历史",
+    "购买历史",
+    "交易历史",
+)
+EMAIL_PATTERN = re.compile(
+    r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.IGNORECASE
 )
 FENCE_OPEN = re.compile(r"^\s*(`{3,}|~{3,})\s*([^\s`~]*)?.*$")
 
@@ -89,7 +117,7 @@ class SafeLabBlock:
 
 def contract_template() -> str:
     return (
-        "> **SAFE-LAB 实验契约（执行前必读）**\n"
+        f"{CONTRACT_HEADER}\n"
         "> - `authorization`: 仅在你拥有或已获书面授权的目标上测试。\n"
         "> - `isolation`: 仅在无生产凭据、无外网副作用的隔离沙箱中运行。\n"
         "> - `synthetic-data`: 只使用合成输入、虚构身份与无价值测试数据。\n"
@@ -99,8 +127,43 @@ def contract_template() -> str:
     )
 
 
+def compact_semantic_text(body: str) -> str:
+    """Normalize superficial case, separator, and string-splitting disguises."""
+
+    folded = unicodedata.normalize("NFKC", body).casefold()
+    return re.sub(r"[\W_]+", "", folded, flags=re.UNICODE)
+
+
 def looks_offensive(body: str) -> bool:
-    return any(pattern.search(body) for pattern in OFFENSIVE_PATTERNS)
+    if any(pattern.search(body) for pattern in OFFENSIVE_PATTERNS):
+        return True
+
+    compact = compact_semantic_text(body)
+    if any(marker in compact for marker in PRIVACY_ATTACK_MARKERS):
+        return True
+
+    contains_personal_record_query = any(
+        marker in compact for marker in PERSONAL_RECORD_MARKERS
+    )
+    contains_identity = bool(EMAIL_PATTERN.search(body)) or any(
+        marker in compact for marker in ("email", "userid", "customerid", "用户")
+    )
+    return contains_personal_record_query and contains_identity
+
+
+def attached_contract(lines: list[str], marker_index: int) -> str:
+    """Return a complete adjacent six-field contract, allowing tailored values."""
+
+    start = marker_index - len(REQUIRED_FIELDS) - 1
+    if start < 0:
+        return ""
+    candidate = lines[start:marker_index]
+    if candidate[0] != CONTRACT_HEADER:
+        return ""
+    for line, field in zip(candidate[1:], REQUIRED_FIELDS):
+        if not re.fullmatch(rf"> - `{re.escape(field)}`:\s*\S.*", line):
+            return ""
+    return "\n".join(candidate)
 
 
 def analyze_markdown(path: Path, text: str) -> tuple[list[SafeLabBlock], list[str]]:
@@ -108,8 +171,6 @@ def analyze_markdown(path: Path, text: str) -> tuple[list[SafeLabBlock], list[st
     blocks: list[SafeLabBlock] = []
     issues: list[str] = []
     index = 0
-    contract_lines = contract_template().rstrip("\n").splitlines()
-
     while index < len(lines):
         match = FENCE_OPEN.match(lines[index])
         if not match:
@@ -149,10 +210,8 @@ def analyze_markdown(path: Path, text: str) -> tuple[list[SafeLabBlock], list[st
                 f"{location}: offensive content cannot use defensive-only exemption"
             )
         elif classification == "offensive":
-            start = index - 1 - len(contract_lines)
-            if start >= 0 and lines[start : index - 1] == contract_lines:
-                contract = "\n".join(contract_lines)
-            else:
+            contract = attached_contract(lines, index - 1)
+            if not contract:
                 issues.append(
                     f"{location}: offensive block requires the complete reader-visible SAFE-LAB contract"
                 )
