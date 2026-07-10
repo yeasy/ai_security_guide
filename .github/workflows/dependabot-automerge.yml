@@ -1,49 +1,60 @@
 name: Dependabot auto-merge
-on: pull_request
 
-permissions:
-  contents: write
-  pull-requests: write
-  checks: read
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions: {}
 
 jobs:
   dependabot:
-    runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+    runs-on: ubuntu-latest
     steps:
-      - name: Dependabot metadata
+      - name: Read Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Confirm required checks are configured
+      - name: Confirm required checks protect the base branch
         if: >
           steps.metadata.outputs.package-ecosystem == 'github_actions' &&
           contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
         run: |
-          REQUIRED=$(gh api "repos/${GITHUB_REPOSITORY}/branches/${{ github.event.pull_request.base.ref }}/protection/required_status_checks" --jq '((.contexts // []) | length) + ((.checks // []) | length)' 2>/dev/null || echo 0)
-          if [ "$REQUIRED" -eq 0 ]; then
-            echo "No required status checks configured on the base branch; refusing Dependabot auto-merge."
+          required=$(gh api \
+            "repos/${GITHUB_REPOSITORY}/branches/${BASE_BRANCH}/protection/required_status_checks" \
+            --jq '((.contexts // []) | length) + ((.checks // []) | length)' \
+            2>/dev/null || echo 0)
+          if [ "$required" -eq 0 ]; then
+            echo "No required status checks protect ${BASE_BRANCH}; refusing auto-merge."
             exit 1
           fi
-        env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Approve low-risk Dependabot PR
+      - name: Approve low-risk GitHub Actions update
         if: >
           steps.metadata.outputs.package-ecosystem == 'github_actions' &&
           contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
         run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Enable auto-merge for low-risk Dependabot PRs
+      - name: Enable auto-merge after required checks
         if: >
           steps.metadata.outputs.package-ecosystem == 'github_actions' &&
           contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
-        run: gh pr merge --auto --merge "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --merge "$PR_URL"

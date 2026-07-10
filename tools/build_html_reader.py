@@ -8,7 +8,7 @@ scroll by default; JS (Safari, Documents app, etc.) upgrades to one-page-at-a-ti
 - TOC drawer: CSS checkbox hack (opens without JS); prev/next are static anchors
 - Images/CSS embedded (--embed-resources) -> one offline file
 """
-import argparse, os, re, subprocess, sys, posixpath
+import argparse, os, re, subprocess, sys, posixpath, tempfile
 
 def esc(s):  return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 def escattr(s): return s.replace("&","&amp;").replace('"',"&quot;").replace("<","&lt;")
@@ -17,7 +17,7 @@ def parse_summary(book_dir):
     items, seen = [], set()
     with open(os.path.join(book_dir, "SUMMARY.md"), encoding="utf-8") as f:
         for line in f:
-            m = re.match(r'^##\s+(.+?)\s*$', line)
+            m = re.match(r'^#{2,3}\s+(.+?)\s*$', line)
             if m: items.append(("part", m.group(1))); continue
             m = re.match(r'^(\s*)[-*]\s+\[(.*?)\]\(([^)]+?)\)', line)
             if m:
@@ -191,8 +191,9 @@ def main():
     combined = "\n".join(chunks)
     print(f"  pages: {len(page_meta)}, mermaid blocks: {len(mermaid_store)}")
 
-    # load pre-rendered SVGs, namespace ids to avoid collisions; fall back to source on miss
-    svgs, missing = [], 0
+    # Load every pre-rendered SVG. Publication builds must never silently
+    # substitute Mermaid source for a diagram that failed to render.
+    svgs, missing = [], []
     for i in range(len(mermaid_store)):
         p = os.path.join(a.svg_dir, f"d-{i+1}.svg")
         if os.path.isfile(p) and os.path.getsize(p) > 0:
@@ -201,9 +202,15 @@ def main():
             s = s.replace("my-svg", f"mmd{i}")
             svgs.append(s)
         else:
-            missing += 1
-            svgs.append('<pre class="diagram-fallback">' + esc(mermaid_store[i]) + '</pre>')
-    if missing: print(f"  WARNING: {missing}/{len(mermaid_store)} diagrams failed to render -> showing source as fallback")
+            missing.append(p)
+    if missing:
+        print(
+            f"HTML BUILD FAILED: {len(missing)}/{len(mermaid_store)} Mermaid SVGs are missing",
+            file=sys.stderr,
+        )
+        for path in missing[:10]:
+            print(f"  missing: {path}", file=sys.stderr)
+        sys.exit(1)
 
     # sidebar TOC
     sb = ['<div class="toc-head">目录</div><ul>']; fi = 0
@@ -214,20 +221,26 @@ def main():
             sb.append(f'<li class="toc-link lvl{lvl}"><a data-target="{pidi}" href="#{pidi}">{esc(title)}</a></li>')
     sb.append('</ul>'); sidebar_html = "".join(sb)
 
-    tmp_md = os.path.join(book_dir, "_combined_tmp.md")
-    tpl = "/tmp/_book_template.html"; out_tmp = "/tmp/_book_out.html"
-    with open(tmp_md, "w", encoding="utf-8") as f: f.write(combined)
-    with open(tpl, "w", encoding="utf-8") as f: f.write(TEMPLATE)
-    cmd = ["pandoc", "_combined_tmp.md", "-f", "markdown", "-t", "html5",
-           "--standalone", "--embed-resources", "--mathml",
-           "--template", tpl, "--metadata", f"title={a.title}", "-o", out_tmp]
-    print("  running pandoc ...")
-    r = subprocess.run(cmd, cwd=book_dir, capture_output=True, text=True)
-    if os.path.exists(tmp_md): os.remove(tmp_md)
-    if r.returncode != 0:
-        print("PANDOC FAILED:\n", r.stderr[:4000]); sys.exit(1)
-
-    with open(out_tmp, encoding="utf-8") as f: html = f.read()
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".md", dir=book_dir, encoding="utf-8", delete=False
+    ) as source:
+        source.write(combined)
+        tmp_md = source.name
+    try:
+        with tempfile.TemporaryDirectory(prefix="book-html-") as temp_dir:
+            tpl = os.path.join(temp_dir, "template.html")
+            out_tmp = os.path.join(temp_dir, "reader.html")
+            with open(tpl, "w", encoding="utf-8") as f: f.write(TEMPLATE)
+            cmd = ["pandoc", tmp_md, "-f", "markdown", "-t", "html5",
+                   "--standalone", "--embed-resources", "--mathml",
+                   "--template", tpl, "--metadata", f"title={a.title}", "-o", out_tmp]
+            print("  running pandoc ...")
+            r = subprocess.run(cmd, cwd=book_dir, capture_output=True, text=True)
+            if r.returncode != 0:
+                print("PANDOC FAILED:\n", r.stderr[:4000]); sys.exit(1)
+            with open(out_tmp, encoding="utf-8") as f: html = f.read()
+    finally:
+        if os.path.exists(tmp_md): os.remove(tmp_md)
     # swap mermaid placeholders -> pre-rendered inline SVG (2nd pass catches any not in <p>)
     def mrepl(m): return f'<figure class="diagram">{svgs[int(m.group(1))]}</figure>'
     html = re.sub(r'<p>\s*MERMAIDZZ(\d+)ZZ\s*</p>', mrepl, html)
@@ -255,9 +268,19 @@ def main():
     html = html.replace("<!--SIDEBAR-->", sidebar_html)
 
     leftover = len(re.findall(r'MERMAIDZZ\d+ZZ|PGBKZZ', html))
+    n_svg = html.count('class="diagram"')
+    if leftover or n_svg != len(mermaid_store) or len(pages_html) != len(page_meta):
+        print(
+            "HTML BUILD FAILED: "
+            f"pages {len(pages_html)}/{len(page_meta)}, "
+            f"Mermaid {n_svg}/{len(mermaid_store)}, placeholders {leftover}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as f: f.write(html)
     size = os.path.getsize(a.out) / 1048576
-    n_svg = html.count('class="diagram"'); n_math = html.count('<math'); n_img = html.count('data:image')
+    n_math = html.count('<math'); n_img = html.count('data:image')
     print(f"  pages: {len(pages_html)} | inline svg: {n_svg} | <math>: {n_math} | images: {n_img} | leftover: {leftover}")
     print(f"  OUTPUT: {a.out}  ({size:.2f} MB)")
 

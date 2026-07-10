@@ -8,6 +8,9 @@ import sys
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+from tools.validate_attack_contracts import validate_attack_contracts
+from tools.validate_framework_crosswalk import validate_crosswalk
+
 
 ROOT = Path(__file__).resolve().parent
 SKIP_DIRS = {
@@ -169,6 +172,8 @@ def main() -> int:
         issues.extend(check_links(path, text))
     issues.extend(check_summary_links())
     issues.extend(check_appendix_c_references(files))
+    issues.extend(validate_crosswalk(ROOT))
+    issues.extend(validate_attack_contracts(ROOT))
 
     if issues:
         print("\n".join(sorted(set(issues))))
