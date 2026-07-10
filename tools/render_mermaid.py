@@ -3,16 +3,18 @@
 
 Extracts ```mermaid blocks in SUMMARY.md order and renders them with mermaid-cli,
 pointing Puppeteer at a system Chrome (CHROME_BIN env or auto-detected). Rendering
-is chunked and retried because a large mmdc pass can crash headless Chrome. Writes
-d-1.svg .. d-N.svg into --svg-out. Rendering is strict by default: missing
-prerequisites or SVGs fail instead of allowing source fallbacks in the HTML reader.
-Use --allow-fallback only when source-code fallbacks are explicitly acceptable.
+uses bounded batches and progressively smaller retries because a large mmdc pass can
+crash or hang headless Chrome. Writes d-1.svg .. d-N.svg into --svg-out. Rendering
+is strict by default: missing prerequisites or SVGs fail instead of allowing source
+fallbacks in the HTML reader. Use --allow-fallback only when source-code fallbacks
+are explicitly acceptable.
 """
 import argparse
 import glob
 import json
 import os
 import re
+import signal
 import shutil
 import subprocess
 import sys
@@ -89,6 +91,12 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--book-dir", default=".")
 ap.add_argument("--svg-out", required=True)
 ap.add_argument("--chunk", type=int, default=25)
+ap.add_argument(
+    "--render-timeout",
+    type=float,
+    default=90.0,
+    help="maximum seconds allowed for each mmdc batch (default: 90)",
+)
 mode = ap.add_mutually_exclusive_group()
 mode.add_argument(
     "--strict",
@@ -104,6 +112,10 @@ mode.add_argument(
     help="allow missing SVGs to fall back to Mermaid source",
 )
 a = ap.parse_args()
+if a.chunk <= 0:
+    ap.error("--chunk must be positive")
+if a.render_timeout <= 0:
+    ap.error("--render-timeout must be positive")
 try:
     book_path, svg_path = validate_output_directory(a.book_dir, a.svg_out)
 except ValueError as error:
@@ -163,37 +175,92 @@ if not MMDC:
     print(f"WARNING: {message} -> all diagrams will fall back to source")
     sys.exit(0)
 
-def render(indices):
-    cm = os.path.join(SVG, "_chunk.md")
-    open(cm, "w", encoding="utf-8").write("\n".join("```mermaid\n"+srcs[i]+"\n```\n" for i in indices))
+
+def terminate_process_group(process):
+    """Stop mmdc and browser descendants without leaving orphan processes."""
+    if os.name == "posix":
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+    elif process.poll() is None:
+        process.terminate()
+    try:
+        return process.communicate(timeout=3)
+    except subprocess.TimeoutExpired:
+        if os.name == "posix":
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        else:
+            process.kill()
+        return process.communicate(timeout=3)
+
+
+def remove_chunk_outputs():
     for stale in glob.glob(os.path.join(SVG, "_c*.svg")):
         os.remove(stale)
-    result = subprocess.run(
-        [
-            MMDC,
-            "-i",
-            cm,
-            "-o",
-            os.path.join(SVG, "_c.svg"),
-            "-p",
-            pptr,
-            "-c",
-            rc,
-            "-b",
-            "transparent",
-        ],
-        capture_output=True,
-        text=True,
+
+
+def render(indices):
+    cm = os.path.join(SVG, "_chunk.md")
+    Path(cm).write_text(
+        "\n".join(f"```mermaid\n{srcs[index]}\n```\n" for index in indices),
+        encoding="utf-8",
     )
-    if result.returncode != 0:
-        print(result.stderr.strip() or result.stdout.strip(), file=sys.stderr)
-    for j, i in enumerate(indices, 1):
-        sp = os.path.join(SVG, f"_c-{j}.svg")
-        if len(indices) == 1 and not os.path.isfile(sp):
-            sp = os.path.join(SVG, "_c.svg")
-        if os.path.isfile(sp) and os.path.getsize(sp) > 0:
-            os.replace(sp, os.path.join(SVG, f"d-{i+1}.svg"))
-    for st in glob.glob(os.path.join(SVG, "_c*.svg")): os.remove(st)
+    remove_chunk_outputs()
+    command = [
+        MMDC,
+        "-i",
+        cm,
+        "-o",
+        os.path.join(SVG, "_c.svg"),
+        "-p",
+        pptr,
+        "-c",
+        rc,
+        "-b",
+        "transparent",
+    ]
+    process = subprocess.Popen(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        start_new_session=True,
+    )
+    try:
+        try:
+            stdout, stderr = process.communicate(timeout=a.render_timeout)
+        except subprocess.TimeoutExpired:
+            stdout, stderr = terminate_process_group(process)
+            print(
+                f"mmdc timed out after {a.render_timeout:g}s for diagrams "
+                f"{[index + 1 for index in indices]}",
+                file=sys.stderr,
+            )
+            detail = (stderr or stdout).strip()
+            if detail:
+                print(detail, file=sys.stderr)
+            return False
+        except BaseException:
+            terminate_process_group(process)
+            raise
+        if process.returncode != 0:
+            print((stderr or stdout).strip(), file=sys.stderr)
+            return False
+        for position, index in enumerate(indices, 1):
+            source = os.path.join(SVG, f"_c-{position}.svg")
+            if len(indices) == 1 and not os.path.isfile(source):
+                source = os.path.join(SVG, "_c.svg")
+            if os.path.isfile(source) and os.path.getsize(source) > 0:
+                os.replace(source, os.path.join(SVG, f"d-{index + 1}.svg"))
+        return True
+    finally:
+        remove_chunk_outputs()
+        if os.path.isfile(cm):
+            os.remove(cm)
 
 def done(): return len([i for i in range(N) if os.path.isfile(os.path.join(SVG, f"d-{i+1}.svg"))])
 
@@ -201,11 +268,15 @@ for c in range((N + a.chunk - 1) // a.chunk):
     s, e = c*a.chunk, min(c*a.chunk + a.chunk, N)
     render(list(range(s, e)))
     print(f"  chunk {c+1}: {done()}/{N}", flush=True)
-for att in range(4):
+for att, retry_batch in enumerate((8, 4, 2, 1), 1):
     miss = [i for i in range(N) if not os.path.isfile(os.path.join(SVG, f"d-{i+1}.svg"))]
     if not miss: break
-    print(f"  retry {att+1}: {len(miss)} missing", flush=True)
-    for b in range(0, len(miss), 8): render(miss[b:b+8])
+    print(
+        f"  retry {att}: {len(miss)} missing, batch={retry_batch}",
+        flush=True,
+    )
+    for b in range(0, len(miss), retry_batch):
+        render(miss[b:b+retry_batch])
 
 for f in glob.glob(os.path.join(SVG, "*.json")) + glob.glob(os.path.join(SVG, "_chunk.md")):
     os.remove(f)

@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import textwrap
+import time
 import unittest
 from pathlib import Path
 
@@ -47,7 +48,9 @@ class RenderMermaidTests(unittest.TestCase):
                 #!{sys.executable}
                 import os
                 import pathlib
+                import subprocess
                 import sys
+                import time
 
                 args = sys.argv[1:]
                 source = pathlib.Path(args[args.index("-i") + 1])
@@ -55,6 +58,13 @@ class RenderMermaidTests(unittest.TestCase):
                 source_text = source.read_text(encoding="utf-8")
                 count = source_text.count("```mermaid")
                 mode = os.environ.get("FAKE_MMDC_MODE")
+                if mode == "hang":
+                    child = subprocess.Popen(
+                        [sys.executable, "-c", "import time; time.sleep(3600)"]
+                    )
+                    with open(os.environ["FAKE_MMDC_CHILD_PIDS"], "a", encoding="utf-8") as stream:
+                        stream.write(f"{{child.pid}}\\n")
+                    time.sleep(3600)
                 limit = count if mode == "success" else 0
                 if mode == "partial" and "A0 --> B0" in source_text:
                     limit = 1
@@ -77,6 +87,7 @@ class RenderMermaidTests(unittest.TestCase):
         *,
         strict: bool = False,
         allow_fallback: bool = False,
+        render_timeout: float | None = None,
         env: dict[str, str] | None = None,
     ) -> subprocess.CompletedProcess[str]:
         command = [
@@ -91,6 +102,8 @@ class RenderMermaidTests(unittest.TestCase):
             command.append("--strict")
         if allow_fallback:
             command.append("--allow-fallback")
+        if render_timeout is not None:
+            command.extend(("--render-timeout", str(render_timeout)))
         return subprocess.run(
             command,
             cwd=ROOT,
@@ -98,6 +111,7 @@ class RenderMermaidTests(unittest.TestCase):
             capture_output=True,
             text=True,
             check=False,
+            timeout=10,
         )
 
     def test_rejects_output_equal_to_ancestor_or_inside_book_without_deleting_source(self):
@@ -228,6 +242,60 @@ class RenderMermaidTests(unittest.TestCase):
 
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertIn("RENDERED 0/1 diagrams", result.stdout)
+
+    def test_hanging_renderer_times_out_and_kills_the_process_group(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            temp = Path(tmp)
+            book, _ = self.make_book(temp / "source-parent", diagrams=1)
+            output = temp / "output"
+            bin_dir, chrome = self.make_fake_tools(temp)
+            child_pids = temp / "child-pids.txt"
+            env = os.environ.copy()
+            env.update(
+                {
+                    "PATH": f"{bin_dir}{os.pathsep}{env.get('PATH', '')}",
+                    "CHROME_BIN": str(chrome),
+                    "FAKE_MMDC_MODE": "hang",
+                    "FAKE_MMDC_CHILD_PIDS": str(child_pids),
+                }
+            )
+
+            started = time.monotonic()
+            result = self.run_renderer(
+                book,
+                output,
+                strict=True,
+                render_timeout=0.2,
+                env=env,
+            )
+            elapsed = time.monotonic() - started
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertLess(elapsed, 5)
+            self.assertIn("timed out after 0.2s", result.stderr)
+            pids = [int(value) for value in child_pids.read_text().splitlines()]
+            for attempt, batch in enumerate((8, 4, 2, 1), 1):
+                self.assertIn(f"retry {attempt}: 1 missing, batch={batch}", result.stdout)
+            deadline = time.monotonic() + 2
+            while time.monotonic() < deadline:
+                if all(not self.process_exists(pid) for pid in pids):
+                    break
+                time.sleep(0.02)
+            self.assertTrue(pids)
+            self.assertTrue(all(not self.process_exists(pid) for pid in pids))
+            self.assertFalse(any(output.glob("_c*.svg")))
+            for name in ("_chunk.md", "_pptr.json", "_rc.json"):
+                self.assertFalse((output / name).exists(), name)
+
+    @staticmethod
+    def process_exists(pid: int) -> bool:
+        try:
+            os.kill(pid, 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True
+        return True
 
     @unittest.skipUnless(MAC_CHROME.is_file(), "macOS system Chrome is not installed")
     def test_detects_standard_macos_chrome_path(self):

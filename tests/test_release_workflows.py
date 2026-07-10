@@ -278,6 +278,16 @@ class ReleaseWorkflowTests(unittest.TestCase):
             self.assertIn("--source-root .", text, name)
             self.assertRegex(text, r"ai-security-guide[^\n\"']*\.html")
 
+    def test_publication_build_jobs_have_bounded_timeouts(self):
+        for name in ("ci.yaml", "preview-pdf.yml", "auto-release.yml"):
+            text = self.workflow_text(name)
+            build = re.search(
+                r"(?ms)^  build:\n(?P<body>.*?)(?=^  [A-Za-z0-9_-]+:\n|\Z)",
+                text,
+            )
+            self.assertIsNotNone(build, name)
+            self.assertIn("timeout-minutes: 30", build.group("body"), name)
+
     def test_published_bundles_and_formal_attestation_cover_all_artifacts(self):
         ci = self.workflow_text("ci.yaml")
         preview = self.workflow_text("preview-pdf.yml")
