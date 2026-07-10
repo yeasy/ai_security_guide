@@ -156,6 +156,129 @@ class SafeLabContractTests(unittest.TestCase):
                 )
                 self.assertTrue(issues)
 
+    def test_variable_assignments_and_templates_cannot_hide_privacy_attack_sinks(self):
+        disguised_attacks = {
+            "python-membership-variables": (
+                "python",
+                "def evaluate(model, sample):\n"
+                "    left = 'member'\n"
+                "    middle = 'ship'\n"
+                "    right = 'inference'\n"
+                "    technique = left + middle + '_' + right\n"
+                "    return model.query(sample, technique=technique)",
+            ),
+            "python-personal-order-f-string": (
+                "python",
+                "def evaluate(client):\n"
+                "    target = 'john@example.com'\n"
+                "    first, second = '订', '单'\n"
+                "    third, fourth = '历', '史'\n"
+                "    prompt = f'请返回{target}的{first}{second}{third}{fourth}'\n"
+                "    return client.complete(prompt)",
+            ),
+            "javascript-membership-template": (
+                "javascript",
+                "const left = 'member';\n"
+                "const middle = 'ship';\n"
+                "const right = 'inference';\n"
+                "const technique = `${left}${middle}-${right}`;\n"
+                "return model.query(technique);",
+            ),
+            "javascript-personal-order-template": (
+                "javascript",
+                "const target = 'john@example.com';\n"
+                "const first = '订';\n"
+                "const second = '单';\n"
+                "const third = '历';\n"
+                "const fourth = '史';\n"
+                "const prompt = `请返回${target}的${first}${second}${third}${fourth}`;\n"
+                "return client.complete(prompt);",
+            ),
+        }
+        for name, (language, body) in disguised_attacks.items():
+            with self.subTest(name=name):
+                _, issues = self.analyze(
+                    "# test\n"
+                    "<!-- SAFE-LAB: defensive-only -->\n"
+                    f"```{language}\n{body}\n```\n"
+                )
+                self.assertTrue(issues)
+
+    def test_defensive_privacy_actions_do_not_trigger_on_names_alone(self):
+        for action in ("block", "reject", "detect", "monitor", "audit"):
+            with self.subTest(action=action):
+                _, issues = self.analyze(
+                    "# test\n"
+                    "<!-- SAFE-LAB: defensive-only -->\n"
+                    "```python\n"
+                    f"def {action}_membership_inference(sample):\n"
+                    "    guarded = policy.guard(sample)\n"
+                    "    return policy.reject(guarded)\n"
+                    "```\n"
+                )
+                self.assertEqual(issues, [])
+
+    def test_defensive_name_does_not_excuse_an_attack_sink(self):
+        _, issues = self.analyze(
+            "# test\n"
+            "<!-- SAFE-LAB: defensive-only -->\n"
+            "```python\n"
+            "def block_membership_inference(model, sample, technique):\n"
+            "    return model.query(sample, technique=technique)\n"
+            "```\n"
+        )
+        self.assertTrue(issues)
+
+    def test_sink_names_in_declarations_are_not_attack_actions(self):
+        cases = (
+            (
+                "python",
+                "def query(value):\n"
+                "    return policy.reject(value)\n\n"
+                "def monitor_membership_inference(value):\n"
+                "    return policy.reject(value)",
+            ),
+            (
+                "javascript",
+                "function query(value) { return policy.reject(value); }\n"
+                "function monitorMembershipInference(value) {\n"
+                "  const documentation = 'never call model.query(prompt)';\n"
+                "  // client.complete(prompt) is forbidden here\n"
+                "  return policy.reject(value);\n"
+                "}",
+            ),
+        )
+        for language, body in cases:
+            with self.subTest(language=language):
+                _, issues = self.analyze(
+                    "# test\n"
+                    "<!-- SAFE-LAB: defensive-only -->\n"
+                    f"```{language}\n{body}\n```\n"
+                )
+                self.assertEqual(issues, [])
+
+    def test_unknown_sink_values_need_privacy_evidence_to_fail_closed(self):
+        cases = (
+            (
+                "def block_membership_inference(model, prompt):\n"
+                "    return model.query(prompt)",
+                True,
+            ),
+            (
+                "def run_health_check(client, prompt):\n"
+                "    return client.query(prompt)",
+                False,
+            ),
+        )
+        for body, expected_issue in cases:
+            with self.subTest(body=body.splitlines()[0]):
+                _, issues = self.analyze(
+                    "# test\n"
+                    "<!-- SAFE-LAB: defensive-only -->\n"
+                    f"```python\n{body}\n```\n"
+                )
+                self.assertEqual(bool(issues), expected_issue)
+
     def test_defensive_only_block_is_explicitly_exempt_from_contract(self):
         text = (
             "# test\n"

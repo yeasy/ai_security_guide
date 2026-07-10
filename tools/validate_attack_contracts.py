@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import ast
 import re
 import sys
 import unicodedata
@@ -102,6 +103,18 @@ PERSONAL_RECORD_MARKERS = (
 EMAIL_PATTERN = re.compile(
     r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.IGNORECASE
 )
+PYTHON_LANGUAGES = frozenset({"py", "py3", "python", "python3"})
+JAVASCRIPT_LANGUAGES = frozenset(
+    {"javascript", "js", "node", "nodejs", "ts", "typescript"}
+)
+ATTACK_SINKS = frozenset({"complete", "generate", "invoke", "query", "score"})
+SINK_CALL_START = re.compile(
+    rf"\b(?:[A-Za-z_$][\w$]*\s*\.\s*)*({'|'.join(sorted(ATTACK_SINKS))})\s*\(",
+    re.IGNORECASE,
+)
+SIMPLE_JS_ASSIGNMENT = re.compile(
+    r"^\s*(?:(?:const|let|var)\s+)([A-Za-z_$][\w$]*)\s*=\s*(.*?)\s*;?\s*$"
+)
 FENCE_OPEN = re.compile(r"^\s*(`{3,}|~{3,})\s*([^\s`~]*)?.*$")
 
 
@@ -134,21 +147,326 @@ def compact_semantic_text(body: str) -> str:
     return re.sub(r"[\W_]+", "", folded, flags=re.UNICODE)
 
 
-def looks_offensive(body: str) -> bool:
+def contains_privacy_marker(text: str) -> bool:
+    compact = compact_semantic_text(text)
+    return any(marker in compact for marker in PRIVACY_ATTACK_MARKERS)
+
+
+def contains_personal_record_query(text: str) -> bool:
+    compact = compact_semantic_text(text)
+    contains_record = any(marker in compact for marker in PERSONAL_RECORD_MARKERS)
+    contains_identity = bool(EMAIL_PATTERN.search(text)) or any(
+        marker in compact for marker in ("email", "userid", "customerid", "用户")
+    )
+    return contains_record and contains_identity
+
+
+def _python_call_name(node: ast.expr) -> str:
+    if isinstance(node, ast.Name):
+        return node.id.casefold()
+    if isinstance(node, ast.Attribute):
+        return node.attr.casefold()
+    return ""
+
+
+class _PythonStringFlow(ast.NodeVisitor):
+    """Resolve only straight-line string constants and record attack-sink inputs."""
+
+    def __init__(self) -> None:
+        self.scopes: list[dict[str, str]] = [{}]
+        self.has_attack_sink = False
+        self.sink_texts: list[str] = []
+
+    def _lookup(self, name: str) -> str | None:
+        for scope in reversed(self.scopes):
+            if name in scope:
+                return scope[name]
+        return None
+
+    def _evaluate(self, node: ast.AST) -> str | None:
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            return node.value
+        if isinstance(node, ast.Name):
+            return self._lookup(node.id)
+        if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Add):
+            left = self._evaluate(node.left)
+            right = self._evaluate(node.right)
+            return left + right if left is not None and right is not None else None
+        if isinstance(node, ast.JoinedStr):
+            parts: list[str] = []
+            for value in node.values:
+                if isinstance(value, ast.Constant) and isinstance(value.value, str):
+                    parts.append(value.value)
+                    continue
+                if isinstance(value, ast.FormattedValue):
+                    resolved = self._evaluate(value.value)
+                    if resolved is not None:
+                        parts.append(resolved)
+                        continue
+                return None
+            return "".join(parts)
+        return None
+
+    def _bind(self, target: ast.AST, value: ast.AST) -> None:
+        if isinstance(target, ast.Name):
+            resolved = self._evaluate(value)
+            if resolved is None:
+                self.scopes[-1].pop(target.id, None)
+            else:
+                self.scopes[-1][target.id] = resolved
+            return
+        if isinstance(target, (ast.Tuple, ast.List)) and isinstance(
+            value, (ast.Tuple, ast.List)
+        ):
+            if len(target.elts) != len(value.elts):
+                return
+            for child_target, child_value in zip(target.elts, value.elts):
+                self._bind(child_target, child_value)
+
+    def _visit_body(self, body: list[ast.stmt]) -> None:
+        for statement in body:
+            self.visit(statement)
+
+    def visit_Module(self, node: ast.Module) -> None:
+        self._visit_body(node.body)
+
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+        self.scopes.append({})
+        self._visit_body(node.body)
+        self.scopes.pop()
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def visit_Assign(self, node: ast.Assign) -> None:
+        self.visit(node.value)
+        for target in node.targets:
+            self._bind(target, node.value)
+
+    def visit_AnnAssign(self, node: ast.AnnAssign) -> None:
+        if node.value is None:
+            return
+        self.visit(node.value)
+        self._bind(node.target, node.value)
+
+    def visit_AugAssign(self, node: ast.AugAssign) -> None:
+        self.visit(node.value)
+        if not isinstance(node.target, ast.Name) or not isinstance(node.op, ast.Add):
+            return
+        previous = self._lookup(node.target.id)
+        addition = self._evaluate(node.value)
+        if previous is None or addition is None:
+            self.scopes[-1].pop(node.target.id, None)
+        else:
+            self.scopes[-1][node.target.id] = previous + addition
+
+    def visit_Call(self, node: ast.Call) -> None:
+        if _python_call_name(node.func) in ATTACK_SINKS:
+            self.has_attack_sink = True
+            values = [
+                value
+                for value in (
+                    *(self._evaluate(argument) for argument in node.args),
+                    *(self._evaluate(keyword.value) for keyword in node.keywords),
+                )
+                if value is not None
+            ]
+            if values:
+                self.sink_texts.append(" ".join(values))
+        self.generic_visit(node)
+
+
+def _split_top_level(expression: str, delimiter: str) -> list[str]:
+    parts: list[str] = []
+    start = 0
+    quote = ""
+    escaped = False
+    depth = 0
+    for index, char in enumerate(expression):
+        if quote:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = ""
+            continue
+        if char in "'\"`":
+            quote = char
+        elif char in "([{":
+            depth += 1
+        elif char in ")]}" and depth:
+            depth -= 1
+        elif char == delimiter and depth == 0:
+            parts.append(expression[start:index].strip())
+            start = index + 1
+    parts.append(expression[start:].strip())
+    return parts
+
+
+def _evaluate_javascript_string(expression: str, values: dict[str, str]) -> str | None:
+    expression = expression.strip().rstrip(";").strip()
+    if not expression:
+        return None
+    if expression.startswith("`") and expression.endswith("`"):
+        unresolved = False
+
+        def replace(match: re.Match[str]) -> str:
+            nonlocal unresolved
+            value = values.get(match.group(1))
+            if value is None:
+                unresolved = True
+                return ""
+            return value
+
+        rendered = re.sub(r"\$\{\s*([A-Za-z_$][\w$]*)\s*\}", replace, expression[1:-1])
+        return None if unresolved else rendered
+    if expression[0:1] in {"'", '"'} and expression[-1:] == expression[0]:
+        try:
+            literal = ast.literal_eval(expression)
+        except (SyntaxError, ValueError):
+            return None
+        return literal if isinstance(literal, str) else None
+    pieces = _split_top_level(expression, "+")
+    if len(pieces) > 1:
+        resolved = [_evaluate_javascript_string(piece, values) for piece in pieces]
+        return "".join(resolved) if all(value is not None for value in resolved) else None
+    if re.fullmatch(r"[A-Za-z_$][\w$]*", expression):
+        return values.get(expression)
+    return None
+
+
+def _code_position_mask(body: str) -> list[bool]:
+    """Mark positions outside quoted strings and JavaScript-style comments."""
+
+    mask = [True] * len(body)
+    index = 0
+    quote = ""
+    escaped = False
+    while index < len(body):
+        char = body[index]
+        if quote:
+            mask[index] = False
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == quote:
+                quote = ""
+            index += 1
+            continue
+        if char in "'\"`":
+            quote = char
+            mask[index] = False
+            index += 1
+            continue
+        if body.startswith("//", index):
+            end = body.find("\n", index)
+            end = len(body) if end < 0 else end
+            mask[index:end] = [False] * (end - index)
+            index = end
+            continue
+        if body.startswith("/*", index):
+            end = body.find("*/", index + 2)
+            end = len(body) if end < 0 else end + 2
+            mask[index:end] = [False] * (end - index)
+            index = end
+            continue
+        index += 1
+    return mask
+
+
+def _sink_argument_expressions(body: str) -> list[str]:
+    arguments: list[str] = []
+    code_positions = _code_position_mask(body)
+    for match in SINK_CALL_START.finditer(body):
+        if not code_positions[match.start()]:
+            continue
+        line_start = body.rfind("\n", 0, match.start()) + 1
+        declaration_prefix = body[line_start : match.start()]
+        if re.search(r"\b(?:def|function)\s*$", declaration_prefix):
+            continue
+        start = match.end()
+        quote = ""
+        escaped = False
+        depth = 1
+        for index in range(start, len(body)):
+            char = body[index]
+            if quote:
+                if escaped:
+                    escaped = False
+                elif char == "\\":
+                    escaped = True
+                elif char == quote:
+                    quote = ""
+                continue
+            if char in "'\"`":
+                quote = char
+            elif char == "(":
+                depth += 1
+            elif char == ")":
+                depth -= 1
+                if depth == 0:
+                    arguments.append(body[start:index])
+                    break
+    return arguments
+
+
+def attack_sink_evidence(body: str, language: str) -> tuple[bool, list[str]]:
+    """Return attack-sink presence plus only statically resolved string inputs.
+
+    Dynamic inputs remain unresolved by design. They fail closed only when the
+    surrounding block independently contains privacy-attack semantics.
+    """
+
+    generic_arguments = _sink_argument_expressions(body)
+    if language in PYTHON_LANGUAGES:
+        try:
+            tree = ast.parse(body)
+        except SyntaxError:
+            return bool(generic_arguments), []
+        flow = _PythonStringFlow()
+        flow.visit(tree)
+        return flow.has_attack_sink, flow.sink_texts
+
+    values: dict[str, str] = {}
+    if language in JAVASCRIPT_LANGUAGES:
+        for line in body.splitlines():
+            match = SIMPLE_JS_ASSIGNMENT.match(line)
+            if match is None:
+                continue
+            name, expression = match.groups()
+            resolved = _evaluate_javascript_string(expression, values)
+            if resolved is None:
+                values.pop(name, None)
+            else:
+                values[name] = resolved
+        sink_texts: list[str] = []
+        for expression in generic_arguments:
+            resolved_arguments = [
+                _evaluate_javascript_string(argument, values)
+                for argument in _split_top_level(expression, ",")
+            ]
+            known = [value for value in resolved_arguments if value is not None]
+            if known:
+                sink_texts.append(" ".join(known))
+        return bool(generic_arguments), sink_texts
+
+    return bool(generic_arguments), []
+
+
+def looks_offensive(body: str, language: str = "") -> bool:
     if any(pattern.search(body) for pattern in OFFENSIVE_PATTERNS):
         return True
 
-    compact = compact_semantic_text(body)
-    if any(marker in compact for marker in PRIVACY_ATTACK_MARKERS):
+    has_attack_sink, sink_texts = attack_sink_evidence(body, language)
+    if any(
+        contains_privacy_marker(text) or contains_personal_record_query(text)
+        for text in sink_texts
+    ):
         return True
-
-    contains_personal_record_query = any(
-        marker in compact for marker in PERSONAL_RECORD_MARKERS
+    return has_attack_sink and (
+        contains_privacy_marker(body) or contains_personal_record_query(body)
     )
-    contains_identity = bool(EMAIL_PATTERN.search(body)) or any(
-        marker in compact for marker in ("email", "userid", "customerid", "用户")
-    )
-    return contains_personal_record_query and contains_identity
 
 
 def attached_contract(lines: list[str], marker_index: int) -> str:
@@ -192,7 +510,7 @@ def analyze_markdown(path: Path, text: str) -> tuple[list[SafeLabBlock], list[st
             break
 
         body = "\n".join(lines[index + 1 : close])
-        executable = language in EXECUTABLE_LANGUAGES or looks_offensive(body)
+        executable = language in EXECUTABLE_LANGUAGES or looks_offensive(body, language)
         if not executable:
             index = close + 1
             continue
@@ -205,7 +523,7 @@ def analyze_markdown(path: Path, text: str) -> tuple[list[SafeLabBlock], list[st
             issues.append(
                 f"{location}: executable block requires an attached SAFE-LAB classification"
             )
-        elif classification == "defensive-only" and looks_offensive(body):
+        elif classification == "defensive-only" and looks_offensive(body, language):
             issues.append(
                 f"{location}: offensive content cannot use defensive-only exemption"
             )
