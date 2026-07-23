@@ -258,7 +258,7 @@ class ReleaseWorkflowTests(unittest.TestCase):
 
         package = json.loads(package_path.read_text(encoding="utf-8"))
         lock = json.loads(lock_path.read_text(encoding="utf-8"))
-        expected = "10.9.1"
+        expected = "11.16.0"
         self.assertEqual(package["dependencies"]["@mermaid-js/mermaid-cli"], expected)
         self.assertGreaterEqual(lock["lockfileVersion"], 3)
         self.assertEqual(
