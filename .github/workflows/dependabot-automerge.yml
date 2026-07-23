@@ -17,6 +17,7 @@ jobs:
       pull-requests: write
       checks: read
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Read Dependabot metadata
         id: metadata
