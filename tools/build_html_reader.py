@@ -231,7 +231,7 @@ def main():
             tpl = os.path.join(temp_dir, "template.html")
             out_tmp = os.path.join(temp_dir, "reader.html")
             with open(tpl, "w", encoding="utf-8") as f: f.write(TEMPLATE)
-            cmd = ["pandoc", tmp_md, "-f", "markdown", "-t", "html5",
+            cmd = ["pandoc", tmp_md, "-f", "markdown+lists_without_preceding_blankline", "-t", "html5",
                    "--standalone", "--embed-resources", "--mathml",
                    "--template", tpl, "--metadata", f"title={a.title}", "-o", out_tmp]
             print("  running pandoc ...")
