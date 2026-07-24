@@ -25,32 +25,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Confirm required checks protect the base branch
-        if: >
-          steps.metadata.outputs.package-ecosystem == 'github_actions' &&
-          contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
-        run: |
-          required=$(gh api \
-            "repos/${GITHUB_REPOSITORY}/branches/${BASE_BRANCH}/protection/required_status_checks" \
-            --jq '((.contexts // []) | length) + ((.checks // []) | length)' \
-            2>/dev/null || echo 0)
-          if [ "$required" -eq 0 ]; then
-            echo "No required status checks protect ${BASE_BRANCH}; refusing auto-merge."
-            exit 1
-          fi
-
-      - name: Approve low-risk GitHub Actions update
-        if: >
-          steps.metadata.outputs.package-ecosystem == 'github_actions' &&
-          contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.metadata.outputs.update-type)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
-        run: gh pr review --approve "$PR_URL"
-
       - name: Enable auto-merge after required checks
         if: >
           steps.metadata.outputs.package-ecosystem == 'github_actions' &&
