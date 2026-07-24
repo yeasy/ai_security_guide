@@ -243,6 +243,12 @@
 
 91. Meta AI. (2025). *Agents Rule of Two: A Practical Approach to AI Agent Security*. [Meta AI Blog](https://ai.meta.com/blog/practical-ai-agent-security/)
 
+## 中国智能体治理政策
+
+92. 国家互联网信息办公室、国家发展和改革委员会、工业和信息化部. (2026). *智能体规范应用与创新发展实施意见*. [国家网信办](https://www.cac.gov.cn/2026-05/08/c_1779979789472520.htm)
+
+93. 北京市发展和改革委员会等. (2026). *北京市加快智能体引领发展若干措施（京发改〔2026〕1185 号）*. [北京市人民政府](https://www.beijing.gov.cn/zhengce/zhengcefagui/202607/t20260723_4781085.html)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
