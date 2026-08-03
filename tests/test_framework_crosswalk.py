@@ -14,6 +14,10 @@ ATLAS_SOURCE = (
     "https://raw.githubusercontent.com/mitre-atlas/atlas-data/"
     "main/dist/v6/ATLAS-2026.06.yaml"
 )
+ASI_SOURCE = (
+    "https://genai.owasp.org/resource/"
+    "owasp-top-10-for-agentic-applications-for-2026/"
+)
 EU_ELI = "http://data.europa.eu/eli/reg/2024/1689/oj"
 
 EXPECTED_OWASP = {
@@ -46,6 +50,18 @@ EXPECTED_ATLAS = {
     "AML.T0086": "Exfiltration via AI Agent Tool Invocation",
     "AML.T0093": "Prompt Infiltration via Public-Facing Application",
     "AML.T0110": "AI Agent Tool Poisoning",
+}
+EXPECTED_ASI = {
+    "ASI01": "Agent Goal Hijack",
+    "ASI02": "Tool Misuse and Exploitation",
+    "ASI03": "Identity and Privilege Abuse",
+    "ASI04": "Agentic Supply Chain Vulnerabilities",
+    "ASI05": "Unexpected Code Execution (RCE)",
+    "ASI06": "Memory & Context Poisoning",
+    "ASI07": "Insecure Inter-Agent Communication",
+    "ASI08": "Cascading Failures",
+    "ASI09": "Human-Agent Trust Exploitation",
+    "ASI10": "Rogue Agents",
 }
 EXPECTED_MAPPINGS = {
     "owasp:LLM01:2025": ("atlas:AML.T0051", "atlas:AML.T0093"),
@@ -105,6 +121,7 @@ class FrameworkCrosswalkTests(unittest.TestCase):
             "OWASP Top 10 for LLM Applications": ("2025", OWASP_SOURCE),
             "NIST AI RMF": ("1.0", NIST_SOURCE),
             "MITRE ATLAS": ("2026.06", ATLAS_SOURCE),
+            "OWASP Top 10 for Agentic Applications": ("2026", ASI_SOURCE),
             "EU AI Act": ("2024/1689", EU_ELI),
         }
         for entry in self.data["entries"]:
@@ -129,9 +146,16 @@ class FrameworkCrosswalkTests(unittest.TestCase):
             key: value["name"]
             for key, value in self.entries_for("MITRE ATLAS").items()
         }
+        actual_asi = {
+            key: value["name"]
+            for key, value in self.entries_for(
+                "OWASP Top 10 for Agentic Applications"
+            ).items()
+        }
         self.assertEqual(actual_owasp, EXPECTED_OWASP)
         self.assertEqual(actual_nist, EXPECTED_NIST)
         self.assertEqual(actual_atlas, EXPECTED_ATLAS)
+        self.assertEqual(actual_asi, EXPECTED_ASI)
 
         eu = self.entries_for("EU AI Act")
         self.assertEqual(set(eu), {"Regulation (EU) 2024/1689"})

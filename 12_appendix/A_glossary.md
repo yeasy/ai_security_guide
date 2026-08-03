@@ -138,6 +138,9 @@ NIST 针对生成式 AI 场景发布的 AI RMF 配置文件，用于将治理、
 **OWASP LLM Top 10**
 OWASP 发布的 LLM 应用十大安全风险清单；条目会迭代更新，实践中应以官方最新版本为准。
 
+**OWASP Agentic Top 10（ASI01–ASI10）**
+OWASP 智能体安全倡议（Agentic Security Initiative）发布的智能体应用十大风险清单，正式名称为 *OWASP Top 10 For Agentic Applications 2026*。与 OWASP LLM Top 10 **并行存在而非替代**：前者面向模型驱动的应用，后者面向会规划、会行动、会跨系统调用的智能体。对照表见第七章章首。
+
 ## P
 
 **PII（Personally Identifiable Information，个人身份信息）**

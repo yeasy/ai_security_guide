@@ -253,6 +253,106 @@
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
+      "id": "asi:ASI01:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI01",
+      "name": "Agent Goal Hijack",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI02:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI02",
+      "name": "Tool Misuse and Exploitation",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI03:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI03",
+      "name": "Identity and Privilege Abuse",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI04:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI04",
+      "name": "Agentic Supply Chain Vulnerabilities",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI05:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI05",
+      "name": "Unexpected Code Execution (RCE)",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI06:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI06",
+      "name": "Memory & Context Poisoning",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI07:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI07",
+      "name": "Insecure Inter-Agent Communication",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI08:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI08",
+      "name": "Cascading Failures",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI09:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI09",
+      "name": "Human-Agent Trust Exploitation",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
+      "id": "asi:ASI10:2026",
+      "framework": "OWASP Top 10 for Agentic Applications",
+      "identifier": "ASI10",
+      "name": "Rogue Agents",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "verified_at": "2026-08-02",
+      "chapters": ["07_agent_rag_security/README.md"]
+    },
+    {
       "id": "eu:2024-1689",
       "framework": "EU AI Act",
       "identifier": "Regulation (EU) 2024/1689",

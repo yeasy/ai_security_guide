@@ -249,6 +249,8 @@
 
 93. 北京市发展和改革委员会等. (2026). *北京市加快智能体引领发展若干措施（京发改〔2026〕1185 号）*. [北京市人民政府](https://www.beijing.gov.cn/zhengce/zhengcefagui/202607/t20260723_4781085.html)
 
+94. OWASP Gen AI Security Project, Agentic Security Initiative. (2025). *OWASP Top 10 For Agentic Applications 2026*（Version 2026, December 2025, CC BY-SA 4.0）. [OWASP Gen AI Security Project](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*

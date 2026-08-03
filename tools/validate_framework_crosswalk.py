@@ -54,6 +54,18 @@ ATLAS = {
     "AML.T0093": "Prompt Infiltration via Public-Facing Application",
     "AML.T0110": "AI Agent Tool Poisoning",
 }
+ASI = {
+    "ASI01": "Agent Goal Hijack",
+    "ASI02": "Tool Misuse and Exploitation",
+    "ASI03": "Identity and Privilege Abuse",
+    "ASI04": "Agentic Supply Chain Vulnerabilities",
+    "ASI05": "Unexpected Code Execution (RCE)",
+    "ASI06": "Memory & Context Poisoning",
+    "ASI07": "Insecure Inter-Agent Communication",
+    "ASI08": "Cascading Failures",
+    "ASI09": "Human-Agent Trust Exploitation",
+    "ASI10": "Rogue Agents",
+}
 EU = {"Regulation (EU) 2024/1689": "EU AI Act"}
 CROSSWALK = {
     "owasp:LLM01:2025": ("atlas:AML.T0051", "atlas:AML.T0093"),
@@ -89,6 +101,14 @@ FRAMEWORKS = {
             "main/dist/v6/ATLAS-2026.06.yaml"
         ),
         "entries": ATLAS,
+    },
+    "OWASP Top 10 for Agentic Applications": {
+        "version": "2026",
+        "source": (
+            "https://genai.owasp.org/resource/"
+            "owasp-top-10-for-agentic-applications-for-2026/"
+        ),
+        "entries": ASI,
     },
     "EU AI Act": {
         "version": "2024/1689",

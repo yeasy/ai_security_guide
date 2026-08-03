@@ -46,3 +46,22 @@ OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://gen
 | T13 失控智能体 | 7.5.3、7.6.4 |
 | T14 针对多智能体系统的人为攻击 | 7.5、7.6.4 |
 | T15 人类操纵 | 7.1.15 |
+
+## 对照 OWASP Agentic Top 10（2026）
+
+上表的 T1–T15 出自威胁清单；在此之上，OWASP GenAI Security Project 的智能体安全倡议（Agentic Security Initiative）于 **2025-12** 发布了 *OWASP Top 10 For Agentic Applications 2026*（Version 2026），用 `ASI01`–`ASI10` 给出智能体应用的十大风险。它**与 3.1 的 LLM Top 10（2025）并行存在、互不替代**：LLM Top 10 面向「模型驱动的应用」，ASI 清单面向「会规划、会行动、会跨系统调用的智能体」。编号与英文名取自官方 PDF，由 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json) 统一机器校验（见附录 C-94）。
+
+| 官方标识符与英文名 | 中文表述 | 本书覆盖位置 |
+|--------------------|----------|--------------|
+| ASI01 Agent Goal Hijack | 智能体目标劫持 | 7.1.4、4.3、4.1 |
+| ASI02 Tool Misuse and Exploitation | 工具滥用与利用 | 7.3、7.1.5 |
+| ASI03 Identity and Privilege Abuse | 身份与权限滥用 | 7.1.7、7.3.8、8.3.4、8.3.6 |
+| ASI04 Agentic Supply Chain Vulnerabilities | 智能体供应链漏洞 | 7.4、8.6.5、6.7 |
+| ASI05 Unexpected Code Execution (RCE) | 意外代码执行（RCE） | 6.7、7.3.10 |
+| ASI06 Memory & Context Poisoning | 记忆与上下文投毒 | 7.1.6、7.2.3、4.6 |
+| ASI07 Insecure Inter-Agent Communication | 智能体间通信不安全 | 7.5.4、7.5.2 |
+| ASI08 Cascading Failures | 级联失效 | 7.5.2、4.3.9、10.5 |
+| ASI09 Human-Agent Trust Exploitation | 人机信任利用 | 7.1.15 |
+| ASI10 Rogue Agents | 失控智能体 | 7.5.3、7.6.4、11.4、10.7 |
+
+> 两份清单的侧重点不同，不必二选一：T 清单更细、便于逐条自查；ASI 清单更聚合、便于向管理层陈述风险优先级。官方文档本身也给出了 ASI 与 T 编号的对照。
