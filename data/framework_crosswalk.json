@@ -146,10 +146,10 @@
       "id": "atlas:AML.T0020",
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0020",
-      "name": "Poison Training Data",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "name": "Training Data Poisoning",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -157,9 +157,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0051",
       "name": "LLM Prompt Injection",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -167,9 +167,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0053",
       "name": "AI Agent Tool Invocation",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -177,9 +177,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0056",
       "name": "Extract LLM System Prompt",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -187,9 +187,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0057",
       "name": "LLM Data Leakage",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -197,9 +197,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0069",
       "name": "Discover LLM System Information",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -207,9 +207,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0070",
       "name": "RAG Poisoning",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -217,9 +217,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0080",
       "name": "AI Agent Context Poisoning",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -227,9 +227,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0086",
       "name": "Exfiltration via AI Agent Tool Invocation",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -237,9 +237,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0093",
       "name": "Prompt Infiltration via Public-Facing Application",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {
@@ -247,9 +247,9 @@
       "framework": "MITRE ATLAS",
       "identifier": "AML.T0110",
       "name": "AI Agent Tool Poisoning",
-      "version": "2026.06",
-      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.06.yaml",
-      "verified_at": "2026-07-10",
+      "version": "2026.07",
+      "source": "https://raw.githubusercontent.com/mitre-atlas/atlas-data/main/dist/v6/ATLAS-2026.07.yaml",
+      "verified_at": "2026-08-11",
       "chapters": ["03_frameworks/3.1_owasp_top10.md", "03_frameworks/3.4_mitre_atlas.md"]
     },
     {

@@ -42,7 +42,7 @@ NIST = {
     "MANAGE": "Manage",
 }
 ATLAS = {
-    "AML.T0020": "Poison Training Data",
+    "AML.T0020": "Training Data Poisoning",
     "AML.T0051": "LLM Prompt Injection",
     "AML.T0053": "AI Agent Tool Invocation",
     "AML.T0056": "Extract LLM System Prompt",
@@ -95,10 +95,10 @@ FRAMEWORKS = {
         "entries": NIST,
     },
     "MITRE ATLAS": {
-        "version": "2026.06",
+        "version": "2026.07",
         "source": (
             "https://raw.githubusercontent.com/mitre-atlas/atlas-data/"
-            "main/dist/v6/ATLAS-2026.06.yaml"
+            "main/dist/v6/ATLAS-2026.07.yaml"
         ),
         "entries": ATLAS,
     },

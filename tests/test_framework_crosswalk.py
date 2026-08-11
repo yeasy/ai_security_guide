@@ -12,7 +12,7 @@ OWASP_SOURCE = "https://genai.owasp.org/llm-top-10/?cat=253"
 NIST_SOURCE = "https://airc.nist.gov/docs/playbook.json"
 ATLAS_SOURCE = (
     "https://raw.githubusercontent.com/mitre-atlas/atlas-data/"
-    "main/dist/v6/ATLAS-2026.06.yaml"
+    "main/dist/v6/ATLAS-2026.07.yaml"
 )
 ASI_SOURCE = (
     "https://genai.owasp.org/resource/"
@@ -39,7 +39,7 @@ EXPECTED_NIST = {
     "MANAGE": "Manage",
 }
 EXPECTED_ATLAS = {
-    "AML.T0020": "Poison Training Data",
+    "AML.T0020": "Training Data Poisoning",
     "AML.T0051": "LLM Prompt Injection",
     "AML.T0053": "AI Agent Tool Invocation",
     "AML.T0056": "Extract LLM System Prompt",
@@ -120,7 +120,7 @@ class FrameworkCrosswalkTests(unittest.TestCase):
         expected = {
             "OWASP Top 10 for LLM Applications": ("2025", OWASP_SOURCE),
             "NIST AI RMF": ("1.0", NIST_SOURCE),
-            "MITRE ATLAS": ("2026.06", ATLAS_SOURCE),
+            "MITRE ATLAS": ("2026.07", ATLAS_SOURCE),
             "OWASP Top 10 for Agentic Applications": ("2026", ASI_SOURCE),
             "EU AI Act": ("2024/1689", EU_ELI),
         }
