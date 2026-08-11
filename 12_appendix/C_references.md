@@ -131,7 +131,7 @@
 
 46. Anthropic. (2025). *Agentic Misalignment: How LLMs could be insider threats*. [Anthropic Research](https://www.anthropic.com/research/agentic-misalignment)
 
-47. Aim Security. (2025). *Breaking down ‘EchoLeak’, the First Zero-Click AI Vulnerability Enabling Data Exfiltration from Microsoft 365 Copilot*. [Aim Security](https://www.aim.security/post/echoleak-blogpost)
+47. Ravia, I. / Aim Security. (2025). *Breaking down ‘EchoLeak’, the First Zero-Click AI Vulnerability Enabling Data Exfiltration from Microsoft 365 Copilot*（Aim Security 被 Cato Networks 收购后，原文迁至 Cato 博客）. [Cato Networks](https://www.catonetworks.com/blog/breaking-down-echoleak/)
 
 48. GitHub. (2025). *Arbitrary code execution from Cursor Agent through a prompt injection via MCP Special Files*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-4cxx-hrm3-49rm)
 
@@ -193,7 +193,7 @@
 
 72. van der Weij, T., Hofstätter, F., Jaffe, O., Brown, S. F., & Ward, F. R. (2024). *AI Sandbagging: Language Models can Strategically Underperform on Evaluations*. [arXiv:2406.07358](https://arxiv.org/abs/2406.07358)
 
-73. *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. (2025). [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
+73. *EVA: Evolving Semantic Adversaries for Red-Teaming GUI Agents Against Environmental Injection*. (2025). 初版题为 *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
 
 ## 前沿安全治理框架
 
