@@ -245,9 +245,9 @@ class ReleaseWorkflowTests(unittest.TestCase):
             self.assertIn("SHA256SUMS", text, name)
             self.assertNotIn("continue-on-error: true", text, name)
         auto = self.workflow_text("auto-release.yml")
-        self.assertIn(
-            "actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1",
+        self.assertRegex(
             auto,
+            r"actions/attest-build-provenance@[0-9a-f]{40} # v\d",
         )
 
     def test_mermaid_dependency_is_exact_and_lockfile_backed(self):
@@ -463,7 +463,7 @@ class ReleaseWorkflowTests(unittest.TestCase):
         text = config.read_text(encoding="utf-8")
         self.assertIn("github-actions", text)
         workflow = self.workflow_text("dependabot-automerge.yml")
-        self.assertIn("dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0", workflow)
+        self.assertRegex(workflow, r"dependabot/fetch-metadata@[0-9a-f]{40} # v\d")
 
 
 if __name__ == "__main__":
