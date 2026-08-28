@@ -12,7 +12,7 @@
 | promptfoo | Prompt 测试、评估与红队框架 | 活跃维护 | [promptfoo/promptfoo](https://github.com/promptfoo/promptfoo) |
 | PyRIT | Microsoft 的生成式 AI 红队框架（Python Risk Identification Tool） | 活跃维护 | [microsoft/PyRIT](https://github.com/microsoft/PyRIT) |
 | DeepTeam | Confident AI 的开源 LLM 红队框架，覆盖漏洞模板、攻击编排与报告 | 活跃维护 | [confident-ai/deepteam](https://github.com/confident-ai/deepteam) |
-| Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，模型版本和访问范围以官方产品页为准 | Public Beta（Claude Enterprise） | [Anthropic](https://www.anthropic.com/product/security) |
+| Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，模型版本和访问范围以官方产品页为准 | Public Beta（Claude Enterprise） | [Anthropic](https://claude.com/product/claude-security) |
 | ART | 面向机器学习安全的工具箱，覆盖对抗样本、投毒、模型提取等；非 LLM 专用 | 活跃维护 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
 | HarmBench | 自动化红队与拒答鲁棒性的标准化评估框架 | 研究框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
 | HouYi | 面向 LLM 集成应用的自动化提示注入框架 | 研究原型 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
@@ -22,7 +22,7 @@
 
 | 工具名称 | 描述 | 状态 | 链接 |
 |----------|------|------|------|
-| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | 活跃维护 | [NVIDIA/NeMo-Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) |
+| NeMo Guardrails | NVIDIA 的可编程安全护栏框架 | 活跃维护 | [NVIDIA-NeMo/Guardrails](https://github.com/NVIDIA-NeMo/Guardrails) |
 | Guardrails AI | 输入/输出校验与结构化验证框架 | 活跃维护 | [guardrails-ai/guardrails](https://github.com/guardrails-ai/guardrails) |
 | Invariant | 面向智能体的安全监测与策略控制产品 | 活跃维护 | [Invariant Labs](https://invariantlabs.ai/) |
 | OpenAI Guardrails | OpenAI 的 Guardrails Python 包，提供可配置的输入/输出校验与审核 | Preview | [openai/openai-guardrails-python](https://github.com/openai/openai-guardrails-python) |
@@ -41,7 +41,7 @@
 
 | 工具名称 | 描述 | 状态 | 链接 |
 |----------|------|------|------|
-| OpenAI Moderation API | 内容审核 API | 活跃维护 | [OpenAI 文档](https://platform.openai.com/docs/guides/moderation) |
+| OpenAI Moderation API | 内容审核 API | 活跃维护 | [OpenAI 文档](https://developers.openai.com/api/docs/guides/moderation) |
 | Perspective API | Google 的毒性检测 API | 活跃维护 | [Perspective API](https://perspectiveapi.com/) |
 | Azure AI Content Safety | 微软内容安全服务 | 活跃维护 | [Microsoft](https://azure.microsoft.com/en-us/products/ai-services/ai-content-safety) |
 
@@ -49,9 +49,9 @@
 
 | 工具名称 | 描述 | 状态 | 链接 |
 |----------|------|------|------|
-| Presidio | 微软的 PII 检测和脱敏工具 | 活跃维护 | [microsoft/presidio](https://github.com/microsoft/presidio) |
+| Presidio | PII 检测和脱敏工具，源自微软，现已移交社区治理的 Data Privacy Stack 组织 | 活跃维护 | [data-privacy-stack/presidio](https://github.com/data-privacy-stack/presidio) |
 | PySyft | 隐私保护机器学习库 | 维护中 | [OpenMined/PySyft](https://github.com/OpenMined/PySyft) |
-| Opacus | PyTorch 差分隐私库 | 活跃维护 | [pytorch/opacus](https://github.com/pytorch/opacus) |
+| Opacus | PyTorch 差分隐私库 | 活跃维护 | [meta-pytorch/opacus](https://github.com/meta-pytorch/opacus) |
 
 ## 安全框架与指南
 
@@ -81,7 +81,7 @@
 |------|------|------|------|
 | AI Security | Coursera | AI 安全基础 | [Coursera](https://www.coursera.org/learn/ai-security) |
 | AI 学习资源 | edX | edX 的 AI 课程聚合页，可作为继续检索相关课程的入口 | [edX](https://www.edx.org/learn/artificial-intelligence) |
-| Prompt Engineering | DeepLearning.AI | 提示工程最佳实践 | [DeepLearning.AI](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/) |
+| Prompt Engineering | DeepLearning.AI | 提示工程最佳实践 | [DeepLearning.AI](https://www.deeplearning.ai/courses/chatgpt-prompt-eng) |
 
 ### 研究论文
 

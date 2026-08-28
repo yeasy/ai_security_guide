@@ -163,7 +163,7 @@
 
 62. McGraw, G., Figueroa, H., McMahon, K., & Bonett, R. (2026). *No Security Meter for AI*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/docs/no-security-meter-ai.pdf)
 
-63. McGraw, G., Figueroa, H., Bonett, R., & McMahon, K. (2024). *An Architectural Risk Analysis of Large Language Models: Applied Machine Learning Security*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/results/BIML-LLM24.pdf)
+63. McGraw, G., Figueroa, H., Bonett, R., & McMahon, K. (2024). *An Architectural Risk Analysis of Large Language Models: Applied Machine Learning Security*. Berryville Institute of Machine Learning (BIML). [BIML](https://berryvilleiml.com/docs/BIML-LLM24.pdf)
 
 ## 智能体安全评测基准
 
@@ -193,7 +193,7 @@
 
 72. van der Weij, T., Hofstätter, F., Jaffe, O., Brown, S. F., & Ward, F. R. (2024). *AI Sandbagging: Language Models can Strategically Underperform on Evaluations*. [arXiv:2406.07358](https://arxiv.org/abs/2406.07358)
 
-73. *EVA: Evolving Semantic Adversaries for Red-Teaming GUI Agents Against Environmental Injection*. (2025). 初版题为 *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
+73. *EVA: Evolving Semantic Adversaries for Red-Teaming GUI Agents Against Environmental Injection Attacks*. (2025). 初版题为 *EVA: Red-Teaming GUI Agents via Evolving Indirect Prompt Injection*. [arXiv:2505.14289](https://arxiv.org/abs/2505.14289)
 
 ## 前沿安全治理框架
 
@@ -225,7 +225,7 @@
 
 84. Anthropic. (2026). *Fable and Mythos access statement*. [Anthropic News](https://www.anthropic.com/news/fable-mythos-access)
 
-85. Anthropic. (2026). *Claude Fable 5 and Claude Mythos 5 API documentation*. [Claude Docs](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5)
+85. Anthropic. (2026). *Claude Fable 5 and Claude Mythos 5 API documentation*. [Claude Docs](https://platform.claude.com/docs/en/models/fable-5/introducing-claude-fable-5-and-claude-mythos-5)
 
 86. Anthropic. (2026). *Model deprecations*. [Claude Docs](https://platform.claude.com/docs/en/about-claude/model-deprecations)
 
