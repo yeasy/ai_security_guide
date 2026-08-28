@@ -115,7 +115,7 @@
 
 ## 2025-2026 更新补充
 
-39. OWASP. (2025). *Top 10 for LLM Applications 2025*. [OWASP](https://genai.owasp.org/llm-top-10/)
+39. OWASP Gen AI Security Project. (2026). *OWASP Top 10 for LLM Applications 2026*（Version 2026, CC BY-SA 4.0）. [OWASP Gen AI Security Project](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)
 
 40. European Commission. (2026). *AI Act implementation timeline*. [European Commission](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 
@@ -250,6 +250,8 @@
 93. 北京市发展和改革委员会等. (2026). *北京市加快智能体引领发展若干措施（京发改〔2026〕1185 号）*. [北京市人民政府](https://www.beijing.gov.cn/zhengce/zhengcefagui/202607/t20260723_4781085.html)
 
 94. OWASP Gen AI Security Project, Agentic Security Initiative. (2025). *OWASP Top 10 For Agentic Applications 2026*（Version 2026, December 2025, CC BY-SA 4.0）. [OWASP Gen AI Security Project](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)
+
+95. OWASP. (2024). *OWASP Top 10 for LLM Applications 2025*. [OWASP](https://genai.owasp.org/llm-top-10/)
 
 ---
 
