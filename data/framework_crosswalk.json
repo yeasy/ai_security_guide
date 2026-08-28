@@ -1,105 +1,105 @@
 {
   "schema_version": "1.0",
-  "verified_at": "2026-07-10",
+  "verified_at": "2026-08-28",
   "entries": [
     {
-      "id": "owasp:LLM01:2025",
+      "id": "owasp:LLM01:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM01:2025",
+      "identifier": "LLM01:2026",
       "name": "Prompt Injection",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
-      "id": "owasp:LLM02:2025",
+      "id": "owasp:LLM02:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM02:2025",
+      "identifier": "LLM02:2026",
       "name": "Sensitive Information Disclosure",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
-      "id": "owasp:LLM03:2025",
+      "id": "owasp:LLM03:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM03:2025",
-      "name": "Supply Chain",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
-      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
-    },
-    {
-      "id": "owasp:LLM04:2025",
-      "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM04:2025",
-      "name": "Data and Model Poisoning",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
-      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
-    },
-    {
-      "id": "owasp:LLM05:2025",
-      "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM05:2025",
-      "name": "Improper Output Handling",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
-      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
-    },
-    {
-      "id": "owasp:LLM06:2025",
-      "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM06:2025",
+      "identifier": "LLM03:2026",
       "name": "Excessive Agency",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
-      "id": "owasp:LLM07:2025",
+      "id": "owasp:LLM04:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM07:2025",
-      "name": "System Prompt Leakage",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "identifier": "LLM04:2026",
+      "name": "Supply Chain",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
-      "id": "owasp:LLM08:2025",
+      "id": "owasp:LLM05:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM08:2025",
-      "name": "Vector and Embedding Weaknesses",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "identifier": "LLM05:2026",
+      "name": "Data and Model Poisoning",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
-      "id": "owasp:LLM09:2025",
+      "id": "owasp:LLM06:2026",
       "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM09:2025",
-      "name": "Misinformation",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
-      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
-    },
-    {
-      "id": "owasp:LLM10:2025",
-      "framework": "OWASP Top 10 for LLM Applications",
-      "identifier": "LLM10:2025",
+      "identifier": "LLM06:2026",
       "name": "Unbounded Consumption",
-      "version": "2025",
-      "source": "https://genai.owasp.org/llm-top-10/?cat=253",
-      "verified_at": "2026-07-10",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
+      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
+    },
+    {
+      "id": "owasp:LLM07:2026",
+      "framework": "OWASP Top 10 for LLM Applications",
+      "identifier": "LLM07:2026",
+      "name": "Misinformation",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
+      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
+    },
+    {
+      "id": "owasp:LLM08:2026",
+      "framework": "OWASP Top 10 for LLM Applications",
+      "identifier": "LLM08:2026",
+      "name": "Hidden Context Exposure",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
+      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
+    },
+    {
+      "id": "owasp:LLM09:2026",
+      "framework": "OWASP Top 10 for LLM Applications",
+      "identifier": "LLM09:2026",
+      "name": "Vector and Embedding Weaknesses",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
+      "chapters": ["03_frameworks/3.1_owasp_top10.md"]
+    },
+    {
+      "id": "owasp:LLM10:2026",
+      "framework": "OWASP Top 10 for LLM Applications",
+      "identifier": "LLM10:2026",
+      "name": "Improper Output Handling",
+      "version": "2026",
+      "source": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "verified_at": "2026-08-28",
       "chapters": ["03_frameworks/3.1_owasp_top10.md"]
     },
     {
@@ -365,39 +365,39 @@
   ],
   "mappings": [
     {
-      "id": "owasp-atlas:LLM01:2025",
-      "from": "owasp:LLM01:2025",
+      "id": "owasp-atlas:LLM01:2026",
+      "from": "owasp:LLM01:2026",
       "to": ["atlas:AML.T0051", "atlas:AML.T0093"],
       "chapter": "03_frameworks/3.1_owasp_top10.md",
-      "verified_at": "2026-07-10"
+      "verified_at": "2026-08-28"
     },
     {
-      "id": "owasp-atlas:LLM02:2025",
-      "from": "owasp:LLM02:2025",
+      "id": "owasp-atlas:LLM02:2026",
+      "from": "owasp:LLM02:2026",
       "to": ["atlas:AML.T0056", "atlas:AML.T0057", "atlas:AML.T0086"],
       "chapter": "03_frameworks/3.1_owasp_top10.md",
-      "verified_at": "2026-07-10"
+      "verified_at": "2026-08-28"
     },
     {
-      "id": "owasp-atlas:LLM04:2025",
-      "from": "owasp:LLM04:2025",
+      "id": "owasp-atlas:LLM05:2026",
+      "from": "owasp:LLM05:2026",
       "to": ["atlas:AML.T0020", "atlas:AML.T0070", "atlas:AML.T0080"],
       "chapter": "03_frameworks/3.1_owasp_top10.md",
-      "verified_at": "2026-07-10"
+      "verified_at": "2026-08-28"
     },
     {
-      "id": "owasp-atlas:LLM06:2025",
-      "from": "owasp:LLM06:2025",
+      "id": "owasp-atlas:LLM03:2026",
+      "from": "owasp:LLM03:2026",
       "to": ["atlas:AML.T0053", "atlas:AML.T0110"],
       "chapter": "03_frameworks/3.1_owasp_top10.md",
-      "verified_at": "2026-07-10"
+      "verified_at": "2026-08-28"
     },
     {
-      "id": "owasp-atlas:LLM07:2025",
-      "from": "owasp:LLM07:2025",
+      "id": "owasp-atlas:LLM08:2026",
+      "from": "owasp:LLM08:2026",
       "to": ["atlas:AML.T0056", "atlas:AML.T0069"],
       "chapter": "03_frameworks/3.1_owasp_top10.md",
-      "verified_at": "2026-07-10"
+      "verified_at": "2026-08-28"
     }
   ]
 }

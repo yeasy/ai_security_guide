@@ -24,16 +24,16 @@ REQUIRED_FIELDS = (
 )
 
 OWASP = {
-    "LLM01:2025": "Prompt Injection",
-    "LLM02:2025": "Sensitive Information Disclosure",
-    "LLM03:2025": "Supply Chain",
-    "LLM04:2025": "Data and Model Poisoning",
-    "LLM05:2025": "Improper Output Handling",
-    "LLM06:2025": "Excessive Agency",
-    "LLM07:2025": "System Prompt Leakage",
-    "LLM08:2025": "Vector and Embedding Weaknesses",
-    "LLM09:2025": "Misinformation",
-    "LLM10:2025": "Unbounded Consumption",
+    "LLM01:2026": "Prompt Injection",
+    "LLM02:2026": "Sensitive Information Disclosure",
+    "LLM03:2026": "Excessive Agency",
+    "LLM04:2026": "Supply Chain",
+    "LLM05:2026": "Data and Model Poisoning",
+    "LLM06:2026": "Unbounded Consumption",
+    "LLM07:2026": "Misinformation",
+    "LLM08:2026": "Hidden Context Exposure",
+    "LLM09:2026": "Vector and Embedding Weaknesses",
+    "LLM10:2026": "Improper Output Handling",
 }
 NIST = {
     "GOVERN": "Govern",
@@ -68,25 +68,27 @@ ASI = {
 }
 EU = {"Regulation (EU) 2024/1689": "EU AI Act"}
 CROSSWALK = {
-    "owasp:LLM01:2025": ("atlas:AML.T0051", "atlas:AML.T0093"),
-    "owasp:LLM02:2025": (
+    "owasp:LLM01:2026": ("atlas:AML.T0051", "atlas:AML.T0093"),
+    "owasp:LLM02:2026": (
         "atlas:AML.T0056",
         "atlas:AML.T0057",
         "atlas:AML.T0086",
     ),
-    "owasp:LLM04:2025": (
+    "owasp:LLM03:2026": ("atlas:AML.T0053", "atlas:AML.T0110"),
+    "owasp:LLM05:2026": (
         "atlas:AML.T0020",
         "atlas:AML.T0070",
         "atlas:AML.T0080",
     ),
-    "owasp:LLM06:2025": ("atlas:AML.T0053", "atlas:AML.T0110"),
-    "owasp:LLM07:2025": ("atlas:AML.T0056", "atlas:AML.T0069"),
+    "owasp:LLM08:2026": ("atlas:AML.T0056", "atlas:AML.T0069"),
 }
 
 FRAMEWORKS = {
     "OWASP Top 10 for LLM Applications": {
-        "version": "2025",
-        "source": "https://genai.owasp.org/llm-top-10/?cat=253",
+        "version": "2026",
+        "source": (
+            "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/"
+        ),
         "entries": OWASP,
     },
     "NIST AI RMF": {

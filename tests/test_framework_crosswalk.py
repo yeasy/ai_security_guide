@@ -8,7 +8,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "data" / "framework_crosswalk.json"
 
-OWASP_SOURCE = "https://genai.owasp.org/llm-top-10/?cat=253"
+OWASP_SOURCE = (
+    "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/"
+)
 NIST_SOURCE = "https://airc.nist.gov/docs/playbook.json"
 ATLAS_SOURCE = (
     "https://raw.githubusercontent.com/mitre-atlas/atlas-data/"
@@ -21,16 +23,16 @@ ASI_SOURCE = (
 EU_ELI = "http://data.europa.eu/eli/reg/2024/1689/oj"
 
 EXPECTED_OWASP = {
-    "LLM01:2025": "Prompt Injection",
-    "LLM02:2025": "Sensitive Information Disclosure",
-    "LLM03:2025": "Supply Chain",
-    "LLM04:2025": "Data and Model Poisoning",
-    "LLM05:2025": "Improper Output Handling",
-    "LLM06:2025": "Excessive Agency",
-    "LLM07:2025": "System Prompt Leakage",
-    "LLM08:2025": "Vector and Embedding Weaknesses",
-    "LLM09:2025": "Misinformation",
-    "LLM10:2025": "Unbounded Consumption",
+    "LLM01:2026": "Prompt Injection",
+    "LLM02:2026": "Sensitive Information Disclosure",
+    "LLM03:2026": "Excessive Agency",
+    "LLM04:2026": "Supply Chain",
+    "LLM05:2026": "Data and Model Poisoning",
+    "LLM06:2026": "Unbounded Consumption",
+    "LLM07:2026": "Misinformation",
+    "LLM08:2026": "Hidden Context Exposure",
+    "LLM09:2026": "Vector and Embedding Weaknesses",
+    "LLM10:2026": "Improper Output Handling",
 }
 EXPECTED_NIST = {
     "GOVERN": "Govern",
@@ -64,19 +66,19 @@ EXPECTED_ASI = {
     "ASI10": "Rogue Agents",
 }
 EXPECTED_MAPPINGS = {
-    "owasp:LLM01:2025": ("atlas:AML.T0051", "atlas:AML.T0093"),
-    "owasp:LLM02:2025": (
+    "owasp:LLM01:2026": ("atlas:AML.T0051", "atlas:AML.T0093"),
+    "owasp:LLM02:2026": (
         "atlas:AML.T0056",
         "atlas:AML.T0057",
         "atlas:AML.T0086",
     ),
-    "owasp:LLM04:2025": (
+    "owasp:LLM03:2026": ("atlas:AML.T0053", "atlas:AML.T0110"),
+    "owasp:LLM05:2026": (
         "atlas:AML.T0020",
         "atlas:AML.T0070",
         "atlas:AML.T0080",
     ),
-    "owasp:LLM06:2025": ("atlas:AML.T0053", "atlas:AML.T0110"),
-    "owasp:LLM07:2025": ("atlas:AML.T0056", "atlas:AML.T0069"),
+    "owasp:LLM08:2026": ("atlas:AML.T0056", "atlas:AML.T0069"),
 }
 
 
@@ -118,7 +120,7 @@ class FrameworkCrosswalkTests(unittest.TestCase):
 
     def test_registry_uses_only_official_canonical_or_machine_readable_sources(self):
         expected = {
-            "OWASP Top 10 for LLM Applications": ("2025", OWASP_SOURCE),
+            "OWASP Top 10 for LLM Applications": ("2026", OWASP_SOURCE),
             "NIST AI RMF": ("1.0", NIST_SOURCE),
             "MITRE ATLAS": ("2026.07", ATLAS_SOURCE),
             "OWASP Top 10 for Agentic Applications": ("2026", ASI_SOURCE),
