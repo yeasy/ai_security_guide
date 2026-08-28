@@ -54,7 +54,7 @@ flowchart LR
 | 测试与评估 | Promptfoo | 自动化 Prompt 注入和越狱红蓝对抗测试 |
 | 输出审核 | Guardrails AI | 输出结构化验证与自动重试，在有 grounding context 时可接入事实性校验 |
 | 监控与可观测性 | LangKit（WhyLabs） | 文本质量与安全指标监控 |
-| 敏感信息 | Microsoft Presidio | PII 识别与数据脱敏 |
+| 敏感信息 | Presidio | PII 识别与数据脱敏 |
 | 敏感信息 | Stanza NER（Stanford） | 多语言命名实体识别 |
 | 鉴伪水印 | lm-watermarking（马里兰大学） | KGW 文本水印算法参考实现 |
 | 鉴伪水印 | Binoculars | 更偏研究型的 zero-shot AI 生成文本鉴伪工具 |
