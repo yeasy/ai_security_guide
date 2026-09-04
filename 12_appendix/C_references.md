@@ -205,7 +205,7 @@
 
 ## 智能体威胁分类
 
-77. OWASP. (2025). *Agentic AI – Threats and Mitigations*. [OWASP](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
+77. OWASP. (2025). *Agentic AI – Threats and Mitigations*, v1.1（2025-12，T1–T17；v1.0 为 2025-02 的 T1–T15）. [OWASP](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)
 
 ## RLHF 与偏好数据安全
 

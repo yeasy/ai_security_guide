@@ -27,7 +27,7 @@ flowchart LR
 
 ## 对照 OWASP 智能体安全威胁清单
 
-OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) 提出了 15 项智能体威胁（T1–T15）。本章（结合相关章节）对这些威胁均有覆盖，便于读者按该清单自查：
+OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) 提出了 17 项智能体威胁（T1–T17）。该清单 v1.0（2025-02）原本只有 T1–T15，v1.1（2025-12）新增 T16、T17 以与 Agentic Top 10 对齐——注意官方资源页的版本标注一度仍停留在 v1.0，以 PDF 封面与 ASI Top 10 2026 附录 A 的交叉引用为准。本章（结合相关章节）对这些威胁均有覆盖，便于读者按该清单自查：
 
 | OWASP 威胁 | 本书覆盖位置 |
 |------------|--------------|
@@ -46,6 +46,8 @@ OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://gen
 | T13 失控智能体 | 7.5.3、7.6.4 |
 | T14 针对多智能体系统的人为攻击 | 7.5、7.6.4 |
 | T15 人类操纵 | 7.1.15 |
+| T16 智能体间协议滥用 | 7.5.4、7.5.2 |
+| T17 供应链攻陷 | 7.4.2、7.4.3 |
 
 ## 对照 OWASP Agentic Top 10（2026）
 

@@ -59,7 +59,7 @@
 
 | 名称 | 描述 | 链接 |
 |------|------|------|
-| OWASP LLM Top 10 | LLM 十大安全风险 | [OWASP](https://genai.owasp.org/llm-top-10/) |
+| OWASP LLM Top 10 (2026) | LLM 十大安全风险 | [OWASP](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) |
 | NIST AI RMF | AI 风险管理框架 | [NIST](https://www.nist.gov/itl/ai-risk-management-framework) |
 | NIST AI 600-1 (GenAI Profile) | 生成式 AI 风险管理配置文件 | [NIST](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) |
 | MITRE ATLAS | AI 对抗威胁矩阵 | [MITRE ATLAS](https://atlas.mitre.org/) |
