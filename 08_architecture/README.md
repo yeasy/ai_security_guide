@@ -9,13 +9,13 @@
 - **8.3 权限与访问控制**：设计细粒度的权限管理机制
 - **8.4 安全开发生命周期**：将安全融入开发全过程
 - **8.5 隐私增强技术与数据保护**：探讨联邦学习、机密计算等 PETs 在 LLM 中的应用
-- **8.6 供应链与基础设施环境安全**：管控上下游大模型组件供应链风险
+- **8.6 供应链与基础设施安全**：管控上下游大模型组件供应链风险
 
 通过本章的学习，读者将掌握设计安全 LLM 系统的核心原则和方法。
 
 > **本章定位**：第八章聚焦**宏观架构**与**系统性原则**——纵深防御如何分层、架构模式如何选型、权限如何切分。具体的输入/输出技术控制（验证、过滤、审核、水印、Constitutional Classifier）放在第九章。两章是“架构原则 → 战术控制”的递进关系，不存在内容重叠。
 >
-> **与攻击章的对应**：本章的架构模式（[§8.2](8.2_architecture_patterns.md)）需结合 [§4 提示注入](../04_prompt_injection/README.md)、[§5 越狱](../05_jailbreak/README.md)、[§7 智能体/RAG 攻击](../07_agent_rag_security/README.md) 的威胁模型进行选型。
+> **与攻击章的对应**：本章的架构模式（[§8.2](8.2_architecture_patterns.md)）需结合 [§4 提示注入](../04_prompt_injection/README.md)、[§5 越狱](../05_jailbreak/README.md)、[§7 智能体/RAG 攻击](../11_agent_foundations/README.md) 的威胁模型进行选型。
 
 ```mermaid
 flowchart TB
@@ -29,4 +29,4 @@ flowchart TB
 
 ---
 
-> **📚 延伸阅读**：关于 ClawHub 技能生态的供应链安全风险（Leaky Skills、ClawHavoc 事件），参见 [《OpenClaw 从入门到精通》第 5.3 节和第 11.4 节](https://yeasy.gitbook.io/openclaw_guide)。
+> **📚 延伸阅读**：关于 ClawHub 技能生态的供应链安全风险（Leaky Skills、ClawHavoc 事件），参见 [《OpenClaw 从入门到精通》第 5.3 节和第 14.3 节](https://yeasy.gitbook.io/openclaw_guide)。

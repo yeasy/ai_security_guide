@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 780" style="width:100%;max-width:740px;height:auto;display:block" role="img" aria-labelledby="ra-title ra-desc">
+  <title id="ra-title">智能体参考架构：多轮闭环与安全边界</title>
+  <desc id="ra-desc">十二个运行步骤：身份与任务授权、上下文组装、规划模型、参数绑定与策略、人工确认、先记意图再执行、凭据与出站网关、隔离模型、类型校验与值存储、更新状态与是否停止、答复模型、出口检查与终态提交。不停止时回到上下文组装继续下一轮。上方为上线前与变更时的供应链治理、工具注册表和仅追加的会话事件日志；侧面为记忆与配置、外部服务与其他智能体、入站门控。紫框为模型，输出均不可信；橙色箭头为不可信内容的流向。</desc>
+  <defs>
+    <style>
+      .ra-bg { fill: #f9fbfd; }
+      .ra-frame { fill: #f3f7fc; stroke: #9db8dc; stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .ra-box { fill: #ffffff; stroke-width: 2; }
+      .ra-z-enforce { stroke: #4f9a6c; }
+      .ra-z-model { stroke: #8e6cc9; }
+      .ra-z-user { stroke: #7ba3d9; }
+      .ra-z-untrusted { stroke: #d67868; }
+      .ra-z-data { stroke: #9aa9b8; fill: #f6f8fa; }
+      .ra-f-gov { stroke-dasharray: 5 3; }
+      .ra-f-untrusted { fill: #fff3e0; }
+      .ra-t { font: 700 13.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #16212b; }
+      .ra-b { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #465769; }
+      .ra-num { fill: #34495e; }
+      .ra-num-t { font: 700 11px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; }
+      .ra-ft { font: 700 13px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
+      .ra-line { stroke: #5f7184; stroke-width: 1.8; fill: none; marker-end: url(#ra-arrow); }
+      .ra-dash { stroke: #8a99a8; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#ra-arrow-g); }
+      .ra-line-o { stroke: #d8862e; stroke-width: 2.2; fill: none; marker-end: url(#ra-arrow-o); }
+      .ra-dash-o { stroke: #d8862e; stroke-width: 1.8; fill: none; stroke-dasharray: 5 4; marker-end: url(#ra-arrow-o); }
+      .ra-loop { stroke: #3d8a5a; stroke-width: 2.2; fill: none; marker-end: url(#ra-arrow-loop); }
+      .ra-e { font: 500 11px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #34495e; }
+      .ra-eo { font: 700 11px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #c2701a; }
+      .ra-el { font: 700 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #3d8a5a; }
+      .ra-note { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #34495e; }
+      .ra-noteb { font: 700 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
+      .ra-sw { fill: #ffffff; stroke-width: 2.2; }
+    </style>
+    <marker id="ra-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f7184" /></marker>
+    <marker id="ra-arrow-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8a99a8" /></marker>
+    <marker id="ra-arrow-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#d8862e" /></marker>
+    <marker id="ra-arrow-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3d8a5a" /></marker>
+  </defs>
+
+  <rect class="ra-bg" x="0" y="0" width="740" height="780" rx="12" />
+  <rect class="ra-frame" x="8" y="90" width="724" height="540" rx="12" />
+  <text class="ra-ft" x="20" y="109">智能体系统（逻辑范围）</text>
+
+  <rect class="ra-box ra-z-data ra-f-gov" x="15" y="12" width="230" height="66" rx="8" />
+  <text class="ra-t" x="25" y="35">供应链准入（上线前 / 变更时）</text>
+  <text class="ra-b" x="25" y="55">审核来源与权限、签名、固定版本</text>
+  <text class="ra-b" x="25" y="71">描述变更比对后审批发布</text>
+  <rect class="ra-box ra-z-data" x="265" y="12" width="190" height="66" rx="8" />
+  <text class="ra-t" x="275" y="35">工具注册表</text>
+  <text class="ra-b" x="275" y="55">只存已批准的定义与版本</text>
+  <text class="ra-b" x="275" y="71">运行时只读并核对版本</text>
+  <rect class="ra-box ra-z-data" x="475" y="12" width="250" height="66" rx="8" />
+  <text class="ra-t" x="485" y="35">会话事件日志（仅追加）</text>
+  <text class="ra-b" x="485" y="55">各步实时写入；原文与摘要保留来源标记</text>
+  <text class="ra-b" x="485" y="71">拒绝记录、幂等键、检查点</text>
+  <rect class="ra-box ra-z-enforce" x="25" y="120" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="42" cy="138" r="9.5" /><text class="ra-num-t" x="42" y="142">1</text>
+  <text class="ra-t" x="57" y="143">身份与任务授权</text>
+  <text class="ra-b" x="35" y="163">绑定用户、智能体与租户</text>
+  <text class="ra-b" x="35" y="179">任务范围、预算、run_id</text>
+  <rect class="ra-box ra-z-enforce" x="205" y="120" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="222" cy="138" r="9.5" /><text class="ra-num-t" x="222" y="142">2</text>
+  <text class="ra-t" x="237" y="143">上下文组装</text>
+  <text class="ra-b" x="215" y="163">只取变量引用、类型、来源</text>
+  <text class="ra-b" x="215" y="179">不读原文与派生摘要</text>
+  <rect class="ra-box ra-z-model" x="385" y="120" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="402" cy="138" r="9.5" /><text class="ra-num-t" x="402" y="142">3</text>
+  <text class="ra-t" x="417" y="143">规划模型</text>
+  <text class="ra-b" x="395" y="163">只见引用与获准标量</text>
+  <text class="ra-b" x="395" y="179">输出动作模板或结束提议</text>
+  <rect class="ra-box ra-z-enforce" x="565" y="120" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="582" cy="138" r="9.5" /><text class="ra-num-t" x="582" y="142">4</text>
+  <text class="ra-t" x="597" y="143">参数绑定与策略</text>
+  <text class="ra-b" x="575" y="163">代填实值，锁定抽取契约</text>
+  <text class="ra-b" x="575" y="179">按来源判定，风险分仅参考</text>
+  <rect class="ra-box ra-z-user" x="565" y="226" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="582" cy="244" r="9.5" /><text class="ra-num-t" x="582" y="248">5</text>
+  <text class="ra-t" x="597" y="249">人工确认（需要时）</text>
+  <text class="ra-b" x="575" y="269">展示参数、来源与副作用</text>
+  <text class="ra-b" x="575" y="285">批准绑定参数，改则重判</text>
+  <rect class="ra-box ra-z-enforce" x="385" y="226" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="402" cy="244" r="9.5" /><text class="ra-num-t" x="402" y="248">6</text>
+  <text class="ra-t" x="417" y="249">先记意图，再执行</text>
+  <text class="ra-b" x="395" y="269">先写意图与操作标识</text>
+  <text class="ra-b" x="395" y="285">代码类工具才进沙箱</text>
+  <rect class="ra-box ra-z-data" x="205" y="332" width="160" height="66" rx="8" />
+  <text class="ra-t" x="215" y="355">记忆、知识库与配置</text>
+  <text class="ra-b" x="215" y="375">可信配置：仅用户写入</text>
+  <text class="ra-b" x="215" y="391">记忆检索：门控写、隔离读</text>
+  <rect class="ra-box ra-z-enforce" x="385" y="332" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="402" cy="350" r="9.5" /><text class="ra-num-t" x="402" y="354">7</text>
+  <text class="ra-t" x="417" y="355">凭据与出站网关</text>
+  <text class="ra-b" x="395" y="375">sub=用户，act=智能体</text>
+  <text class="ra-b" x="395" y="391">权限取交集，目标再授权</text>
+  <rect class="ra-box ra-z-untrusted" x="565" y="332" width="160" height="66" rx="8" />
+  <text class="ra-t" x="575" y="355">外部服务与其他智能体</text>
+  <text class="ra-b" x="575" y="375">服务身份与版本匹配</text>
+  <text class="ra-b" x="575" y="391">返回值不可信，凭据不回传</text>
+  <rect class="ra-box ra-z-enforce" x="565" y="438" width="160" height="66" rx="8" />
+  <text class="ra-t" x="575" y="461">入站门控</text>
+  <text class="ra-b" x="575" y="481">其他智能体主动发来的消息</text>
+  <text class="ra-b" x="575" y="497">绑定身份任务，去重记日志</text>
+  <rect class="ra-box ra-z-model ra-f-untrusted" x="385" y="438" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="402" cy="456" r="9.5" /><text class="ra-num-t" x="402" y="460">8</text>
+  <text class="ra-t" x="417" y="461">隔离模型</text>
+  <text class="ra-b" x="395" y="481">按锁定契约抽取，无工具</text>
+  <text class="ra-b" x="395" y="497">自由文本留作不透明值</text>
+  <rect class="ra-box ra-z-enforce" x="205" y="438" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="222" cy="456" r="9.5" /><text class="ra-num-t" x="222" y="460">9</text>
+  <text class="ra-t" x="237" y="461">类型校验与值存储</text>
+  <text class="ra-b" x="215" y="481">校验枚举、范围、长度</text>
+  <text class="ra-b" x="215" y="497">派生值继承来源标记</text>
+  <rect class="ra-box ra-z-enforce" x="25" y="438" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="42" cy="456" r="9.5" /><text class="ra-num-t" x="42" y="460">10</text>
+  <text class="ra-t" x="57" y="461">更新状态，判定停止</text>
+  <text class="ra-b" x="35" y="481">落盘进度、错误与拒绝</text>
+  <text class="ra-b" x="35" y="497">代码判定完成、预算、受阻</text>
+  <rect class="ra-box ra-z-model ra-f-untrusted" x="25" y="544" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="42" cy="562" r="9.5" /><text class="ra-num-t" x="42" y="566">11</text>
+  <text class="ra-t" x="57" y="567">答复模型</text>
+  <text class="ra-b" x="35" y="587">可读获准原文以总结</text>
+  <text class="ra-b" x="35" y="603">无工具，输出不回规划</text>
+  <rect class="ra-box ra-z-enforce" x="205" y="544" width="160" height="66" rx="8" />
+  <circle class="ra-num" cx="222" cy="562" r="9.5" /><text class="ra-num-t" x="222" y="566">12</text>
+  <text class="ra-t" x="237" y="567">出口检查与终态提交</text>
+  <text class="ra-b" x="215" y="587">外链、图片、敏感数据受控</text>
+  <text class="ra-b" x="215" y="603">先提交终态，再返回</text>
+
+  <rect class="ra-box ra-z-user" x="385" y="554" width="120" height="46" rx="8" />
+  <text class="ra-t" x="445" y="575" text-anchor="middle">用户 / 应用</text>
+  <text class="ra-b" x="445" y="592" text-anchor="middle">接收答复</text>
+
+  <!-- 上线前治理与状态依赖 -->
+  <path class="ra-line" d="M 245 45 L 264 45" />
+  <path class="ra-dash" d="M 330 78 L 330 119" />
+  <text class="ra-e" x="324" y="104" text-anchor="end">已批准版本</text>
+  <path class="ra-dash" d="M 560 78 L 560 86 L 350 86 L 350 119" />
+  <text class="ra-e" x="356" y="104">控制状态与变量索引</text>
+
+  <!-- 主调用链 -->
+  <path class="ra-line" d="M 185 153 L 204 153" />
+  <path class="ra-line" d="M 365 153 L 384 153" />
+  <path class="ra-line" d="M 545 153 L 564 153" />
+  <path class="ra-line" d="M 645 186 L 645 225" />
+  <text class="ra-e" x="651" y="210">需确认</text>
+  <path class="ra-line" d="M 590 186 L 590 206 L 465 206 L 465 225" />
+  <text class="ra-e" x="504" y="201">放行</text>
+  <path class="ra-line" d="M 565 259 L 546 259" />
+  <path class="ra-line" d="M 465 292 L 465 331" />
+  <text class="ra-e" x="472" y="316">请求 + 批准引用</text>
+  <path class="ra-line" d="M 545 352 L 564 352" />
+  <path class="ra-line-o" d="M 565 378 L 546 378" />
+  <path class="ra-line-o" d="M 690 398 L 690 437" />
+  <text class="ra-eo" x="684" y="422" text-anchor="end">主动消息</text>
+  <path class="ra-line-o" d="M 565 471 L 546 471" />
+  <path class="ra-line-o" d="M 465 398 L 465 437" />
+  <text class="ra-eo" x="472" y="422">原始结果</text>
+  <path class="ra-line-o" d="M 385 471 L 366 471" />
+  <path class="ra-line" d="M 205 471 L 186 471" />
+  <path class="ra-dash" d="M 285 332 L 285 187" />
+  <text class="ra-e" x="291" y="306">可信配置与引用</text>
+  <text class="ra-e" x="291" y="320">（按权限）</text>
+
+  <!-- 结束提议与循环 -->
+  <path class="ra-line" d="M 400 186 L 400 218 L 375 218 L 375 418 L 150 418 L 150 437" />
+  <text class="ra-e" x="160" y="412">无工具调用 / 结束提议</text>
+  <path class="ra-loop" d="M 60 438 L 60 206 L 230 206 L 230 187" />
+  <text class="ra-el" x="66" y="330">否：继续下一轮</text>
+  <path class="ra-loop" d="M 105 504 L 105 543" />
+  <text class="ra-el" x="99" y="528" text-anchor="end">是：结束</text>
+  <path class="ra-dash-o" d="M 285 504 L 285 524 L 150 524 L 150 543" />
+  <text class="ra-eo" x="160" y="519">获准原文</text>
+  <path class="ra-line" d="M 185 577 L 204 577" />
+  <path class="ra-line" d="M 365 577 L 384 577" />
+
+  <!-- 页脚 -->
+  <text class="ra-noteb" x="15" y="652">审计与恢复：</text>
+  <text class="ra-note" x="87" y="652">副作用前先写意图；拒绝、审批、幂等键与检查点均落盘；结果未知先查询再对账</text>
+  <text class="ra-noteb" x="15" y="674">分支：</text>
+  <text class="ra-note" x="51" y="674">第 4 步拒绝、第 5 步否决与第 3 步的结束提议都转入第 10 步，记录后判定</text>
+  <text class="ra-noteb" x="15" y="696">重试：</text>
+  <text class="ra-note" x="51" y="696">只对可用性故障、同一操作标识、授权仍有效时；拒绝与否决不自动重试</text>
+  <rect class="ra-sw ra-z-enforce" x="15" y="714" width="20" height="12" rx="3" /><text class="ra-note" x="41" y="724">代码（确定性）</text>
+  <rect class="ra-sw ra-z-model" x="135" y="714" width="20" height="12" rx="3" /><text class="ra-note" x="161" y="724">模型（输出不可信）</text>
+  <rect class="ra-sw ra-z-model ra-f-untrusted" x="279" y="714" width="20" height="12" rx="3" /><text class="ra-note" x="305" y="724">读不可信内容</text>
+  <rect class="ra-sw ra-z-data" x="399" y="714" width="20" height="12" rx="3" /><text class="ra-note" x="425" y="724">数据与状态</text>
+  <rect class="ra-sw ra-z-untrusted" x="15" y="736" width="20" height="12" rx="3" /><text class="ra-note" x="41" y="746">外部</text>
+  <rect class="ra-sw ra-z-user" x="83" y="736" width="20" height="12" rx="3" /><text class="ra-note" x="109" y="746">人</text>
+  <path class="ra-line-o" d="M 139 742 L 169 742" /><text class="ra-note" x="175" y="746">不可信内容</text>
+  <path class="ra-dash" d="M 251 742 L 281 742" /><text class="ra-note" x="287" y="746">状态 / 数据依赖</text>
+  <text class="ra-note" x="15" y="768" style="fill:#6b7a89">虚线框是逻辑范围，不是信任边界；虚线边的方框为上线前与变更时的治理；记忆读出与沙箱输出同样经第 8 步，图中从略</text>
+</svg>

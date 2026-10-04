@@ -25,7 +25,20 @@ SKIP_DIRS = {
 LINK_RE = re.compile(r"(!?)\[[^\]]*\]\(([^)\s]+(?:\s+\"[^\"]*\")?)\)")
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})")
 APPENDIX_C_ENTRY_RE = re.compile(r"^(\d+)\.\s+")
-APPENDIX_C_CITE_RE = re.compile(r"附录\s*C-(\d+)")
+APPENDIX_C_CITE_RE = re.compile(
+    r"附录\s*C-\d+(?:\s*(?:至|到)\s*C-\d+)?(?:\s*[、，,]\s*C-\d+(?:\s*(?:至|到)\s*C-\d+)?)*"
+)
+APPENDIX_C_RANGE_RE = re.compile(r"C-(\d+)(?:\s*(?:至|到)\s*C-(\d+))?")
+
+
+def cited_appendix_c_numbers(span: str) -> list[int]:
+    """Expand a citation span such as "附录 C-3、C-7 至 C-9" into [3, 7, 8, 9]."""
+    numbers: list[int] = []
+    for start, end in APPENDIX_C_RANGE_RE.findall(span):
+        first = int(start)
+        last = int(end) if end else first
+        numbers.extend(range(first, last + 1) if first <= last else (first, last))
+    return numbers
 
 
 def iter_markdown_files() -> list[Path]:
@@ -125,7 +138,7 @@ def check_summary_links() -> list[str]:
 
 def check_appendix_c_references(files: list[Path]) -> list[str]:
     issues: list[str] = []
-    appendix = ROOT / "12_appendix" / "C_references.md"
+    appendix = ROOT / "16_appendix" / "C_references.md"
     if not appendix.exists():
         return issues
 
@@ -154,12 +167,12 @@ def check_appendix_c_references(files: list[Path]) -> list[str]:
     for path in files:
         body = strip_fenced_blocks(path.read_text(encoding="utf-8", errors="ignore"))
         for match in APPENDIX_C_CITE_RE.finditer(body):
-            number = int(match.group(1))
-            if number not in entries:
-                line_no = body[: match.start()].count("\n") + 1
-                issues.append(
-                    f"{path.relative_to(ROOT)}:{line_no}: missing appendix C reference: C-{number}"
-                )
+            line_no = body[: match.start()].count("\n") + 1
+            for number in cited_appendix_c_numbers(match.group(0)):
+                if number not in entries:
+                    issues.append(
+                        f"{path.relative_to(ROOT)}:{line_no}: missing appendix C reference: C-{number}"
+                    )
     return issues
 
 

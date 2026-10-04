@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 260" style="width:100%;max-width:740px;height:auto;display:block" role="img" aria-labelledby="sb-title sb-desc">
+  <title id="sb-title">把沙箱当作一只手：代码运行器在隔离边界内，出网与凭据代理在边界外</title>
+  <desc id="sb-desc">工具执行器把代码类工具调用交给隔离边界内的代码运行器执行；运行器无凭据、无登录态，出网只经边界外的出网与凭据代理，代理校验请求内容后换上真实令牌转发给资源方，资源方再做服务端授权；执行结果以字符串返回工具执行器。非代码类工具不经过沙箱。</desc>
+  <defs>
+    <style>
+      .sb-bg { fill: #f9fbfd; }
+      .sb-grp { fill: #fff5e8; stroke: #ddb57a; stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .sb-grp-title { font: 700 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
+      .sb-box { fill: #ffffff; stroke-width: 2.2; }
+      .sb-z-enforce { stroke: #4f9a6c; }
+      .sb-z-data { stroke: #9aa9b8; }
+      .sb-z-isolated { stroke: #d8a354; }
+      .sb-f-untrusted { fill: #fff3e0; }
+      .sb-t { font: 700 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #16212b; text-anchor: middle; }
+      .sb-b { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #465769; text-anchor: middle; }
+      .sb-line { stroke: #5f7184; stroke-width: 2; fill: none; marker-end: url(#sb-arrow); }
+      .sb-e { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #34495e; text-anchor: middle; }
+      .sb-note { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #6b7a89; }
+    </style>
+    <marker id="sb-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f7184" />
+    </marker>
+  </defs>
+
+  <rect class="sb-bg" x="0" y="0" width="740" height="260" rx="12" />
+
+  <!-- 隔离边界 -->
+  <rect class="sb-grp" x="165" y="30" width="260" height="190" rx="10" />
+  <text class="sb-grp-title" x="180" y="52">沙箱 / 隔离边界</text>
+
+  <!-- 工具执行器 -->
+  <rect class="sb-box sb-z-enforce" x="15" y="88" width="120" height="70" rx="8" />
+  <text class="sb-t" x="75" y="112">工具执行器</text>
+  <text class="sb-b" x="75" y="130" style="font-size:10.5px">execute(name, input)</text>
+  <text class="sb-b" x="75" y="147">策略放行后</text>
+
+  <!-- 代码运行器 -->
+  <rect class="sb-box sb-z-enforce sb-f-untrusted" x="185" y="80" width="220" height="86" rx="8" />
+  <text class="sb-t" x="295" y="104">代码运行器</text>
+  <text class="sb-b" x="295" y="123">Bash · Python · 技能脚本</text>
+  <text class="sb-b" x="295" y="140">文件 · 进程 · 系统调用 · 资源配额</text>
+  <text class="sb-b" x="295" y="157">无凭据，无登录态，一次性环境</text>
+  <text class="sb-note" x="180" y="200">非代码类工具不进沙箱（见 13.4）</text>
+
+  <!-- 出网 / 凭据代理 -->
+  <rect class="sb-box sb-z-enforce" x="455" y="80" width="130" height="86" rx="8" />
+  <text class="sb-t" x="520" y="104">出网 / 凭据代理</text>
+  <text class="sb-b" x="520" y="123">白名单目的地</text>
+  <text class="sb-b" x="520" y="140">校验请求内容</text>
+  <text class="sb-b" x="520" y="157">占位凭据 → 真实令牌</text>
+
+  <!-- 资源方 -->
+  <rect class="sb-box sb-z-data" x="615" y="80" width="110" height="86" rx="8" />
+  <text class="sb-t" x="670" y="104">资源方</text>
+  <text class="sb-b" x="670" y="123">代码托管、API</text>
+  <text class="sb-b" x="670" y="140">数据库</text>
+  <text class="sb-b" x="670" y="157">服务端独立授权</text>
+
+  <!-- 箭头 -->
+  <path class="sb-line" d="M 135 110 L 184 110" />
+  <text class="sb-e" x="160" y="102">代码类工具</text>
+  <path class="sb-line" d="M 185 140 L 136 140" />
+  <text class="sb-e" x="160" y="156">字符串结果</text>
+  <path class="sb-line" d="M 405 110 L 454 110" />
+  <text class="sb-e" x="430" y="102">受控出口</text>
+  <path class="sb-line" d="M 455 140 L 406 140" />
+  <text class="sb-e" x="430" y="156">响应</text>
+  <path class="sb-line" d="M 585 123 L 614 123" />
+  <text class="sb-e" x="600" y="115">令牌</text>
+
+  <text class="sb-note" x="455" y="184">代理、策略与真实凭据都在边界之外</text>
+  <text class="sb-note" x="15" y="245">沙箱只约束进程能触及什么；它的出口与凭据由边界外的代理决定（13.3.3、13.3.4）。</text>
+</svg>

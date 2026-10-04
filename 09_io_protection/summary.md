@@ -58,6 +58,8 @@ flowchart LR
 | 敏感信息 | Stanza NER（Stanford） | 多语言命名实体识别 |
 | 鉴伪水印 | lm-watermarking（马里兰大学） | KGW 文本水印算法参考实现 |
 | 鉴伪水印 | Binoculars | 更偏研究型的 zero-shot AI 生成文本鉴伪工具 |
+| 鉴伪水印 | SynthID Text（Google DeepMind） | Transformers 内置的生产级文本水印与检测器 |
+| 守卫模型 | Granite Guardian、ShieldGemma、WildGuard | 与 Llama Guard 可比的开源守卫模型，选型见 9.2.9 |
 
 ### 5. MVP 最小可行防线
 

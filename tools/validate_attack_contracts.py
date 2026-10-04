@@ -16,7 +16,11 @@ ATTACK_DIRS = (
     "04_prompt_injection",
     "05_jailbreak",
     "06_data_model_attacks",
-    "07_agent_rag_security",
+    "07_rag_security",
+    "11_agent_foundations",
+    "12_agent_attack_surface",
+    "13_agent_architecture",
+    "14_agent_practice",
 )
 EXECUTABLE_LANGUAGES = {
     "bash",

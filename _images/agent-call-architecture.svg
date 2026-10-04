@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 600" style="width:100%;max-width:740px;height:auto;display:block" role="img" aria-labelledby="ca-title ca-desc">
+  <title id="ca-title">智能体的实现结构与一次调用</title>
+  <desc id="ca-desc">智能体运行时内有会话、记忆、上下文组装、Harness 循环、动作策略、工具执行器与 MCP 客户端；运行时之外是用户、模型和工具实现（本地工具、MCP 服务器）。编号标出一次调用的八步：请求、组装输入、调用模型、模型返回文本或工具调用请求、动作请求、策略判定、执行工具、结果回填后继续组装输入、最终答复。橙色标出不可信内容的两个入口：工具结果，以及按需加载的检索片段、技能说明与工具定义。</desc>
+  <defs>
+    <style>
+      .ca-bg { fill: #f9fbfd; }
+      .ca-grp { fill: #eef5ff; stroke: #9db8dc; stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .ca-grp-title { font: 700 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
+      .ca-box { fill: #ffffff; stroke-width: 2.2; }
+      .ca-z-isolated { stroke: #d8a354; }
+      .ca-z-decision { stroke: #7ba3d9; }
+      .ca-z-enforce { stroke: #4f9a6c; }
+      .ca-z-data { stroke: #9aa9b8; }
+      .ca-z-model { stroke: #8e6cc9; }
+      .ca-f-untrusted { fill: #fff3e0; }
+      .ca-t { font: 700 14px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #16212b; text-anchor: middle; }
+      .ca-b { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #465769; text-anchor: middle; }
+      .ca-step { fill: #5f7184; }
+      .ca-step-t { font: 700 11px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; }
+      .ca-line { stroke: #5f7184; stroke-width: 2; fill: none; marker-end: url(#ca-arrow); }
+      .ca-line2 { stroke: #5f7184; stroke-width: 2; fill: none; marker-end: url(#ca-arrow); marker-start: url(#ca-arrow); }
+      .ca-dash { stroke: #5f7184; stroke-width: 2; fill: none; stroke-dasharray: 6 4; marker-end: url(#ca-arrow); }
+      .ca-line-o { stroke: #d8862e; stroke-width: 2.4; fill: none; marker-end: url(#ca-arrow-o); }
+      .ca-e { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #34495e; }
+      .ca-eo { font: 700 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #c2701a; }
+      .ca-legend { font: 500 12px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #34495e; }
+      .ca-note { font: 500 11.5px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #6b7a89; }
+      .ca-sw { fill: #ffffff; stroke-width: 2.5; }
+    </style>
+    <marker id="ca-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f7184" />
+    </marker>
+    <marker id="ca-arrow-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d8862e" />
+    </marker>
+  </defs>
+
+  <rect class="ca-bg" x="0" y="0" width="740" height="600" rx="12" />
+
+  <!-- 运行时边界 -->
+  <rect class="ca-grp" x="135" y="28" width="410" height="488" rx="10" />
+  <text class="ca-grp-title" x="150" y="48">智能体运行时 / Host</text>
+
+  <!-- 行 A：记忆、按需加载的外部内容 -->
+  <rect class="ca-box ca-z-data" x="150" y="62" width="125" height="52" rx="8" />
+  <text class="ca-t" x="212" y="84">记忆（跨会话）</text>
+  <text class="ca-b" x="212" y="102">笔记 · 偏好 · 摘要</text>
+
+  <rect class="ca-box ca-z-isolated ca-f-untrusted" x="350" y="58" width="170" height="60" rx="8" />
+  <text class="ca-t" x="435" y="78">检索 · 技能 · 工具定义</text>
+  <text class="ca-b" x="435" y="94">外部内容，按需加载</text>
+  <text class="ca-b" x="435" y="109">工具描述来自 tools/list</text>
+
+  <!-- 行 B：会话、上下文组装 -->
+  <rect class="ca-box ca-z-data" x="150" y="140" width="125" height="52" rx="8" />
+  <text class="ca-t" x="212" y="162">会话 / 运行状态</text>
+  <text class="ca-b" x="212" y="180">消息历史 · 任务状态</text>
+
+  <rect class="ca-box ca-z-enforce" x="325" y="140" width="195" height="52" rx="8" />
+  <text class="ca-t" x="422" y="162">上下文组装</text>
+  <text class="ca-b" x="422" y="180">系统提示 + 工具定义 + 消息历史</text>
+
+  <!-- 行 C：用户、Harness、模型 -->
+  <rect class="ca-box ca-z-decision" x="15" y="240" width="95" height="55" rx="8" />
+  <text class="ca-t" x="62" y="264">用户</text>
+  <text class="ca-b" x="62" y="282">或上层应用</text>
+
+  <rect class="ca-box ca-z-enforce" x="325" y="240" width="195" height="55" rx="8" />
+  <text class="ca-t" x="422" y="263">Harness（循环控制）</text>
+  <text class="ca-b" x="422" y="282">普通程序：调用模型、路由请求</text>
+
+  <rect class="ca-box ca-z-model" x="625" y="240" width="100" height="55" rx="8" />
+  <text class="ca-t" x="675" y="263">模型（LLM）</text>
+  <text class="ca-b" x="675" y="282">本地或远程服务</text>
+
+  <!-- 行 D：动作策略、工具执行器、本地工具 -->
+  <rect class="ca-box ca-z-enforce" x="150" y="350" width="125" height="55" rx="8" />
+  <text class="ca-t" x="212" y="373">动作策略（PDP）</text>
+  <text class="ca-b" x="212" y="392">允许 / 拒绝 / 转人工</text>
+
+  <rect class="ca-box ca-z-enforce" x="325" y="350" width="195" height="55" rx="8" />
+  <text class="ca-t" x="422" y="373">工具执行器（PEP）</text>
+  <text class="ca-b" x="422" y="392">执行校验 · 路由 / 适配</text>
+
+  <rect class="ca-box ca-z-data" x="615" y="350" width="110" height="55" rx="8" />
+  <text class="ca-t" x="670" y="373">本地工具</text>
+  <text class="ca-b" x="670" y="392">函数 · SDK · API</text>
+
+  <!-- 行 E：MCP 客户端、MCP 服务器 -->
+  <rect class="ca-box ca-z-enforce" x="400" y="440" width="120" height="55" rx="8" />
+  <text class="ca-t" x="460" y="463">MCP 客户端</text>
+  <text class="ca-b" x="460" y="482">协议适配</text>
+
+  <rect class="ca-box ca-z-data" x="615" y="440" width="110" height="55" rx="8" />
+  <text class="ca-t" x="670" y="463">MCP 服务器</text>
+  <text class="ca-b" x="670" y="482">本地或远程</text>
+
+  <!-- 记忆 → 上下文组装（读取） -->
+  <path class="ca-line" d="M 275 86 L 335 86 L 335 139" />
+  <text class="ca-e" x="300" y="80" text-anchor="middle">读取</text>
+  <!-- 会话 → 记忆（提炼 / 写入） -->
+  <path class="ca-dash" d="M 212 139 L 212 115" />
+  <text class="ca-e" x="220" y="131">提炼 / 写入</text>
+  <!-- 外部内容 → 上下文组装（按需加载） -->
+  <path class="ca-line-o" d="M 435 118 L 435 139" />
+  <text class="ca-eo" x="443" y="133">按需加载</text>
+  <!-- 会话 → 上下文组装（选取历史） -->
+  <path class="ca-line" d="M 275 166 L 324 166" />
+  <text class="ca-e" x="300" y="158" text-anchor="middle">选取历史</text>
+  <!-- Harness → 会话（记录状态） -->
+  <path class="ca-dash" d="M 340 239 L 340 215 L 300 215 L 300 182 L 276 182" />
+  <text class="ca-e" x="296" y="210" text-anchor="end">记录状态</text>
+
+  <!-- ① 请求 / ⑧ 最终答复 -->
+  <path class="ca-line" d="M 110 262 L 324 262" />
+  <rect class="ca-step" x="200" y="246" width="16" height="16" rx="3" /><text class="ca-step-t" x="208" y="258">1</text>
+  <text class="ca-e" x="222" y="258">请求</text>
+  <path class="ca-line" d="M 325 282 L 111 282" />
+  <rect class="ca-step" x="188" y="288" width="16" height="16" rx="3" /><text class="ca-step-t" x="196" y="300">8</text>
+  <text class="ca-e" x="210" y="300">最终答复</text>
+
+  <!-- ② 组装输入（上下文组装 ↔ Harness） -->
+  <path class="ca-line2" d="M 422 193 L 422 239" />
+  <rect class="ca-step" x="432" y="208" width="16" height="16" rx="3" /><text class="ca-step-t" x="440" y="220">2</text>
+  <text class="ca-e" x="454" y="220">组装本轮输入</text>
+
+  <!-- ③ / ④ Harness ↔ 模型 -->
+  <path class="ca-line" d="M 520 255 L 624 255" />
+  <rect class="ca-step" x="526" y="229" width="16" height="16" rx="3" /><text class="ca-step-t" x="534" y="241">3</text>
+  <text class="ca-e" x="546" y="241" style="font-size:10.5px">消息 + 工具定义</text>
+  <path class="ca-line" d="M 625 280 L 521 280" />
+  <rect class="ca-step" x="526" y="286" width="16" height="16" rx="3" /><text class="ca-step-t" x="534" y="298">4</text>
+  <text class="ca-e" x="546" y="298" style="font-size:10.5px">文本或调用请求</text>
+
+  <!-- ⑤ 动作请求 / ⑦ 结果回填 -->
+  <path class="ca-line" d="M 380 295 L 380 349" />
+  <rect class="ca-step" x="296" y="314" width="16" height="16" rx="3" /><text class="ca-step-t" x="304" y="326">5</text>
+  <text class="ca-e" x="318" y="326">动作请求</text>
+  <text class="ca-e" x="296" y="342">工具名 + 参数</text>
+  <path class="ca-line-o" d="M 462 350 L 462 296" />
+  <rect class="ca-step" x="472" y="304" width="16" height="16" rx="3" /><text class="ca-step-t" x="480" y="316">7</text>
+  <text class="ca-eo" x="494" y="316">结果回填</text>
+  <text class="ca-eo" x="472" y="332">外部内容入口</text>
+  <text class="ca-e" x="472" y="347">继续 ②</text>
+
+  <!-- 5a 策略判定（工具执行器 ↔ 动作策略） -->
+  <path class="ca-line2" d="M 278 377 L 322 377" />
+  <text class="ca-e" x="300" y="369" text-anchor="middle">5a</text>
+  <text class="ca-e" x="300" y="394" text-anchor="middle">判定</text>
+
+  <!-- 6A 本地工具 -->
+  <path class="ca-line2" d="M 523 377 L 612 377" />
+  <text class="ca-e" x="567" y="369" text-anchor="middle">6A 函数 / SDK</text>
+
+  <!-- 6B MCP 客户端 → MCP 服务器 -->
+  <path class="ca-line2" d="M 462 408 L 462 437" />
+  <text class="ca-e" x="470" y="427">6B MCP</text>
+  <path class="ca-line2" d="M 523 467 L 612 467" />
+  <text class="ca-e" x="567" y="459" text-anchor="middle">tools/list</text>
+  <text class="ca-e" x="567" y="483" text-anchor="middle">tools/call</text>
+
+  <!-- 图例 -->
+  <rect class="ca-sw ca-z-enforce" x="20" y="540" width="26" height="14" rx="3" />
+  <text class="ca-legend" x="52" y="552">代码组件（确定性）</text>
+  <rect class="ca-sw ca-z-model" x="190" y="540" width="26" height="14" rx="3" />
+  <text class="ca-legend" x="222" y="552">模型（输出是请求）</text>
+  <rect class="ca-sw ca-z-data" x="360" y="540" width="26" height="14" rx="3" />
+  <text class="ca-legend" x="392" y="552">数据与工具实现</text>
+  <rect class="ca-sw ca-z-isolated ca-f-untrusted" x="510" y="540" width="26" height="14" rx="3" />
+  <text class="ca-legend" x="542" y="552">不可信内容的入口</text>
+  <text class="ca-note" x="20" y="580">逻辑调用关系；各组件可同进程、跨服务或托管部署。安全控制点见图 14-2，与十二步调用的对应见 14.5.2。</text>
+</svg>
