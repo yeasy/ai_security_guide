@@ -725,6 +725,10 @@
 
 312. CA/Browser Forum. (2025). *Ballot SC081v3: Introduce Schedule of Reducing Validity and Data Reuse Periods*. [CA/Browser Forum](https://cabforum.org/2025/04/11/ballot-sc081v3-introduce-schedule-of-reducing-validity-and-data-reuse-periods/)
 
+313. Model Context Protocol. (2026). *Sampling*（规范 2026-07-28 修订版，该功能已弃用）. [MCP Specification](https://modelcontextprotocol.io/specification/2026-07-28/client/sampling)
+
+314. Model Context Protocol. (2026). *Elicitation*（规范 2026-07-28 修订版）. [MCP Specification](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
