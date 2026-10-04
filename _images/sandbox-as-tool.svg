@@ -40,7 +40,7 @@
   <text class="sb-b" x="295" y="123">Bash · Python · 技能脚本</text>
   <text class="sb-b" x="295" y="140">文件 · 进程 · 系统调用 · 资源配额</text>
   <text class="sb-b" x="295" y="157">无凭据，无登录态，一次性环境</text>
-  <text class="sb-note" x="180" y="200">非代码类工具不进沙箱（见 13.4）</text>
+  <text class="sb-note" x="180" y="200">非代码类工具不进沙箱（凭据与授权见 13.4）</text>
 
   <!-- 出网 / 凭据代理 -->
   <rect class="sb-box sb-z-enforce" x="455" y="80" width="130" height="86" rx="8" />
