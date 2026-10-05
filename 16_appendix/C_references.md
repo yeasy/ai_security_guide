@@ -767,6 +767,12 @@
 
 331. x402 Foundation. *Scheme: exact on EVM*. [GitHub](https://github.com/x402-foundation/x402/blob/main/specs/schemes/exact/scheme_exact_evm.md)
 
+## 代码编排的工具调用
+
+332. Anthropic. *Programmatic tool calling*（文档）. [Claude Docs](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling)
+
+333. Anthropic. (2025). *Code execution with MCP: Building more efficient agents*. [Anthropic Engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
