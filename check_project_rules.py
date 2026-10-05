@@ -96,6 +96,43 @@ def check_fences(path: Path, text: str) -> list[str]:
     return issues
 
 
+MERMAID_OPEN_RE = re.compile(r"^\s*```mermaid\s*$")
+MERMAID_CLOSE_RE = re.compile(r"^\s*```\s*$")
+
+
+def check_mermaid_dollar(path: Path, text: str) -> list[str]:
+    """`$` inside a Mermaid block is taken as inline math by the PDF build and breaks the diagram."""
+    issues: list[str] = []
+    inside = False
+    for line_no, line in enumerate(text.splitlines(), 1):
+        if not inside:
+            inside = bool(MERMAID_OPEN_RE.match(line))
+            continue
+        if MERMAID_CLOSE_RE.match(line):
+            inside = False
+            continue
+        if "$" in line:
+            issues.append(
+                f"{path.relative_to(ROOT)}:{line_no}: '$' inside a mermaid block breaks the PDF render (read as math)"
+            )
+    return issues
+
+
+CAPTION_LIKE_RE = re.compile(r"^(图|表) ?\d+-\d+")
+CAPTION_RE = re.compile(r"^(图|表) ?\d+-\d+[：:]")
+
+
+def check_caption_like_paragraphs(path: Path, text: str) -> list[str]:
+    """A body paragraph that starts with 「图 N-N」 is styled as a caption in the PDF build."""
+    issues: list[str] = []
+    for line_no, line in enumerate(strip_fenced_blocks(text).splitlines(), 1):
+        if CAPTION_LIKE_RE.match(line) and not CAPTION_RE.match(line):
+            issues.append(
+                f"{path.relative_to(ROOT)}:{line_no}: paragraph starts with a figure/table number and renders as a caption"
+            )
+    return issues
+
+
 def is_local_target(target: str) -> bool:
     parsed = urlparse(target)
     return not parsed.scheme and not parsed.netloc and not target.startswith("#")
@@ -183,6 +220,8 @@ def main() -> int:
         text = path.read_text(encoding="utf-8", errors="ignore")
         issues.extend(check_fences(path, text))
         issues.extend(check_links(path, text))
+        issues.extend(check_mermaid_dollar(path, text))
+        issues.extend(check_caption_like_paragraphs(path, text))
     issues.extend(check_summary_links())
     issues.extend(check_appendix_c_references(files))
     issues.extend(validate_crosswalk(ROOT))

@@ -773,6 +773,10 @@
 
 333. Anthropic. (2025). *Code execution with MCP: Building more efficient agents*. [Anthropic Engineering](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
+## MCP 规范变更
+
+334. Model Context Protocol. (2026). *Key Changes*（规范 2026-07-28 修订版变更记录，含多轮往返请求）. [MCP Specification](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
