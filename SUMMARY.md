@@ -104,7 +104,7 @@
   * [11.4 智能体控制流劫持](11_agent_foundations/11.4_control_flow_hijacking.md)
   * [11.5 过度自主权](11_agent_foundations/11.5_excessive_agency.md)
   * [11.6 幻觉驱动的工具调用](11_agent_foundations/11.6_hallucinated_tool_calls.md)
-  * [11.7 链上智能体的操作安全](11_agent_foundations/11.7_web3_agents.md)
+  * [11.7 资金操作：链上智能体与智能体支付](11_agent_foundations/11.7_web3_agents.md)
   * [11.8 暗码：不可追溯的运行时行为](11_agent_foundations/11.8_dark_code.md)
   * [11.9 智能体安全设计原则](11_agent_foundations/11.9_design_principles.md)
   * [11.10 智能体监控与审计](11_agent_foundations/11.10_monitoring_audit.md)

@@ -729,6 +729,44 @@
 
 314. Model Context Protocol. (2026). *Elicitation*（规范 2026-07-28 修订版）. [MCP Specification](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation)
 
+## 编码智能体的奖励投机
+
+315. Von Arx, S., Chan, L., & Barnes, B. (METR). (2025). *Recent Frontier Models Are Reward Hacking*. [METR](https://metr.org/blog/2025-06-05-recent-reward-hacking/)
+
+316. Anthropic. (2025). *System Card: Claude Opus 4 & Claude Sonnet 4*. [Anthropic](https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47.pdf)
+
+317. Anthropic. (2025). *Claude 3.7 Sonnet System Card*. [Anthropic](https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf)
+
+318. OpenAI. (2025). *Detecting misbehavior in frontier reasoning models*（论文：Baker et al., *Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation*, [arXiv:2503.11926](https://arxiv.org/abs/2503.11926)）. [OpenAI](https://openai.com/index/chain-of-thought-monitoring/)
+
+319. MacDiarmid, M., Wright, B., Uesato, J., et al. (Anthropic). (2025). *Natural Emergent Misalignment from Reward Hacking in Production RL*. [arXiv:2511.18397](https://arxiv.org/abs/2511.18397)
+
+320. Zhong, Z., Raghunathan, A., & Carlini, N. (2025). *ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases*. [arXiv:2510.20270](https://arxiv.org/abs/2510.20270)
+
+321. SWE-bench. (2025). *Repo State Loopholes During Agentic Evaluation*（Issue #465）. [GitHub](https://github.com/SWE-bench/SWE-bench/issues/465)
+
+322. Anthropic. *Best practices for Claude Code*. [Claude Code Docs](https://code.claude.com/docs/en/best-practices)
+
+## 智能体支付协议
+
+323. Google. (2026). *AP2 Security and Privacy Considerations*. [GitHub](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/security_and_privacy_considerations.md)
+
+324. Google. (2026). *Agent Payments Protocol (AP2) Specification*（0.2 版）. [GitHub](https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md)
+
+325. Google. (2026). *Google donates Agent Payments Protocol to FIDO Alliance*. [The Keyword](https://blog.google/products-and-platforms/platforms/google-pay/agent-payments-protocol-fido-alliance/)
+
+326. OpenAI & Stripe. *Agentic Commerce Protocol: Delegate Payment RFC*. [GitHub](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol/blob/main/rfcs/rfc.delegate_payment.md)
+
+327. OpenAI. *Delegated Payment Spec*. [OpenAI Developers](https://developers.openai.com/commerce/specs/payment)
+
+328. x402 Foundation. *x402 Protocol Specification v2*. [GitHub](https://github.com/x402-foundation/x402/blob/main/specs/x402-specification-v2.md)
+
+329. x402 Foundation. *x402 FAQ*. [GitHub](https://github.com/x402-foundation/x402/blob/main/docs/faq.md)
+
+330. Linux Foundation. (2026). *Linux Foundation Announces Operational Launch of x402 Foundation*. [x402.org](https://x402.org/linux-foundation-announces-operational-launch-of-x402-foundation-to-standardize-internet-native-payments-for-ai-agents-and-applications/)
+
+331. x402 Foundation. *Scheme: exact on EVM*. [GitHub](https://github.com/x402-foundation/x402/blob/main/specs/schemes/exact/scheme_exact_evm.md)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
