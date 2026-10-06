@@ -114,7 +114,7 @@ OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://gen
 
 ## 对照 OWASP Agentic Top 10（2026）
 
-上表的 T1–T17 出自威胁清单；在此之上，OWASP GenAI Security Project 的智能体安全倡议（Agentic Security Initiative）于 **2025-12** 发布了 *OWASP Top 10 For Agentic Applications 2026*（Version 2026），用 `ASI01`–`ASI10` 给出智能体应用的十大风险。它**与 3.1 的 LLM Top 10（2026）并行存在、互不替代**：LLM Top 10 面向「模型驱动的应用」，ASI 清单面向「会规划、会行动、会跨系统调用的智能体」。LLM Top 10 的 2026 版把这条边界写得更明确——**模型作为应用里的一个组件时归 LLM 清单；模型变成能调用工具、跨会话携带记忆、在下游引发后果的行动者时归 ASI 清单**。编号与英文名取自官方 PDF，由 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json) 统一机器校验（见附录 C-94）。
+上表的 T1–T17 出自威胁清单。OWASP Gen AI Security Project 的智能体安全倡议（Agentic Security Initiative）另于 2025 年 12 月发布 *OWASP Top 10 For Agentic Applications 2026*，以 `ASI01`–`ASI10` 列出智能体应用的十大风险。它与 3.1 的 LLM Top 10（2026）并行，互不替代。按 LLM Top 10 2026 版的界定，模型作为应用组件时，风险归 LLM 清单；模型成为能调用工具、跨会话保留记忆、在下游引发后果的行动者时，风险归 ASI 清单。下表编号与英文名取自官方 PDF（附录 C-94），登记于 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json)，由脚本统一校验。
 
 | 官方标识符与英文名 | 中文表述 | 本书覆盖位置 |
 |--------------------|----------|--------------|
