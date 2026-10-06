@@ -817,6 +817,10 @@
 
 350. Black Flag. (2025). *"Pick Two" AI Trilemma: Generality, Agency, Alignment*. [LessWrong](https://www.lesswrong.com/posts/LrwXC2HZpB494ASZS/pick-two-ai-trilemma-generality-agency-alignment)
 
+## 指令层级训练
+
+351. Wallace, E., Xiao, K., Leike, R., Weng, L., Heidecke, J., & Beutel, A. (2024). *The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions*. [arXiv:2404.13208](https://arxiv.org/abs/2404.13208)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
