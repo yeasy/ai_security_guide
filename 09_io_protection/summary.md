@@ -59,7 +59,7 @@ flowchart LR
 | 鉴伪水印 | lm-watermarking（马里兰大学） | KGW 文本水印算法参考实现 |
 | 鉴伪水印 | Binoculars | 更偏研究型的 zero-shot AI 生成文本鉴伪工具 |
 | 鉴伪水印 | SynthID Text（Google DeepMind） | Transformers 内置的生产级文本水印与检测器 |
-| 守卫模型 | Granite Guardian、ShieldGemma、WildGuard | 与 Llama Guard 可比的开源守卫模型，选型见 9.2.9 |
+| 守卫模型 | Granite Guardian、ShieldGemma、WildGuard | 与 Llama Guard 可比的开源守卫模型，选型见 [9.2.9](9.2_output_moderation.md) |
 
 ### 5. MVP 最小可行防线
 
@@ -93,8 +93,8 @@ flowchart LR
 ## 与后续章节的关联
 
 - **攻击技术指导**：第 4-5 章的攻击技术指导本章输入过滤规则，针对性防御
-- **架构支撑**：第 8 章提供安全架构基础，确保防护措施有效部署
-- **监控验证**：第 10 章的监控体系验证防护效果，形成反馈环路
+- **架构支撑**：[第 8 章](../08_architecture/README.md)提供安全架构基础，确保防护措施有效部署
+- **监控验证**：[第 10 章](../10_operations/README.md)的监控体系验证防护效果，形成反馈环路
 
 [第十章](../10_operations/README.md)将介绍安全运营与监控，包括全景安全监控覆盖、异常响应、以及至关重要的服务降级和 Fallback 兜底机制构建。
 ---
