@@ -1,48 +1,48 @@
 # 第十一章 智能体安全基础
 
-从本章起进入智能体安全篇。智能体把模型接上工具、记忆和外部环境，让它能自主规划和行动，这是能力上的飞跃，也把安全问题从“模型会说什么”变成了“系统会做什么”。本篇用四章讨论这一问题：本章先把智能体的实现结构、威胁模型和一条贯穿全篇的主线讲清楚；[第十二章](../12_agent_attack_surface/README.md)逐一分析攻击者从哪些门进来；[第十三章](../13_agent_architecture/README.md)讲怎样划边界；[第十四章](../14_agent_practice/README.md)用编码智能体、综合案例和一张全景图收束。想先看全貌的读者可以直接读 [14.5](../14_agent_practice/14.5_security_panorama.md)。
+本章起为智能体安全篇。智能体把模型与工具、记忆和外部环境相连，使其能够自主规划和行动；安全问题随之从“模型会输出什么”扩展为“系统会执行什么”。本篇共四章：本章介绍智能体的实现结构、威胁模型和贯穿全篇的主线；[第十二章](../12_agent_attack_surface/README.md)分析攻击入口；[第十三章](../13_agent_architecture/README.md)讨论边界划分与架构防御；[第十四章](../14_agent_practice/README.md)通过编码智能体、综合案例和全景图加以总结。希望先了解全貌的读者可从 [14.5](../14_agent_practice/14.5_security_panorama.md) 读起。
 
-## 本篇的一条主线
+## 本篇主线
 
-智能体系统由两部分组成。一部分是确定的：Harness（驱动模型循环、执行其请求的那段普通程序，见 [11.1](11.1_agent_implementation.md)）、工具、策略和各种代码，行为由代码写定，可以测试、审计——确定不等于可信，后文的来源总表会再分这一层。另一部分是概率的：模型，它的下一步由读到的内容决定，无法事先写清楚它会做什么。智能体的能力正来自这一点，智能体特有的风险也来自这一点——模型会无故出错，读到的内容也能改变它的决定。能力和这类风险同源，所以安全不是消除不确定性，而是把它关住：**概率的部分出主意，确定的部分拿主意**；规则写不出来的，才交给人确认。
+智能体系统由确定部分和概率部分组成。确定部分包括 Harness（驱动模型循环、执行模型请求的普通程序，见 [11.1](11.1_agent_implementation.md)）、工具、策略和其他代码，其行为由代码规定，可以测试和审计。确定不等于可信，这一区别在后文的来源总表中讨论。概率部分是模型：模型的下一步取决于它读到的内容，无法事先规定。智能体的能力和它特有的风险都来自这一点：模型可能无故出错，读到的内容也可能改变它的决定。由于二者同源，安全设计的目标不是消除不确定性，而是约束它：**概率的部分出主意，确定的部分拿主意**；规则无法覆盖的决定，交由人确认。
 
-本书从这个系统角度，把智能体安全的各种做法归纳为一个安全模型，称为**不可靠执行者模型**。模型是一个**不可靠的执行者**——会随机犯错（幻觉；错位，即模型追求的目标偏离了用户意图），也可能被人操纵（注入、后门）。对系统来说，两种情况的后果是一样的：模型提出了一个错误的请求。幻觉像一个不挑目标的攻击者，碰巧删掉数据和被人诱导删掉数据没有区别；注入则像一个专挑最值钱、最危险的事去做的攻击者，失败了还会换个说法再试。被操纵并不是随机性造成的：即使把温度调到 0、让输出尽量固定，模型照样能被注入，因为传统软件的控制流由代码决定、数据只填值，而模型的控制流由数据决定。
+本书据此把智能体安全的各种做法归纳为一个安全模型，称为**不可靠执行者模型**。该模型把模型视为**不可靠的执行者**：它会随机出错（幻觉；错位，即模型追求的目标偏离用户意图），也可能被操纵（注入、后门）。对系统而言，两种情况的后果相同，都是模型提出了错误的请求。两者的差别在于：幻觉相当于不挑目标的攻击者，误删数据与被诱导删除数据后果相同；注入则专门针对价值最高、危险最大的操作，失败后还会改换措辞重试。被操纵也不是随机性导致的：即使把温度设为 0、使输出尽量确定，模型仍可被注入。原因在于，传统软件的控制流由代码决定，数据只提供取值；模型的控制流则由数据决定。
 
-因此全篇只讲三件事：
+该模型包括三条原则：
 
-1. **不信模型**：模型只提出请求，决定由模型之外的代码做出。对下游代码而言，模型的输出就是不可信的输入。
-2. **盘点来源**：哪些东西能影响模型的判断——外部内容、工具与技能、记忆、其他智能体、模型本身、人。下面的总表逐一列出，并给出各自的防法。
-3. **动作过闸**：会造成损失的动作，不管原因是幻觉还是攻击，一律过闸——参数只能用真实存在的值，做了收不回的操作先确认影响范围再放行，往外发的东西先检查，能撤销的留好撤销的路。闸就是模型之外、决定一个动作能否执行的检查点（代码规则，或由代码强制的人工确认），[14.5](../14_agent_practice/14.5_security_panorama.md) 的十二个步骤标出了它们的位置。
+1. **不信模型**：模型只提出请求，是否执行由模型之外的代码决定。对下游代码而言，模型输出是不可信输入。
+2. **盘点来源**：识别所有能影响模型判断的来源，包括外部内容、工具与技能、记忆、其他智能体、模型本身和人。下文的来源总表逐一列出这些来源及其防御方法。
+3. **动作过闸**：可能造成损失的动作，无论起因是幻觉还是攻击，都必须经过闸。闸是位于模型之外、决定动作能否执行的检查点，形式为代码规则或由代码强制执行的人工确认。具体要求是：参数只能取真实存在的值；不可逆操作在确认影响范围后放行；外发内容先经检查；可撤销的操作保留撤销路径。[14.5](../14_agent_practice/14.5_security_panorama.md) 的十二个步骤标出了各个闸的位置。
 
-闸要多硬，由 Meta 的 **Rule of Two** 判断（[13.1](../13_agent_architecture/13.1_agents_rule_of_two.md)）。它从智能体的能力出发，列了三项：
+闸的强度由 Meta 提出的 **Rule of Two** 判断（[13.1](../13_agent_architecture/13.1_agents_rule_of_two.md)）。该规则从智能体的能力出发，列出三项性质：
 
-- **不可信内容**（[A]）：模型在任务中会读到外人写的内容——网页、邮件、文档、检索结果、工具返回、其他智能体的消息——攻击者借此操纵它。发起任务的用户本人说的话不算；
+- **不可信内容**（[A]）：模型在任务中读取由他人编写的内容，如网页、邮件、文档、检索结果、工具返回和其他智能体的消息，攻击者可借此操纵模型。发起任务的用户本人的输入不属于此类；
 - **敏感访问**（[B]）：智能体能访问敏感数据或系统；
-- **对外动作**（[C]）：智能体能改变状态或对外通信——写入、执行、删除、支付、发送，也包括渲染外部图片、访问链接这类不显眼的外发。
+- **对外动作**（[C]）：智能体能够改变状态或对外通信，包括写入、执行、删除、支付、发送，也包括渲染外部图片、访问链接等不易察觉的外发。
 
-三项同时具备时，外人能借第一项操纵模型，借后两项造成损失：**不可信内容 → 敏感访问 → 对外动作**。这时闸只能是硬规则或人工确认，不能只靠模型“大概不会错”。让另一个模型来检查也不算：它读的是同一份上下文，可能被同一段文字说服；用概率的部分检查概率的部分，只能降低出错的频率，不能给后果设上限。
+三项同时具备时，攻击者可通过第一项操纵模型，再通过后两项造成损失，形成攻击链：**不可信内容 → 敏感访问 → 对外动作**。此时闸必须是硬规则或人工确认，不能依赖模型不出错。由另一个模型检查也不满足要求：检查模型读取同一份上下文，可能被同一段文字说服。以概率部分检查概率部分，只能降低出错频率，不能为后果设定上界。
 
-缺任何一项，攻击链就走不通。防御因此有四种形态：**隔离不可信内容**（控制来源，或只交给无权限的隔离模型读）、**收窄敏感访问**（隔离与身份）、**管住对外动作**（出口与策略），三项都必须保留时则 **加监督**。没有攻击者、只有幻觉时，Rule of Two 不适用，但第 3 件事的闸照样生效。
+缺少任一项，攻击链即无法完成。相应地，防御有四种形态：**隔离不可信内容**（控制来源，或只交给无权限的隔离模型读取）、**收窄敏感访问**（隔离与身份）、**管住对外动作**（出口与策略）；三项都必须保留时，则 **加监督**。只有幻觉而没有攻击者时，Rule of Two 不适用，但第三条原则中的闸仍然生效。
 
-**CAS 原理**。安全是有代价的，笔者把这一代价概括为 **CAS 原理**：通用性（Complexity）、自主性（Autonomy）、安全性（Security）三者不可兼得。
+**CAS 原理**。安全有代价。笔者将这一代价概括为 **CAS 原理**：通用性（Complexity）、自主性（Autonomy）、安全性（Security）三者不可兼得。
 
-- **通用性**：任务范围不预先限定，用户正当提出的任意任务，在没有攻击时都能做完。这里的“复杂”指范围不设限，而非难度高；它的对立面是“限定任务”，不是“简单任务”。接下任务后，遇到规则管不到的一步就拒绝，或者只给建议、由人去执行，都算限定了任务。
-- **自主性**：有后果的决定只靠事先写好的规则放行。“事先”指读到不可信内容之前：设计时写定的规则、用户在任务开始时签署的授权，都算规则。事后审计不算破坏自主；读到不可信内容之后由人确认，不论确认的是一个动作、一批动作还是一段数据，都不再是自主的。
-- **安全性**：不可信内容能引发的后果，不超出可信方核准的范围，并由模型之外的机制强制执行，而不是“攻击多半不会成功”。后果既包括做了什么，也包括哪些数据流到了谁那里。可信方要么是事先写好的规则，要么是人在运行中的确认。核准意味着可信方接受这一范围内的最坏情况：规则的放行条件只能取自通讯录、余额这类可信状态，放行条件若由不可信内容自己说了算（例如邮件自称来自上级、已获批准），等于一律放行，不算核准。人核准的是展示给他的内容，即具体的动作与参数（[14.5](../14_agent_practice/14.5_security_panorama.md) 第 5 步），或一批动作、一段数据，人受骗而放行，后果仍在他核准的范围之内；安全性不保证核准者不受骗。
+- **通用性**：任务范围不预先限定，用户正当提出的任意任务，在没有攻击时都能完成。Complexity 指范围不设限，而非难度高，其对立面是限定任务，而非简单任务。限定任务是指智能体只能完成预先限定范围内的任务；接受任务后遇到规则覆盖不到的步骤即拒绝，或只给出建议、交由人执行，也属于限定任务。
+- **自主性**：有后果的决定仅由事先制定的规则放行。“事先”指读取不可信内容之前，设计时写定的规则和用户在任务开始时签署的授权都属于这类规则。事后审计不影响自主性；读取不可信内容之后的任何人工确认，无论确认对象是一个动作、一批动作还是一段数据，都使系统失去自主性。
+- **安全性**：不可信内容能引发的后果不超出可信方核准的范围，且由模型之外的机制强制保证，而非依赖攻击大概率失败。后果既包括执行的动作，也包括数据流向。可信方是事先制定的规则，或运行中进行确认的人。核准意味着可信方接受该范围内的最坏情况。因此，规则的放行条件只能取自通讯录、余额等可信状态；若放行条件由不可信内容自行决定（例如邮件自称来自上级、已获批准），则等同于一律放行，不构成核准。人核准的是展示给他的内容，即具体的动作与参数（[14.5](../14_agent_practice/14.5_security_panorama.md) 第 5 步），或一批动作、一段数据；人受骗而放行时，后果仍在其核准范围之内。安全性不保证核准者不受骗。
 
-三者冲突的原因在于：任意任务里必然有“照这封邮件说的做”一类任务，下一步由运行中读到的不可信内容决定，事先划不出一个既容纳真实邮件可能提出的一切、最坏情况又可接受的范围。一封伪造的邮件和一封真实的邮件，文字可以毫无差别，模型再强也只能压低出错的概率；差别在文字之外，在于发件人是谁、有没有权。规则只能查事先想到的外部事实，人可以临时核实没想到的。于是任取两项，就得让出第三项：
+三者冲突的原因是：任意任务必然包括“按这封邮件的要求执行”一类任务，其下一步由运行中读取的不可信内容决定，无法事先划定一个既能容纳真实邮件的全部可能要求、最坏情况又可接受的范围。伪造邮件与真实邮件在文字上可以完全相同，模型能力再强也只能降低出错概率；二者的差别在文字之外，即发件人是谁、是否有权。规则只能核查事先预见的外部事实，人则可以临时核实未预见的事实。因此，任取两项，必须放弃第三项：
 
-- **安全 + 自主**：核准只能靠事先写好的规则，规则管得住的只是事先划得定的后果，任务因此被限定，失去通用性。
-- **安全 + 通用**：总有后果事先划不定，规则核准不了，只能由人在运行中确认，失去自主性。
-- **通用 + 自主**：划不定的后果，规则只能一律放行，又没有人确认，只剩概率性的防护，失去安全性。
+- **安全 + 自主**：核准只能依靠事先制定的规则，而规则只能约束事先可划定的后果，任务因而受限，失去通用性。
+- **安全 + 通用**：部分后果无法事先划定，规则无法核准，只能由人在运行中确认，失去自主性。
+- **通用 + 自主**：对无法划定的后果，规则只能一律放行，又无人确认，只剩概率性防护，失去安全性。
 
-Rule of Two 可以看作它在会话能力层面的粗略检查。满足它不等于满足 CAS 的安全性：它只看单个会话，并且去掉敏感访问之后，不可信内容仍能决定对外动作。按 CAS 来读：去掉三项能力中的任一项，或者三项齐全时只靠事先写好的校验规则放行，都是按能力或后果限定任务，让出的是通用性；三项都要、规则又管不住时，只能由人确认，让出的是自主性。
+Rule of Two 可视为 CAS 原理在会话能力层面的粗略检查。满足 Rule of Two 不等于满足 CAS 的安全性：它只考察单个会话，而且去掉敏感访问后，不可信内容仍能决定对外动作。用 CAS 原理分析：去掉三项能力中的任一项，或三项齐全但仅依靠事先制定的校验规则放行，都是按能力或后果限定任务，放弃的是通用性；三项都需要且规则无法覆盖时，只能由人确认，放弃的是自主性。
 
-对这类取舍已有一些非形式的探讨，形式化的结果也只覆盖某一类机制（[13.2.5](../13_agent_architecture/13.2_architectural_defenses.md)）；笔者提出的 CAS 原理是首个面向智能体整体、给出严格定义的不可能原理。
+对这类取舍已有一些非形式化的讨论，形式化结果也只覆盖某一类机制（[13.2.5](../13_agent_architecture/13.2_architectural_defenses.md)）；笔者提出的 CAS 原理是首个面向智能体整体、给出严格定义的不可能原理。
 
-放弃通用性最常见的做法，是把控制流留在代码里。Anthropic 在[《构建高效智能体》](https://www.anthropic.com/engineering/building-effective-agents)（附录 C-154）中区分了两类系统：**工作流**由预先写好的代码路径编排模型和工具，**智能体**由模型自己决定流程和工具的使用。任务能用工作流完成时，就不必把控制流交给模型。
+放弃通用性最常见的做法是把控制流保留在代码中。Anthropic 在[《构建高效智能体》](https://www.anthropic.com/engineering/building-effective-agents)（附录 C-154）中区分了两类系统：**工作流**由预先编写的代码路径编排模型和工具，**智能体**由模型自行决定流程和工具使用。任务能用工作流完成时，不必把控制流交给模型。
 
-不可靠执行者模型不是一项新技术，而是把输入校验、最小权限与委托、Rule of Two、CaMeL 的变量引用等已有做法放进同一个框架。它也可以看作零信任（[8.2.6](../08_architecture/8.2_architecture_patterns.md)）向智能体的延伸：零信任不默认信任任何主体，管住了身份与凭据（[14.5](../14_agent_practice/14.5_security_panorama.md) 的第 1、7 步）；但被注入的智能体拿着合法令牌、在用户权限之内做错事，零信任的每项检查都会通过。不可靠执行者模型连代表用户办事的模型也不信，并且追踪每个参数是被哪段内容影响的。
+不可靠执行者模型不是一项新技术，它把输入校验、最小权限与委托、Rule of Two、CaMeL 的变量引用等已有做法纳入同一框架。它也可视为零信任（[8.2.6](../08_architecture/8.2_architecture_patterns.md)）在智能体上的延伸。零信任不默认信任任何主体，能够管控身份与凭据（[14.5](../14_agent_practice/14.5_security_panorama.md) 的第 1、7 步）；但被注入的智能体持有合法令牌、在用户权限范围内执行错误操作时，零信任的各项检查都会通过。不可靠执行者模型不信任代表用户执行任务的模型，并追踪每个参数受哪段内容影响。
 
 ```mermaid
 flowchart LR
@@ -57,7 +57,7 @@ flowchart LR
 
 图 11-1：智能体安全篇的主线——攻击链与四种防御
 
-下表是第 2 件事的清单：哪些环节是不可信的来源，各自怎么防。它也是全篇的索引，后面每一节都落在其中某一行：
+下表对应第二条原则，列出不可信来源及其防御方法，也可作为本篇的索引，后续各节分别对应其中某一行：
 
 | 不可信的来源 | 从哪里进来 | 主要风险 | 确定性防御 | 主要章节 |
 |--------------|------------|----------|------------|----------|
@@ -68,9 +68,9 @@ flowchart LR
 | 模型本身：权重、微调与它的每个输出 | 每一次调用 | 幻觉与错位（随机出错）；后门或被投毒的权重（被人操纵） | 输出只是请求，会造成损失的动作一律过闸：参数只用真实存在的值，策略按参数来源判定，确认绑定参数，不可逆操作先演练后执行；模型来源校验、签名与固定版本 | [11.1](11.1_agent_implementation.md)、[11.5](11.5_excessive_agency.md)–[11.8](11.8_dark_code.md)、[12.1.5](../12_agent_attack_surface/12.1_tool_security.md)、[13.1.5](../13_agent_architecture/13.1_agents_rule_of_two.md)、[14.1.8](../14_agent_practice/14.1_coding_agents.md)、[6.2](../06_data_model_attacks/6.2_backdoor_attacks.md)、[8.6](../08_architecture/8.6_supply_chain.md) |
 | 人：用户与审批者 | 任务请求；对高风险动作的确认 | 面向公众时的直接注入与越狱；审批疲劳；被智能体的输出操纵 | 认证与任务级授权；确认展示参数与来源，控制确认数量 | 第四、五章、[12.6](../12_agent_attack_surface/12.6_human_layer.md) |
 
-每一行的防御都不靠“识别出恶意内容”，而是限定这个来源出了问题之后最多能造成什么——这是 [4.5.11](../04_prompt_injection/4.5_injection_defense.md) 所说的确定性防御。检测器与模型审核仍然有用，但只能降低频率。
+各行的防御都不依赖识别恶意内容，而是限定该来源出问题后可能造成的最大后果，即 [4.5.11](../04_prompt_injection/4.5_injection_defense.md) 所说的确定性防御。检测器与模型审核仍有价值，但只能降低频率。
 
-表中的来源不都是概率的。模型的不确定性不是唯一的风险来源：确定的部分自己也会有漏洞，有些部分确定却不可信——第三方 MCP Server 的代码完全确定，作者却可能心怀恶意。所以除了“确定还是概率”，还要问“可信还是不可信”，这张表管的是后一条轴。
+表中的来源并非都是概率性的。模型的不确定性不是唯一的风险来源：确定部分本身也可能有漏洞，有些部分确定但不可信，例如第三方 MCP Server 的代码完全确定，其作者却可能怀有恶意。因此，除区分确定与概率外，还需区分可信与不可信，本表按后者划分。
 
 
 ## 本章内容
@@ -86,47 +86,6 @@ flowchart LR
 - **[11.9](11.9_design_principles.md) 智能体安全设计原则**：最小权限与权限治理的总纲
 - **[11.10](11.10_monitoring_audit.md) 智能体监控与审计**：要记什么、才能回答“哪段输入引起了哪个动作”
 
+本篇各节与 OWASP 智能体安全威胁清单（T1–T17）和 *OWASP Top 10 For Agentic Applications 2026*（ASI01–ASI10）的逐条对照见[附录 D](../16_appendix/D_owasp_agentic_crosswalk.md)。
+
 > **⚠️ 道德边界**：本篇对工具调用滥用、记忆投毒、多智能体信任链破坏的剖析，用于让智能体开发者识别并修复自身系统的安全弱点；针对未经授权的他方系统执行类似攻击违反法律与服务条款。完整声明见 [§4 章首道德边界与负责任披露说明](../04_prompt_injection/README.md)。
-
-## 对照 OWASP 智能体安全威胁清单
-
-OWASP GenAI 安全项目的 [Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) 提出了 17 项智能体威胁（T1–T17）。该清单 v1.0（2025-02）原本只有 T1–T15，v1.1（2025-12）新增 T16、T17 以与 Agentic Top 10 对齐——注意官方资源页的版本标注一度仍停留在 v1.0，以 PDF 封面与 ASI Top 10 2026 [附录 A](../16_appendix/A_glossary.md) 的交叉引用为准。本篇（结合相关章节）对这些威胁均有覆盖，便于读者按该清单自查：
-
-| OWASP 威胁 | 本书覆盖位置 |
-|------------|--------------|
-| T1 记忆投毒 | [12.3](../12_agent_attack_surface/12.3_memory_poisoning.md)、[12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md) |
-| T2 工具滥用 | [12.1](../12_agent_attack_surface/12.1_tool_security.md) |
-| T3 权限提升 | [11.9](11.9_design_principles.md)、[12.1.6](../12_agent_attack_surface/12.1_tool_security.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
-| T4 资源过载 | [3.1.7](../03_frameworks/3.1_owasp_top10.md)（LLM06）、[11.2](11.2_threat_model.md) |
-| T5 级联幻觉 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[11.6](11.6_hallucinated_tool_calls.md) |
-| T6 意图篡改与目标操纵 | [15.3.3](../15_governance/15.3_emerging_threats.md)、[15.3.4](../15_governance/15.3_emerging_threats.md)、[14.3](../14_agent_practice/14.3_agentic_misalignment.md) |
-| T7 错位与欺骗行为 | [14.3](../14_agent_practice/14.3_agentic_misalignment.md)、[14.2](../14_agent_practice/14.2_sabotage_ai_control.md)、[15.3.12](../15_governance/15.3_emerging_threats.md) |
-| T8 抵赖与不可追溯 | [11.8](11.8_dark_code.md)、[11.10](11.10_monitoring_audit.md)、[13.1.5](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
-| T9 身份伪造与冒充 | [12.7.4](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4.4](../13_agent_architecture/13.4_agent_identity.md) |
-| T10 淹没人工审核 | [12.6](../12_agent_attack_surface/12.6_human_layer.md) |
-| T11 意外远程代码执行 | [6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[12.1.10](../12_agent_attack_surface/12.1_tool_security.md)、[13.3](../13_agent_architecture/13.3_sandbox_egress.md)、[14.1](../14_agent_practice/14.1_coding_agents.md) |
-| T12 智能体通信投毒 | [12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md) |
-| T13 失控智能体 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[14.2](../14_agent_practice/14.2_sabotage_ai_control.md) |
-| T14 针对多智能体系统的人为攻击 | [12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.1.3](../13_agent_architecture/13.1_agents_rule_of_two.md) |
-| T15 人类操纵 | [12.6](../12_agent_attack_surface/12.6_human_layer.md) |
-| T16 智能体间协议滥用 | [12.7.4](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md) |
-| T17 供应链攻陷 | [12.2.2](../12_agent_attack_surface/12.2_agent_skills.md)、[12.2.3](../12_agent_attack_surface/12.2_agent_skills.md)、[12.2.4](../12_agent_attack_surface/12.2_agent_skills.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[14.1.5](../14_agent_practice/14.1_coding_agents.md) |
-
-## 对照 OWASP Agentic Top 10（2026）
-
-上表的 T1–T17 出自威胁清单。OWASP Gen AI Security Project 的智能体安全倡议（Agentic Security Initiative）另于 2025 年 12 月发布 *OWASP Top 10 For Agentic Applications 2026*，以 `ASI01`–`ASI10` 列出智能体应用的十大风险。它与 [3.1](../03_frameworks/3.1_owasp_top10.md) 的 LLM Top 10（2026）并行，互不替代。按 LLM Top 10 2026 版的界定，模型作为应用组件时，风险归 LLM 清单；模型成为能调用工具、跨会话保留记忆、在下游引发后果的行动者时，风险归 ASI 清单。下表编号与英文名取自官方 PDF（[附录 C-94](../16_appendix/C_references.md)），登记于 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json)，由脚本统一校验。
-
-| 官方标识符与英文名 | 中文表述 | 本书覆盖位置 |
-|--------------------|----------|--------------|
-| ASI01 Agent Goal Hijack | 智能体目标劫持 | [11.4](11.4_control_flow_hijacking.md)、[13.1](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.2](../13_agent_architecture/13.2_architectural_defenses.md)、[4.3](../04_prompt_injection/4.3_indirect_injection.md)、[4.1](../04_prompt_injection/4.1_principles.md) |
-| ASI02 Tool Misuse and Exploitation | 工具滥用与利用 | [12.1](../12_agent_attack_surface/12.1_tool_security.md)、[11.6](11.6_hallucinated_tool_calls.md) |
-| ASI03 Identity and Privilege Abuse | 身份与权限滥用 | [13.4](../13_agent_architecture/13.4_agent_identity.md)、[11.9](11.9_design_principles.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[8.3.4](../08_architecture/8.3_access_control.md)、[8.3.6](../08_architecture/8.3_access_control.md) |
-| ASI04 Agentic Supply Chain Vulnerabilities | 智能体供应链漏洞 | [12.2](../12_agent_attack_surface/12.2_agent_skills.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[14.1.4](../14_agent_practice/14.1_coding_agents.md)、[14.1.5](../14_agent_practice/14.1_coding_agents.md)、[8.6.5](../08_architecture/8.6_supply_chain.md)、[6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md) |
-| ASI05 Unexpected Code Execution (RCE) | 意外代码执行（RCE） | [13.3](../13_agent_architecture/13.3_sandbox_egress.md)、[14.1](../14_agent_practice/14.1_coding_agents.md)、[6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md)、[12.1.10](../12_agent_attack_surface/12.1_tool_security.md) |
-| ASI06 Memory & Context Poisoning | 记忆与上下文投毒 | [12.3](../12_agent_attack_surface/12.3_memory_poisoning.md)、[7.2](../07_rag_security/7.2_knowledge_base_poisoning.md)、[12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md)、[4.6](../04_prompt_injection/4.6_long_context_risks.md) |
-| ASI07 Insecure Inter-Agent Communication | 智能体间通信不安全 | [12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.7.4](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md) |
-| ASI08 Cascading Failures | 级联失效 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[4.3.9](../04_prompt_injection/4.3_indirect_injection.md)、[10.5](../10_operations/10.5_fallback_strategy.md) |
-| ASI09 Human-Agent Trust Exploitation | 人机信任利用 | [12.6](../12_agent_attack_surface/12.6_human_layer.md) |
-| ASI10 Rogue Agents | 失控智能体 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[14.3](../14_agent_practice/14.3_agentic_misalignment.md)、[14.2](../14_agent_practice/14.2_sabotage_ai_control.md) |
-
-> 两份清单的侧重点不同，不必二选一：T 清单更细、便于逐条自查；ASI 清单更聚合、便于向管理层陈述风险优先级。官方文档本身也给出了 ASI 与 T 编号的对照。

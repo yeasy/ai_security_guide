@@ -154,6 +154,7 @@
   * [附录 A：术语表](16_appendix/A_glossary.md)
   * [附录 B：安全工具与资源](16_appendix/B_tools.md)
   * [附录 C：参考文献](16_appendix/C_references.md)
+  * [附录 D：OWASP 智能体清单对照](16_appendix/D_owasp_agentic_crosswalk.md)
   * [实验一：邮件与文档助手](examples/mail_assistant/README.md)
   * [实验二：可信预算状态](examples/payment_budget/README.md)
   * [实验三：RAG 轨迹与授权](examples/rag_trace/README.md)
