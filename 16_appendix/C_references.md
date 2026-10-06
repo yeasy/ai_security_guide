@@ -785,6 +785,18 @@
 
 337. Anthropic. (2026). *Responsible Scaling Policy, Version 3.4*（Frontier Safety Roadmap、Risk Reports 与 Appendix A 的条件承诺）. [Anthropic PDF](https://www-cdn.anthropic.com/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf)
 
+## 动态污点分析与指令—数据分离
+
+338. Newsome, J., & Song, D. (2005). *Dynamic Taint Analysis for Automatic Detection, Analysis, and Signature Generation of Exploits on Commodity Software*. NDSS 2005. [PDF](https://valgrind.org/docs/newsome2005.pdf)
+
+339. Zverev, E., Abdelnabi, S., Tabesh, S., Fritz, M., et al. (2024). *Can LLMs Separate Instructions From Data? And What Do We Even Mean By That?*（SEP 基准）. [arXiv:2403.06833](https://arxiv.org/abs/2403.06833)
+
+340. Wu, T., Zhang, S., Song, K., Xu, S., et al. (2024). *Instructional Segment Embedding: Improving LLM Safety with Instruction Hierarchy*（ISE）. [arXiv:2410.09102](https://arxiv.org/abs/2410.09102)
+
+341. Zverev, E., Kortukov, E., Panfilov, A., Volkova, A., et al. (2025). *ASIDE: Architectural Separation of Instructions and Data in Language Models*. [arXiv:2503.10566](https://arxiv.org/abs/2503.10566)
+
+342. Chismon, D. / UK NCSC. (2025). *Prompt injection is not SQL injection (it may be worse)*. [NCSC](https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
