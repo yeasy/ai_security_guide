@@ -797,6 +797,14 @@
 
 342. Chismon, D. / UK NCSC. (2025). *Prompt injection is not SQL injection (it may be worse)*. [NCSC](https://www.ncsc.gov.uk/blog-post/prompt-injection-is-not-sql-injection)
 
+## 完整性模型
+
+343. Biba, K. J. (1977). *Integrity Considerations for Secure Computer Systems*. ESD-TR-76-372, USAF Electronic Systems Division, April 1977（MITRE MTR-3153 初版为 1975 年 6 月）.
+
+344. Clark, D. D., & Wilson, D. R. (1987). *A Comparison of Commercial and Military Computer Security Policies*. IEEE Symposium on Security and Privacy 1987；全文收入 NIST SP 500-160 附录 A1. [NIST](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication500-160.pdf)
+
+345. Fraser, T. (2001). *LOMAC: MAC You Can Live With*. USENIX Annual Technical Conference, FREENIX Track（LOMAC 最早发表于 IEEE S&P 2000）. [USENIX](https://static.usenix.org/event/usenix01/freenix01/full_papers/fraser/fraser.pdf)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
