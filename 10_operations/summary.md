@@ -56,6 +56,7 @@ graph TB
 - **治理指引**：第 15 章的治理框架指导本章安全运营策略，实现合规运营
 
 [第十一章](../11_agent_foundations/README.md)将进入智能体安全篇：先讲清智能体的实现结构与一条贯穿全篇的主线，再分章讨论攻击面、架构边界与实践；本章的监控与红队方法在那里会针对智能体的多步调用重新展开。
+
 ---
 
 > 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

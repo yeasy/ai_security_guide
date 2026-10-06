@@ -359,8 +359,17 @@
       "name": "EU AI Act",
       "version": "2024/1689",
       "source": "http://data.europa.eu/eli/reg/2024/1689/oj",
-      "verified_at": "2026-07-10",
-      "chapters": ["15_governance/15.1_regulations.md"]
+      "verified_at": "2026-10-04",
+      "chapters": ["15_governance/15.1_regulations.md"],
+      "amendments": [
+        {
+          "identifier": "Regulation (EU) 2026/1744",
+          "source": "http://data.europa.eu/eli/reg/2026/1744/oj",
+          "effective_date": "2026-07-27",
+          "affected_articles": ["Article 5", "Article 111(4)", "Article 113"],
+          "chapters": ["15_governance/15.1_regulations.md", "15_governance/15.6_compliance_operational.md", "15_governance/summary.md"]
+        }
+      ]
     }
   ],
   "mappings": [

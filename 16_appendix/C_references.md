@@ -93,7 +93,7 @@
 
 30. 中华人民共和国国家互联网信息办公室. (2023). *生成式人工智能服务管理暂行办法*.
 
-31. Federal Register. (2023). *Executive Order 14110: Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后于 2025 年由 Executive Order 14179 撤销）. [Federal Register](https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence)
+31. Federal Register. (2023). *Executive Order 14110: Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence*（历史文件，后由 2025 年 Executive Order 14148 §2(ggg) 撤销；[撤销条款](https://www.federalregister.gov/documents/2025/01/28/2025-01901/initial-rescissions-of-harmful-executive-orders-and-actions)）. [Federal Register](https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence)
 
 32. UK AI Safety Institute. (2024). *International Scientific Report on the Safety of Advanced AI*.
 
@@ -197,7 +197,7 @@
 
 ## 前沿安全治理框架
 
-74. Anthropic. (2024). *Anthropic's Responsible Scaling Policy*. [Anthropic](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)
+74. Anthropic. (2023). *Anthropic's Responsible Scaling Policy*. [Anthropic](https://www.anthropic.com/news/anthropics-responsible-scaling-policy)
 
 75. OpenAI. (2025). *Updating our Preparedness Framework (Version 2)*. [OpenAI](https://openai.com/index/updating-our-preparedness-framework/)
 
@@ -776,6 +776,14 @@
 ## MCP 规范变更
 
 334. Model Context Protocol. (2026). *Key Changes*（规范 2026-07-28 修订版变更记录，含多轮往返请求）. [MCP Specification](https://modelcontextprotocol.io/specification/2026-07-28/changelog)
+
+## 治理法规与框架修订
+
+335. European Union. (2026). *Regulation (EU) 2026/1744 amending Regulation (EU) 2024/1689*（含 Article 111(4)、Article 113 时间线修订）. [EUR-Lex](https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng)
+
+336. Board of Governors of the Federal Reserve System. (2026). *SR 26-2: Revised Guidance on Model Risk Management*（替代 SR 11-7；附件脚注 3 排除生成式 AI 与智能体 AI）. [Federal Reserve](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)；[正式附件](https://www.federalreserve.gov/supervisionreg/srletters/SR2602a1.pdf)
+
+337. Anthropic. (2026). *Responsible Scaling Policy, Version 3.4*（Frontier Safety Roadmap、Risk Reports 与 Appendix A 的条件承诺）. [Anthropic PDF](https://www-cdn.anthropic.com/files/4zrzovbb/website/0bacdc8440ea96e62a8766d99ebe1d4eea6d5f3a.pdf)
 
 ---
 

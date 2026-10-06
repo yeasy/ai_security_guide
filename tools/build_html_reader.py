@@ -13,6 +13,44 @@ import argparse, os, re, subprocess, sys, posixpath, tempfile
 def esc(s):  return s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 def escattr(s): return s.replace("&","&amp;").replace('"',"&quot;").replace("<","&lt;")
 
+def zoom_figure(content, key, width, css_class):
+    control, region = f"zoom-{key}", f"visual-{key}"
+    # img can occur inside a Pandoc paragraph; phrasing elements remain valid there.
+    outer, viewport = ("span", "span") if css_class == "illustration" else ("figure", "div")
+    return (
+        f'<{outer} class="{css_class}" style="--diagram-width:{width}px">'
+        f'<input class="diagram-zoom-toggle" type="checkbox" id="{control}" '
+        f'aria-controls="{region}">'
+        f'<label class="diagram-zoom-label" for="{control}">放大查看（可横向滚动）</label>'
+        f'<{viewport} class="diagram-viewport" id="{region}">{content}</{viewport}></{outer}>'
+    )
+
+def diagram_figure(svg, index):
+    # Only accept a finite positive numeric SVG viewport width as CSS.
+    viewbox = re.search(r'\bviewBox=["\']([^"\']+)["\']', svg)
+    width = 960
+    if viewbox:
+        values = viewbox.group(1).replace(",", " ").split()
+        if len(values) == 4 and re.fullmatch(r'\d+(?:\.\d+)?', values[2]):
+            candidate = float(values[2])
+            if 0 < candidate <= 100000:
+                width = max(960, candidate)
+    return zoom_figure(svg, f"diagram-{index}", f"{width:g}", "diagram")
+
+def zoom_images(html):
+    index = 0
+    def replace(match):
+        nonlocal index
+        result = zoom_figure(match.group(0), f"image-{index}", "960", "illustration")
+        index += 1
+        return result
+    # Pandoc emits HTML img tags; do not touch SVG <image> elements. Images inside a link
+    # (badges, linked thumbnails) keep their link behaviour and get no zoom control, which
+    # would otherwise nest interactive elements inside <a>.
+    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.S | re.I)
+    return "".join(part if i % 2 else re.sub(r'<img\b[^>]*>', replace, part)
+                   for i, part in enumerate(parts))
+
 def parse_summary(book_dir):
     items, seen = [], set()
     with open(os.path.join(book_dir, "SUMMARY.md"), encoding="utf-8") as f:
@@ -89,6 +127,7 @@ a{color:var(--link);text-decoration:none}a:active{opacity:.6}
 #prog{font-size:.8rem;color:var(--muted);white-space:nowrap}
 #content{max-width:44rem;margin:0 auto;padding:1rem 1.1rem 2rem}
 /* default = readable scroll (works with NO JavaScript). JS upgrades to paged. */
+.page{scroll-margin-top:4rem}
 body.js .page{display:none}
 body.js .page.active{display:block;animation:fade .2s ease}
 body.js .page:not(.active) .pn-wrap{display:none}
@@ -101,8 +140,14 @@ code{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
 :not(pre)>code{background:var(--code-bg);padding:.15em .4em;border-radius:6px;word-break:break-word}
 pre{background:var(--pre-bg);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem;overflow-x:auto;line-height:1.5;font-size:.84rem;-webkit-overflow-scrolling:touch}
 pre code{background:none;padding:0;font-size:inherit}
-.diagram{text-align:center;margin:1.3rem 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sequence-panel{margin:1.3rem 0}
+.diagram,.illustration{display:block;text-align:center;margin:1.3rem 0}
+.diagram-viewport{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .diagram svg{max-width:100%;height:auto}
+.diagram-zoom-toggle{width:1.1rem;height:1.1rem;vertical-align:middle;accent-color:var(--accent)}
+.diagram-zoom-label{display:inline-flex;align-items:center;min-height:44px;padding:0 .5rem;font-size:.85rem;color:var(--link);cursor:pointer}
+.diagram-zoom-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.diagram-zoom-toggle:checked~.diagram-viewport svg,.diagram-zoom-toggle:checked~.diagram-viewport img{width:var(--diagram-width)!important;max-width:none!important;height:auto}
 .diagram-fallback{display:block;text-align:left;white-space:pre;overflow-x:auto;background:var(--pre-bg);border:1px dashed var(--border);border-radius:10px;padding:.9rem 1rem;font-size:.8rem;color:var(--muted)}
 math{font-size:1.02em}
 math[display="block"]{display:block;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:.4rem 0;-webkit-overflow-scrolling:touch}
@@ -242,7 +287,8 @@ def main():
     finally:
         if os.path.exists(tmp_md): os.remove(tmp_md)
     # swap mermaid placeholders -> pre-rendered inline SVG (2nd pass catches any not in <p>)
-    def mrepl(m): return f'<figure class="diagram">{svgs[int(m.group(1))]}</figure>'
+    html = zoom_images(html)
+    def mrepl(m): return diagram_figure(svgs[int(m.group(1))], int(m.group(1)))
     html = re.sub(r'<p>\s*MERMAIDZZ(\d+)ZZ\s*</p>', mrepl, html)
     html = re.sub(r'MERMAIDZZ(\d+)ZZ', mrepl, html)
     # split <main> into pages, append static prev/next nav per page

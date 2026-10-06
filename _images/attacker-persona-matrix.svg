@@ -1,74 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="ap-title ap-desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="ap-title ap-desc">
   <title id="ap-title">攻击者画像矩阵</title>
-  <desc id="ap-desc">以资源与能力、动机与影响为两个维度展示常见 LLM 安全攻击者画像。</desc>
+  <desc id="ap-desc">横轴资源与能力从左到右增加，纵轴潜在影响从下到上增加。画像位置为教学示意，不是实测排名；研究者身份本身不代表恶意。</desc>
   <defs>
     <style>
       .ap-bg { fill: #fbfaf5; }
-      .ap-panel-a { fill: #eaf4ea; }
-      .ap-panel-b { fill: #fff2d8; }
-      .ap-panel-c { fill: #eef4fb; }
-      .ap-panel-d { fill: #fde8e5; }
       .ap-axis { stroke: #28323c; stroke-width: 3; }
       .ap-grid { stroke: #b7c2cd; stroke-width: 1.5; stroke-dasharray: 6 6; }
       .ap-label { font: 600 20px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #1f2a33; }
       .ap-small { font: 500 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #435466; }
-      .ap-quad { font: 700 24px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #20303c; }
+      .ap-quad { font: 700 22px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #20303c; }
       .ap-node { stroke: #ffffff; stroke-width: 3; }
-      .ap-node-text { font: 700 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; dominant-baseline: middle; }
+      .ap-node-text { font: 700 16px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #ffffff; text-anchor: middle; }
       .ap-title { font: 700 30px 'Microsoft YaHei', 'PingFang SC', sans-serif; fill: #18232c; }
     </style>
   </defs>
-
-  <rect class="ap-bg" x="0" y="0" width="960" height="620" rx="24"/>
+  <rect class="ap-bg" width="960" height="660" rx="24"/>
   <text class="ap-title" x="52" y="56">攻击者画像矩阵</text>
-  <text class="ap-small" x="52" y="88">横轴表示资源与能力，纵轴表示动机强度与潜在影响，用于辅助优先级研判。</text>
-
-  <rect class="ap-panel-a" x="120" y="140" width="340" height="180" rx="20"/>
-  <rect class="ap-panel-b" x="460" y="140" width="340" height="180" rx="20"/>
-  <rect class="ap-panel-c" x="120" y="320" width="340" height="180" rx="20"/>
-  <rect class="ap-panel-d" x="460" y="320" width="340" height="180" rx="20"/>
-
-  <line class="ap-axis" x1="120" y1="500" x2="840" y2="500"/>
-  <line class="ap-axis" x1="120" y1="520" x2="120" y2="120"/>
-  <line class="ap-grid" x1="460" y1="140" x2="460" y2="500"/>
-  <line class="ap-grid" x1="120" y1="320" x2="800" y2="320"/>
-
-  <polygon fill="#28323c" points="840,500 824,492 824,508"/>
-  <polygon fill="#28323c" points="120,120 112,136 128,136"/>
-
-  <text class="ap-label" x="650" y="544">资源与能力更高</text>
-  <text class="ap-label" x="202" y="544">资源与能力较低</text>
-  <text class="ap-label" x="42" y="260" transform="rotate(-90 42 260)">动机更强 / 影响更高</text>
-  <text class="ap-label" x="42" y="454" transform="rotate(-90 42 454)">动机较弱 / 影响较低</text>
-
-  <text class="ap-quad" x="160" y="176">低资源 · 低影响</text>
-  <text class="ap-quad" x="500" y="176">高资源 · 高影响</text>
-  <text class="ap-quad" x="160" y="356">低资源 · 中高扰动</text>
-  <text class="ap-quad" x="500" y="356">高资源 · 中高目标性</text>
-
-  <circle class="ap-node" cx="260" cy="410" r="40" fill="#4f83cc"/>
-  <text class="ap-node-text" x="260" y="410">好奇探索者</text>
-
-  <circle class="ap-node" cx="360" cy="360" r="42" fill="#e38b2c"/>
-  <text class="ap-node-text" x="360" y="360">恶意用户</text>
-
-  <circle class="ap-node" cx="430" cy="250" r="44" fill="#d96b6b"/>
-  <text class="ap-node-text" x="430" y="250">竞争对手</text>
-
-  <circle class="ap-node" cx="585" cy="260" r="44" fill="#2e8b70"/>
-  <text class="ap-node-text" x="585" y="260">安全研究员</text>
-
-  <circle class="ap-node" cx="660" cy="208" r="48" fill="#c95151"/>
-  <text class="ap-node-text" x="660" y="208">网络犯罪分子</text>
-
-  <circle class="ap-node" cx="735" cy="180" r="54" fill="#7e3f98"/>
-  <text class="ap-node-text" x="735" y="180">国家级行为者</text>
-
-  <text class="ap-small" x="822" y="182">高</text>
-  <text class="ap-small" x="822" y="498">低</text>
-  <text class="ap-small" x="120" y="574">低</text>
-  <text class="ap-small" x="828" y="574">高</text>
-
-  <rect x="120" y="548" width="680" height="36" rx="18" fill="#ffffff" opacity="0.82"/>
-  <text class="ap-small" x="140" y="571">阅读方式：越靠右上，越应优先投入威胁建模、权限隔离、检测与溯源能力。</text>
+  <text class="ap-small" x="52" y="88">资源与能力、潜在影响是不同维度；动机需另外调查，不能由身份直接推定。</text>
+  <rect x="150" y="145" width="350" height="185" fill="#fff2d8"/>
+  <rect x="500" y="145" width="340" height="185" fill="#fde8e5"/>
+  <rect x="150" y="330" width="350" height="185" fill="#eaf4ea"/>
+  <rect x="500" y="330" width="340" height="185" fill="#eef4fb"/>
+  <line class="ap-grid" x1="500" y1="145" x2="500" y2="515"/>
+  <line class="ap-grid" x1="150" y1="330" x2="840" y2="330"/>
+  <line class="ap-axis" x1="150" y1="515" x2="875" y2="515"/>
+  <line class="ap-axis" x1="150" y1="530" x2="150" y2="120"/>
+  <polygon fill="#28323c" points="875,515 859,507 859,523"/>
+  <polygon fill="#28323c" points="150,120 142,136 158,136"/>
+  <text class="ap-label" x="70" y="330" text-anchor="middle" transform="rotate(-90 70 330)">潜在影响</text>
+  <text class="ap-small" x="110" y="164">高</text>
+  <text class="ap-small" x="110" y="509">低</text>
+  <text class="ap-label" x="500" y="561" text-anchor="middle">资源与能力</text>
+  <text class="ap-small" x="160" y="553">低</text>
+  <text class="ap-small" x="832" y="553">高</text>
+  <text class="ap-quad" x="176" y="179">低资源 · 高影响</text>
+  <text class="ap-quad" x="526" y="179">高资源 · 高影响</text>
+  <text class="ap-quad" x="176" y="365">低资源 · 低影响</text>
+  <text class="ap-quad" x="526" y="365">高资源 · 低影响</text>
+  <circle class="ap-node" cx="265" cy="448" r="39" fill="#4f83cc"/>
+  <text class="ap-node-text" x="265" y="444"><tspan x="265">好奇</tspan><tspan x="265" dy="20">探索者</tspan></text>
+  <circle class="ap-node" cx="390" cy="422" r="40" fill="#a85f18"/>
+  <text class="ap-node-text" x="390" y="418"><tspan x="390">恶意</tspan><tspan x="390" dy="20">用户</tspan></text>
+  <circle class="ap-node" cx="540" cy="226" r="38" fill="#b24a4a"/>
+  <text class="ap-node-text" x="540" y="222"><tspan x="540">竞争</tspan><tspan x="540" dy="20">对手</tspan></text>
+  <circle class="ap-node" cx="602" cy="288" r="42" fill="#24735c"/>
+  <text class="ap-node-text" x="602" y="284"><tspan x="602">安全</tspan><tspan x="602" dy="20">研究员</tspan></text>
+  <circle class="ap-node" cx="692" cy="238" r="44" fill="#a93838"/>
+  <text class="ap-node-text" x="692" y="234"><tspan x="692">网络犯罪</tspan><tspan x="692" dy="20">分子</tspan></text>
+  <circle class="ap-node" cx="792" cy="224" r="45" fill="#71398a"/>
+  <text class="ap-node-text" x="792" y="220"><tspan x="792">国家级</tspan><tspan x="792" dy="20">行为者</tspan></text>
+  <rect x="120" y="593" width="755" height="45" rx="14" fill="#ffffff"/>
+  <text class="ap-small" x="140" y="612">位置仅为教学示意，不是群体风险评分；目标、权限与部署条件可改变实际影响。</text>
+  <text class="ap-small" x="140" y="632">安全研究员不等同于恶意攻击者；应结合具体行为与授权范围判断。</text>
 </svg>
