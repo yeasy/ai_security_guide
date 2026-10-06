@@ -805,6 +805,18 @@
 
 345. Fraser, T. (2001). *LOMAC: MAC You Can Live With*. USENIX Annual Technical Conference, FREENIX Track（LOMAC 最早发表于 IEEE S&P 2000）. [USENIX](https://static.usenix.org/event/usenix01/freenix01/full_papers/fraser/fraser.pdf)
 
+## 智能体安全的三难表述
+
+346. Raghavan, B., & Schneier, B. (2025). *Agentic AI's OODA Loop Problem*. IEEE Security & Privacy, September/October 2025. [Schneier on Security](https://www.schneier.com/essays/archives/2025/10/agentic-ais-ooda-loop-problem.html)
+
+347. Neray, G. / Oso. (2026). *The CAP Theorem for Agents*. [Oso Blog](https://www.osohq.com/post/the-cap-theorem-for-agents)
+
+348. Bhatt, M., Munshi, S., et al. (2026). *The Defense Trilemma: Why Prompt Injection Defense Wrappers Fail?*. [arXiv:2604.06436](https://arxiv.org/abs/2604.06436)
+
+349. Abdelnabi, S., & Bagdasarian, E. (2026). *AI Agents May Always Fall for Prompt Injections*. [arXiv:2605.17634](https://arxiv.org/abs/2605.17634)
+
+350. Black Flag. (2025). *"Pick Two" AI Trilemma: Generality, Agency, Alignment*. [LessWrong](https://www.lesswrong.com/posts/LrwXC2HZpB494ASZS/pick-two-ai-trilemma-generality-agency-alignment)
+
 ---
 
 *参考文献会随时间变化，后续版本将持续更新。*
