@@ -1,6 +1,6 @@
 ## 本章小结
 
-本章介绍了 LLM 安全架构设计的核心原则和方法，为构建安全的 LLM 系统奠定基础。
+本章介绍了 LLM 安全架构设计的核心原则和方法。
 
 ### 1. 核心要点回顾
 
@@ -52,7 +52,8 @@ graph TB
 - **防护实现**：[第 9 章](../09_io_protection/README.md)将本章架构要求转化为具体防护实现，从设计到编码
 - **运营验证**：[第 10 章](../10_operations/README.md)提供架构运营验证，确保架构防御有效性
 
-[第九章](../09_io_protection/README.md)将介绍输入输出安全防护，详细讲解输入验证、输出过滤、内容安全审核等实操技术。
+[第九章](../09_io_protection/README.md)介绍输入输出安全防护，包括输入验证、输出过滤、内容安全审核等实操技术。
+
 ---
 
 > 📝 **发现错误或有改进建议？** 欢迎提交 [Issue](https://github.com/yeasy/ai_security_guide/issues) 或 [PR](https://github.com/yeasy/ai_security_guide/pulls)。

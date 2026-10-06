@@ -1,6 +1,6 @@
 # 附录 B：安全工具与资源
 
-本附录收录 LLM 与智能体安全相关的工具和学习资源。条目同时包含开源项目、研究原型与云服务产品，选型前应以官方文档、仓库状态和发布日期为准。智能体安全工具的分类口径、每类工具文档写明的边界与维护状态，以 [13.5 节](../13_agent_architecture/13.5_tooling_selection.md)为准，本附录只做索引。
+本附录收录 LLM 与智能体安全相关的工具和学习资源，包括开源项目、研究原型与云服务产品；选型前应查阅官方文档、仓库状态和发布日期。智能体安全工具的分类口径、各类工具文档写明的边界与维护状态见 [13.5 节](../13_agent_architecture/13.5_tooling_selection.md)，本附录只做索引。
 
 ## 安全测试工具
 
@@ -13,7 +13,7 @@
 | PyRIT | Microsoft 的生成式 AI 红队框架（Python Risk Identification Tool） | 活跃维护 | [microsoft/PyRIT](https://github.com/microsoft/PyRIT) |
 | DeepTeam | Confident AI 的开源 LLM 红队框架，覆盖漏洞模板、攻击编排与报告 | 活跃维护 | [confident-ai/deepteam](https://github.com/confident-ai/deepteam) |
 | AgentDojo | 评估工具型智能体提示注入攻防的动态基准，97 个任务、629 个安全测试用例；是评测环境，不是对自有系统的扫描器 | 研究基准 | [ethz-spylab/agentdojo](https://github.com/ethz-spylab/agentdojo) |
-| Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，模型版本和访问范围以官方产品页为准 | Public Beta（Claude Enterprise） | [Anthropic](https://claude.com/product/claude-security) |
+| Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，模型版本和访问范围见官方产品页 | Public Beta（Claude Enterprise） | [Anthropic](https://claude.com/product/claude-security) |
 | ART | 面向机器学习安全的工具箱，覆盖对抗样本、投毒、模型提取等；非 LLM 专用 | 活跃维护 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
 | HarmBench | 自动化红队与拒答鲁棒性的标准化评估框架 | 研究框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
 | HouYi | 面向 LLM 集成应用的自动化提示注入框架 | 研究原型 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
@@ -63,7 +63,7 @@
 
 ## 智能体安全工具（按架构位置）
 
-分类与位置对应 [14.5 节](../14_agent_practice/14.5_security_panorama.md)的参考架构图；每类工具保证的性质、文档写明的边界与维护状态见 [13.5](../13_agent_architecture/13.5_tooling_selection.md) 节，这里只列入口。
+分类与位置对应 [14.5 节](../14_agent_practice/14.5_security_panorama.md)的参考架构图；每类工具保证的性质、文档写明的边界与维护状态见 [13.5](../13_agent_architecture/13.5_tooling_selection.md) 节，本节只列入口。
 
 | 类别 | 图 14-2 中的位置 | 保证的性质 | 代表工具 |
 |------|--------|------------|----------|
@@ -154,7 +154,7 @@
 | ModelScan（Protect AI） | 扫描模型文件中的反序列化攻击载荷 | 活跃维护 | [protectai/modelscan](https://github.com/protectai/modelscan) |
 | picklescan | 针对 pickle 文件的恶意导入扫描 | 活跃维护 | [mmaitre314/picklescan](https://github.com/mmaitre314/picklescan) |
 | ML Guard | ML 流水线安全与合规扫描器：pickle、safetensors、ONNX、密钥、CVE 五类扫描，输出 SARIF、CycloneDX SBOM 与合规报告 | v0.1.0 首个公开版，Apache 2.0 | [ml-guard/ml-guard](https://github.com/ml-guard/ml-guard) |
-| model-signing（Sigstore / OpenSSF） | 为模型目录生成逐文件摘要清单并签名验签，支持 Sigstore 无密钥签名、传统密钥与证书 | [1.1.1](../01_intro/1.1_llm_overview.md)，活跃维护 | [sigstore/model-transparency](https://github.com/sigstore/model-transparency) |
+| model-signing（Sigstore / OpenSSF） | 为模型目录生成逐文件摘要清单并签名验签，支持 Sigstore 无密钥签名、传统密钥与证书 | 1.1.1，活跃维护 | [sigstore/model-transparency](https://github.com/sigstore/model-transparency) |
 
 ### 数据安全
 
@@ -165,19 +165,17 @@
 
 ## 核心工具与 OWASP/生命周期映射索引（速查字典）
 
-为了帮助安全评审人员与研发工程师在特定生命周期阶段，靶向处置特定的 OWASP Top 10 风险，特提供以下实战速查映射表：
+下表按开发生命周期阶段列出应对的 OWASP Top 10 风险、推荐工具与章节指引，供安全评审人员与研发工程师速查：
 
 | 开发生命周期阶段 | 防御的核心 OWASP 风险 | 推荐部署的开源工具/基线 | 典型落地场景与章节指引 |
 |------------------|-----------------------|-------------------------|------------------------|
-| **模型训练/微调** | LLM04（供应链风险）<br>LLM05（数据投毒）| Great Expectations<br>ModelScan / picklescan<br>model-signing | 数据清洗质量强制卡点验证、第三方模型权重扫描与签名验签（第 6、8 章） |
+| **模型训练/微调** | LLM04（供应链风险）<br>LLM05（数据投毒）| Great Expectations<br>ModelScan / picklescan<br>model-signing | 数据清洗质量强制校验、第三方模型权重扫描与签名验签（第 6、8 章） |
 | **应用架构设计** | LLM03（过度自主权）<br>LLM08（隐藏上下文暴露）| OPA / Cedar / OpenFGA（策略网关）<br>Google SAIF（框架） | 会话分层架构设计、工具调用在模型外做确定性授权、人工审核（HITL）审批流预发设计（第 8、13 章） |
 | **知识检索 (RAG)** | LLM09（向量与嵌入弱点）<br>LLM07（错误信息）| 向量库自带的认证、租户隔离与前置权限过滤（Qdrant、Milvus、Weaviate 等）<br>SafeRAG 基准 | 摄取前校验与来源标记、检索前按租户与权限过滤、定期用基准加自适应攻击测试（[第 7 章](../07_rag_security/README.md)） |
 | **网关边界拦截** | LLM01（提示注入）<br>LLM06（无边界消耗）| Meta Llama Prompt Guard 2 / Llama Guard 4<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测注入与越狱，并实施 Token 熔断限流（第 4、9 章） |
 | **输出校验与脱敏**| LLM02（敏感信息泄露）<br>LLM10（输出处理不当）| Presidio<br>Guardrails AI | 双向 PII 实体检测与掩码还原，强制输出转为受控 Schema 并严格阻断执行链（[第 9 章](../09_io_protection/README.md)） |
-| **CI/CD 安全门禁** | LLM01（注入绕过）<br>通用安全性回归 | promptfoo<br>Garak<br>HarmBench<br>AgentDojo | 迭代上线前构建自动化对抗评估，将最新漏洞形成集成测试硬拦截门禁（第 10、13 章） |
+| **CI/CD 安全门禁** | LLM01（注入绕过）<br>通用安全性回归 | promptfoo<br>Garak<br>HarmBench<br>AgentDojo | 迭代上线前构建自动化对抗评估，将最新漏洞固化为集成测试中的强制拦截门禁（第 10、13 章） |
 
 ---
-
-*注意：工具和资源持续更新。请访问官方网站获取最新信息，部分项目可能停更或归档。*
 
 *状态说明：开源工具、研究项目与云服务的状态可能随时变化，建议在选型前检查项目的最近更新日期、官方说明和社区活跃度。*

@@ -1,10 +1,10 @@
 # 附录 D：OWASP 智能体清单对照
 
-本附录列出 OWASP 两份智能体安全清单的各条目在本书中的对应章节，供读者按清单自查。两份清单侧重点不同，可配合使用：威胁清单（T1–T17）更细，适合逐条自查；ASI Top 10 更概括，适合向管理层说明风险优先级。ASI 官方文档给出了两套编号的对照。
+本附录列出 OWASP 两份智能体安全清单的各条目在本书中的对应章节，供读者按清单自查。两份清单侧重点不同，可配合使用：威胁清单（T1–T17）更细，适合逐条自查；ASI Top 10 更概括，适合向管理层说明风险优先级。ASI 官方文档附录 A 给出了两套编号的对照。
 
 ## 智能体安全威胁清单（T1–T17）
 
-OWASP Gen AI Security Project 的 [Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)（附录 C-77）列出 17 项智能体威胁：v1.0（2025-02）包含 T1–T15，v1.1（2025-12）新增 T16、T17，与 ASI Top 10 对齐。
+OWASP Gen AI Security Project 的 [Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/)（附录 C-77）列出 17 项智能体威胁：v1.0（2025-02）包含 T1–T15，v1.1（2025-12）新增 T16、T17，并与 ASI Top 10 对齐。
 
 | OWASP 威胁 | 本书覆盖位置 |
 |------------|--------------|
@@ -26,9 +26,9 @@ OWASP Gen AI Security Project 的 [Agentic AI – Threats and Mitigations](https
 | T16 智能体间协议滥用 | [12.7.4](../12_agent_attack_surface/12.7_multi_agent_security.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md) |
 | T17 供应链攻陷 | [12.2.2](../12_agent_attack_surface/12.2_agent_skills.md)、[12.2.3](../12_agent_attack_surface/12.2_agent_skills.md)、[12.2.4](../12_agent_attack_surface/12.2_agent_skills.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[14.1.5](../14_agent_practice/14.1_coding_agents.md) |
 
-## OWASP Top 10 for Agentic Applications 2026（ASI01–ASI10）
+## OWASP Top 10 For Agentic Applications 2026（ASI01–ASI10）
 
-OWASP 智能体安全倡议（Agentic Security Initiative）于 2025 年 12 月发布 *OWASP Top 10 For Agentic Applications 2026*（附录 C-94），以 `ASI01`–`ASI10` 列出智能体应用的十大风险。它与 [3.1](../03_frameworks/3.1_owasp_top10.md) 的 LLM Top 10（2026）并行，互不替代。按 LLM Top 10 2026 版的界定，模型作为应用组件时，风险归 LLM 清单；模型成为能调用工具、跨会话保留记忆、在下游引发后果的行动者时，风险归 ASI 清单。下表编号与英文名取自官方 PDF，登记于 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json)，由脚本统一校验。
+OWASP 智能体安全倡议（Agentic Security Initiative）于 2025 年 12 月发布 *OWASP Top 10 For Agentic Applications 2026*（[附录 C-94](C_references.md)），以 `ASI01`–`ASI10` 列出智能体应用的十大风险。它与 [3.1](../03_frameworks/3.1_owasp_top10.md) 的 LLM Top 10（2026）并行，互不替代。按 LLM Top 10 2026 版的界定，模型作为应用组件时，风险归 LLM 清单；模型成为能调用工具、跨会话保留记忆、在下游引发后果的行动者时，风险归 ASI 清单。下表编号与英文名取自官方 PDF，登记于 [`data/framework_crosswalk.json`](../data/framework_crosswalk.json)，由脚本统一校验。
 
 | 官方标识符与英文名 | 中文表述 | 本书覆盖位置 |
 |--------------------|----------|--------------|

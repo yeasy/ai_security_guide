@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 600" style="width:100%;max-width:740px;height:auto;display:block" role="img" aria-labelledby="ca-title ca-desc">
   <title id="ca-title">智能体的实现结构与一次调用</title>
-  <desc id="ca-desc">智能体运行时内有会话、记忆、上下文组装、Harness 循环、动作策略、工具执行器与 MCP 客户端；运行时之外是用户、模型和工具实现（本地工具、MCP 服务器）。编号标出一次调用的八步：请求、组装输入、调用模型、模型返回文本或工具调用请求、动作请求、策略判定、执行工具、结果回填后继续组装输入、最终答复。橙色标出不可信内容的两个入口：工具结果，以及按需加载的检索片段、技能说明与工具定义。</desc>
+  <desc id="ca-desc">智能体运行时内有会话、记忆、上下文组装、Harness 循环、动作策略、工具执行器与 MCP 客户端；运行时之外是用户、模型和工具实现（本地工具、MCP 服务器）。编号标出一次调用的八步：请求、组装输入、调用模型、模型返回文本或工具调用请求、动作请求、策略判定、执行工具、结果回填后继续组装输入、最终答复。橙色标出外部内容的入口（工具结果、按需加载的内容与用户转交的他人内容）：工具结果，以及按需加载的检索片段、技能说明与工具定义。</desc>
   <defs>
     <style>
       .ca-bg { fill: #f9fbfd; }
@@ -115,6 +115,7 @@
   <path class="ca-line" d="M 110 262 L 324 262" />
   <rect class="ca-step" x="200" y="246" width="16" height="16" rx="3" /><text class="ca-step-t" x="208" y="258">1</text>
   <text class="ca-e" x="222" y="258">请求</text>
+  <text class="ca-eo" x="222" y="273" style="font-size:10.5px">可夹带他人内容</text>
   <path class="ca-line" d="M 325 282 L 111 282" />
   <rect class="ca-step" x="188" y="288" width="16" height="16" rx="3" /><text class="ca-step-t" x="196" y="300">8</text>
   <text class="ca-e" x="210" y="300">最终答复</text>
@@ -167,6 +168,6 @@
   <rect class="ca-sw ca-z-data" x="360" y="540" width="26" height="14" rx="3" />
   <text class="ca-legend" x="392" y="552">数据与工具实现</text>
   <rect class="ca-sw ca-z-isolated ca-f-untrusted" x="510" y="540" width="26" height="14" rx="3" />
-  <text class="ca-legend" x="542" y="552">不可信内容的入口</text>
+  <text class="ca-legend" x="542" y="552">外部内容的入口</text>
   <text class="ca-note" x="20" y="580">逻辑调用关系；各组件可同进程、跨服务或托管部署。安全控制点见图 14-2，与十二步调用的对应见 14.5.2。</text>
 </svg>
