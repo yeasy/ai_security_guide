@@ -48,7 +48,7 @@ class SafeLabContractTests(unittest.TestCase):
             block for block in blocks if block.classification == "defensive-only"
         ]
         self.assertEqual(len(offensive), 11)
-        self.assertEqual(len(defensive), 32)
+        self.assertEqual(len(defensive), 34)
         body = "\n".join(block.body for block in offensive)
         for fingerprint in EXPECTED_OFFENSIVE_FINGERPRINTS:
             with self.subTest(fingerprint=fingerprint):

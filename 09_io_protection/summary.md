@@ -55,7 +55,7 @@ flowchart LR
 | 防护环节 | 推荐工具 | 核心能力 |
 |----------|----------|----------|
 | 输入验证 | NeMo Guardrails（NVIDIA） | 可编程对话护栏，定义输入边界和主题限制 |
-| 输入验证 | Llama Guard（Meta） | 判别式安全分类模型，拦截违规输入/输出 |
+| 输入验证 | Llama Guard（Meta） | 安全分类模型，以生成 `safe`/`unsafe` 文字给出判定，拦截违规输入/输出 |
 | 测试与评估 | Promptfoo | 自动化 Prompt 注入和越狱红蓝对抗测试 |
 | 输出审核 | Guardrails AI | 输出结构化验证与自动重试，在有 grounding context 时可接入事实性校验 |
 | 监控与可观测性 | LangKit（WhyLabs） | 文本质量与安全指标监控 |

@@ -36,7 +36,7 @@
 | 工具名称 | 描述 | 状态 | 链接 |
 |----------|------|------|------|
 | Meta Llama Guard 4 | 12B 多模态安全分类器，MLCommons 危害分类 S1 至 S13 加 S14 代码解释器滥用，判定输入与输出 | 活跃维护，Llama 4 Community License | [meta-llama/Llama-Guard-4-12B](https://huggingface.co/meta-llama/Llama-Guard-4-12B) |
-| Meta Llama Prompt Guard 2 | 检测提示注入与越狱的多语言分类器（86M / 22M，mDeBERTa，2025-04 随 Llama 4 发布） | 活跃维护，Llama 4 Community License | [meta-llama/Llama-Prompt-Guard-2-86M](https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M) |
+| Meta Llama Prompt Guard 2 | 检测提示注入与越狱的分类器（86M 基于 mDeBERTa、支持多语言；22M 基于 DeBERTa-xsmall，多语言表现较弱；2025-04 随 Llama 4 发布） | 活跃维护，Llama 4 Community License | [meta-llama/Llama-Prompt-Guard-2-86M](https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M) |
 | IBM Granite Guardian 3.3 | 8B 守卫模型，危害与越狱之外还判定 RAG 幻觉（上下文相关性、有据性、答案相关性）与函数调用幻觉，可选输出推理过程 | 活跃维护，Apache 2.0 | [ibm-granite/granite-guardian-3.3-8b](https://huggingface.co/ibm-granite/granite-guardian-3.3-8b) |
 | Google ShieldGemma / ShieldGemma 2 | 2B、9B、27B 文本分类器，判定色情、危险内容、仇恨、骚扰四类；ShieldGemma 2 为 4B 图像分类器 | 活跃维护，Gemma 使用条款 | [google/shieldgemma-2b](https://huggingface.co/google/shieldgemma-2b)、[google/shieldgemma-2-4b-it](https://huggingface.co/google/shieldgemma-2-4b-it) |
 | AI2 WildGuard | 7B，一体判定输入有害性、输出有害性与输出是否拒答 | 研究模型，Apache 2.0 | [allenai/wildguard](https://huggingface.co/allenai/wildguard) |
