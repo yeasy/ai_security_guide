@@ -96,9 +96,10 @@ def process_file(text, reldir, mermaid_store, path_to_id):
     text = re.sub(r'<img\s+[^>]*src="([^"]+)"[^>]*>', html_img, text)
     def md_link(m):
         label, target = m.group(1), m.group(2).strip()
-        if "#" in target: target = target.split("#", 1)[0]
+        target, _, fragment = target.partition("#")
         if not target.endswith(".md"): return m.group(0)
-        pid = path_to_id.get(posixpath.normpath(posixpath.join(reldir, target)))
+        path = posixpath.normpath(posixpath.join(reldir, target))
+        pid = path_to_id.get(f"{path}#{fragment}") or path_to_id.get(path)
         return f"[{label}](#{pid})" if pid else m.group(0)
     text = re.sub(r'(?<!\!)\[([^\]]*)\]\(([^)]+?\.md(?:#[^)]*)?)\)', md_link, text)
     return text
@@ -224,6 +225,17 @@ def main():
             _, path, title, lvl = it
             page_meta.append((f"p{pidc}", path, title, lvl))
             path_to_id[posixpath.normpath(path)] = f"p{pidc}"; pidc += 1
+    # SUMMARY is navigation metadata, not a reader page. A part link opens its
+    # first body page, so the existing paged navigation also works offline.
+    pending_parts = []
+    for it in items:
+        if it[0] == "part":
+            slug = re.sub(r"[^\w\- ]", "", it[1].lower()).replace(" ", "-")
+            pending_parts.append(f"SUMMARY.md#{slug}")
+        elif pending_parts:
+            for key in pending_parts:
+                path_to_id[key] = path_to_id[posixpath.normpath(it[1])]
+            pending_parts.clear()
     id_to_title = {pi: ti for (pi, _, ti, _) in page_meta}
 
     mermaid_store, chunks, pi = [], [], 0
@@ -276,7 +288,7 @@ def main():
             tpl = os.path.join(temp_dir, "template.html")
             out_tmp = os.path.join(temp_dir, "reader.html")
             with open(tpl, "w", encoding="utf-8") as f: f.write(TEMPLATE)
-            cmd = ["pandoc", tmp_md, "-f", "markdown+lists_without_preceding_blankline", "-t", "html5",
+            cmd = ["pandoc", tmp_md, "-f", "markdown+lists_without_preceding_blankline+gfm_auto_identifiers", "-t", "html5",
                    "--standalone", "--embed-resources", "--mathml",
                    "--template", tpl, "--metadata", f"title={a.title}", "-o", out_tmp]
             print("  running pandoc ...")
