@@ -125,6 +125,7 @@
   * [13.3 执行沙箱与出站控制](13_agent_architecture/13.3_sandbox_egress.md)
   * [13.4 智能体身份与委托授权](13_agent_architecture/13.4_agent_identity.md)
   * [13.5 工具与方案选型](13_agent_architecture/13.5_tooling_selection.md)
+  * [13.6 在主流智能体框架中实现闸](13_agent_architecture/13.6_framework_gates.md)
   * [本章小结](13_agent_architecture/summary.md)
 
 * [第十四章 智能体安全实践](14_agent_practice/README.md)
@@ -133,6 +134,7 @@
   * [14.3 智能体错位威胁](14_agent_practice/14.3_agentic_misalignment.md)
   * [14.4 综合案例：邮件与文档助手](14_agent_practice/14.4_case_study.md)
   * [14.5 智能体安全全景](14_agent_practice/14.5_security_panorama.md)
+  * [14.6 按场景的落地方案](14_agent_practice/14.6_scenario_playbooks.md)
   * [本章小结](14_agent_practice/summary.md)
 
 ## 第五部分：治理与展望

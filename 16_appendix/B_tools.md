@@ -13,9 +13,12 @@
 | PyRIT | Microsoft 的生成式 AI 红队框架（Python Risk Identification Tool） | 活跃维护 | [microsoft/PyRIT](https://github.com/microsoft/PyRIT) |
 | DeepTeam | Confident AI 的开源 LLM 红队框架，覆盖漏洞模板、攻击编排与报告 | 活跃维护 | [confident-ai/deepteam](https://github.com/confident-ai/deepteam) |
 | AgentDojo | 评估工具型智能体提示注入攻防的动态基准，97 个任务、629 个安全测试用例；是评测环境，不是对自有系统的扫描器 | 研究基准 | [ethz-spylab/agentdojo](https://github.com/ethz-spylab/agentdojo) |
+| ASB（Agent Security Bench） | 智能体攻防基准：提示注入、记忆投毒、PoT 后门与混合攻击，配 11 种防御；见 [10.6.6](../10_operations/10.6_modern_redteam_tools.md) | 研究基准（ICLR 2025） | [agiresearch/ASB](https://github.com/agiresearch/ASB) |
+| Inspect | 英国 AI 安全研究所与 Meridian Labs 开发的开源评测框架，数据集、求解器、评分器三个组件，支持工具调用、智能体与 Docker 沙箱；配套 inspect_evals 收录 AgentDojo、AgentHarm 等实现 | 活跃维护 | [UKGovernmentBEIS/inspect_ai](https://github.com/UKGovernmentBEIS/inspect_ai) |
 | Claude Security | Anthropic 面向代码库的漏洞扫描与补丁建议工具，模型版本和访问范围见官方产品页 | Public Beta（Claude Enterprise） | [Anthropic](https://claude.com/product/claude-security) |
 | ART | 面向机器学习安全的工具箱，覆盖对抗样本、投毒、模型提取等；非 LLM 专用 | 活跃维护 | [Trusted-AI/adversarial-robustness-toolbox](https://github.com/Trusted-AI/adversarial-robustness-toolbox) |
 | HarmBench | 自动化红队与拒答鲁棒性的标准化评估框架 | 研究框架 | [centerforaisafety/HarmBench](https://github.com/centerforaisafety/HarmBench) |
+| JailbreakBench | 越狱攻防的开放基准：100 个有害行为与 100 个良性行为、越狱提示仓库、判定器与[排行榜](https://jailbreakbench.github.io/) | 研究基准（NeurIPS 2024）；代码仓库最后一次提交在 2025 年 3 月 | [JailbreakBench/jailbreakbench](https://github.com/JailbreakBench/jailbreakbench) |
 | HouYi | 面向 LLM 集成应用的自动化提示注入框架 | 研究原型 | [LLMSecurity/HouYi](https://github.com/LLMSecurity/HouYi) |
 | AutoDAN | 自动化越狱生成方法的研究实现 | 研究实现 | [SheltonLiu-N/AutoDAN](https://github.com/SheltonLiu-N/AutoDAN) |
 
@@ -69,11 +72,12 @@
 |------|--------|------------|----------|
 | 策略引擎 | 第 4 步（策略网关） | 确定性：每次工具调用按规则放行或拒绝 | [OPA](https://github.com/open-policy-agent/opa)、[Cedar](https://github.com/cedar-policy/cedar)、[OpenFGA](https://github.com/openfga/openfga) |
 | 护栏框架 | 第 4 步的风险分、第 12 步的出口检测（图中未单列） | 概率性：检测可疑输入输出 | 见上文「防护框架」与「守卫模型与注入检测」 |
-| LLM 与智能体网关 | 第 4、7 步的执行点与工具注册表 | 确定性：统一入口、凭据集中、配额与审计 | [LiteLLM](https://github.com/BerriAI/litellm)、Kong AI Gateway、Cloudflare AI Gateway、[agentgateway](https://github.com/agentgateway/agentgateway)、[IBM ContextForge](https://github.com/IBM/mcp-context-forge)、[Docker MCP Gateway](https://github.com/docker/mcp-gateway) |
-| MCP 供应链扫描 | 供应链准入 | 概率性：发现已知模式 | [Snyk Agent Scan](https://github.com/snyk/agent-scan)（原 mcp-scan）、[MCP Registry](https://registry.modelcontextprotocol.io/)（预览，不做代码扫描） |
-| 执行沙箱 | 第 6 步 | 确定性：进程能触及什么 | [Anthropic sandbox-runtime](https://github.com/anthropics/sandbox-runtime)、[OpenAI Codex 沙箱](https://github.com/openai/codex)、[gVisor](https://gvisor.dev/)、[Firecracker](https://firecracker-microvm.github.io/)、[E2B](https://e2b.dev/)、[Modal Sandboxes](https://modal.com/docs/guide/sandboxes) |
+| LLM 与智能体网关 | 第 4、7 步的执行点与工具注册表 | 确定性：统一入口、凭据集中、配额与审计 | [LiteLLM](https://github.com/BerriAI/litellm)、Kong AI Gateway、Cloudflare AI Gateway、[agentgateway](https://github.com/agentgateway/agentgateway)、[IBM ContextForge](https://github.com/IBM/mcp-context-forge)、[Docker MCP Gateway](https://github.com/docker/mcp-gateway)、[ToolHive](https://github.com/stacklok/toolhive) |
+| MCP 供应链扫描 | 供应链准入 | 概率性：发现已知模式 | [Snyk Agent Scan](https://github.com/snyk/agent-scan)（原 mcp-scan）、[MCP Registry](https://registry.modelcontextprotocol.io/)（预览，不做代码扫描）；调试工具 [MCP Inspector](https://github.com/modelcontextprotocol/inspector) 可列出服务器实际暴露的工具，本身不做扫描 |
+| 执行沙箱 | 第 6 步 | 确定性：进程能触及什么 | [Anthropic sandbox-runtime](https://github.com/anthropics/sandbox-runtime)、[OpenAI Codex 沙箱](https://github.com/openai/codex)、[gVisor](https://gvisor.dev/)、[Firecracker](https://firecracker-microvm.github.io/)、[E2B](https://e2b.dev/)、[Modal Sandboxes](https://modal.com/docs/guide/sandboxes)、[microsandbox](https://github.com/superradcompany/microsandbox)（测试版） |
 | 身份与凭据 | 第 1、7 步 | 确定性：令牌的范围与受众 | [SPIFFE/SPIRE](https://spiffe.io/)、[Keycloak](https://www.keycloak.org/)、Auth0 for AI Agents、Okta、[HashiCorp Vault](https://developer.hashicorp.com/vault)、1Password |
 | 可观测性 | 会话事件日志 | 事后：追踪与审计 | [OpenTelemetry 生成式 AI 语义约定](https://opentelemetry.io/docs/specs/semconv/gen-ai/)（开发中）、[Langfuse](https://github.com/langfuse/langfuse)、[Arize Phoenix](https://github.com/Arize-ai/phoenix)、LangSmith |
+| 智能体框架 | 运行时本身（Harness） | 不直接保证：提供工具、护栏、人工确认等挂载点，保证取决于控制接在哪里（实现方式见 [13.6](../13_agent_architecture/13.6_framework_gates.md)） | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python)、[Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk/overview)、[LangGraph](https://github.com/langchain-ai/langgraph)、[Google ADK](https://github.com/google/adk-python) |
 | 评测与红队 | 验证阶段 | 发现问题，不防止问题 | 见上文「红队测试与安全评估」 |
 
 ## 安全框架与指南
@@ -153,6 +157,7 @@
 |------|------|------|------|
 | ModelScan（Protect AI） | 扫描模型文件中的反序列化攻击载荷 | 活跃维护 | [protectai/modelscan](https://github.com/protectai/modelscan) |
 | picklescan | 针对 pickle 文件的恶意导入扫描 | 活跃维护 | [mmaitre314/picklescan](https://github.com/mmaitre314/picklescan) |
+| fickling（Trail of Bits） | pickle 反编译、静态分析与执行跟踪，可挂钩 `pickle` 在加载时检查；检测多次被绕过，见 [6.7.3](../06_data_model_attacks/6.7_malicious_model_artifacts.md) | 活跃维护，LGPL-3.0 | [trailofbits/fickling](https://github.com/trailofbits/fickling) |
 | ML Guard | ML 流水线安全与合规扫描器：pickle、safetensors、ONNX、密钥、CVE 五类扫描，输出 SARIF、CycloneDX SBOM 与合规报告 | v0.1.0 首个公开版，Apache 2.0 | [ml-guard/ml-guard](https://github.com/ml-guard/ml-guard) |
 | model-signing（Sigstore / OpenSSF） | 为模型目录生成逐文件摘要清单并签名验签，支持 Sigstore 无密钥签名、传统密钥与证书 | 1.1.1，活跃维护 | [sigstore/model-transparency](https://github.com/sigstore/model-transparency) |
 
@@ -171,7 +176,7 @@
 |------------------|-----------------------|-------------------------|------------------------|
 | **模型训练/微调** | LLM04（供应链风险）<br>LLM05（数据与模型投毒）| Great Expectations<br>ModelScan / picklescan<br>model-signing | 数据清洗质量强制校验、第三方模型权重扫描与签名验签（第 6、8 章） |
 | **应用架构设计** | LLM03（过度自主权）<br>LLM08（隐藏上下文暴露）| OPA / Cedar / OpenFGA（策略网关）<br>Google SAIF（框架） | 会话分层架构设计、工具调用在模型外做确定性授权、人工审核（HITL）审批流预发设计（第 8、13 章） |
-| **知识检索 (RAG)** | LLM09（向量与嵌入弱点）<br>LLM07（错误信息）| 向量库自带的认证、租户隔离与前置权限过滤（Qdrant、Milvus、Weaviate 等）<br>SafeRAG 基准 | 摄取前校验与来源标记、检索前按租户与权限过滤、定期用基准加自适应攻击测试（[第 7 章](../07_rag_security/README.md)） |
+| **知识检索 (RAG)** | LLM09（向量与嵌入弱点）<br>LLM07（错误信息）| 向量库自带的认证、租户隔离与前置权限过滤（Qdrant、Milvus、Weaviate 等）<br>OpenSearch / Elasticsearch 文档级安全（DLS）<br>SafeRAG 基准 | 摄取前校验与来源标记、检索前按租户与权限过滤、定期用基准加自适应攻击测试（[第 7 章](../07_rag_security/README.md)） |
 | **网关边界拦截** | LLM01（提示注入）<br>LLM06（无边界消耗）| Meta Llama Prompt Guard 2 / Llama Guard 4<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测注入与越狱，并实施 Token 熔断限流（第 4、9 章） |
 | **输出校验与脱敏**| LLM02（敏感信息泄露）<br>LLM10（输出处理不当）| Presidio<br>Guardrails AI | 双向 PII 实体检测与掩码还原，强制输出转为受控 Schema 并严格阻断执行链（[第 9 章](../09_io_protection/README.md)） |
 | **CI/CD 安全门禁** | LLM01（注入绕过）<br>通用安全性回归 | promptfoo<br>Garak<br>HarmBench<br>AgentDojo | 迭代上线前构建自动化对抗评估，将最新漏洞固化为集成测试中的强制拦截门禁（第 10、13 章） |
