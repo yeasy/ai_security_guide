@@ -69,8 +69,8 @@
 
 ## 本书特色
 
-- **系统视角的安全模型**：把智能体安全归纳为不可靠执行者模型，即概率的部分出主意，确定的部分拿主意；会造成损失的动作，不问原因一律经过模型之外的检查点，即“闸”（[第 11 章](11_agent_foundations/README.md)）。
-- **笔者提出的 CAS 原理**：通用性、自主性、安全性三者不可兼得。每种取舍都落到具体机制上，用来判断一个智能体放弃了什么、由什么兜底（[第 11 章](11_agent_foundations/README.md)、[13.2.5](13_agent_architecture/13.2_architectural_defenses.md)）。
+- **系统视角的安全模型**：把智能体安全归纳为不可靠执行者模型，即概率的部分出主意，确定的部分拿主意；会造成损失的动作，不问原因一律经过模型之外的检查点，即“闸”（[11.3](11_agent_foundations/11.3_unreliable_executor.md)）。
+- **笔者提出的 CAS 原理**：通用性、自主性、安全性三者不可兼得。每种取舍都落到具体机制上，用来判断一个智能体放弃了什么、由什么兜底（[11.5](11_agent_foundations/11.5_cas_principle.md)、[13.2.5](13_agent_architecture/13.2_architectural_defenses.md)）。
 - **分清“降频率”与“设上界”**：检测器、护栏和第二个模型只能降低攻击成功的频率，权限、沙箱、信息流控制与人工确认才能给后果设上界。书中按这条判据给各类防御定位（[4.5.11](04_prompt_injection/4.5_injection_defense.md)、[9.2.9](09_io_protection/9.2_output_moderation.md)、[13.5](13_agent_architecture/13.5_tooling_selection.md)）。
 - **可运行的配套实验**：三个离线实验用合成数据与模型替身，把正文中的控制写成可执行的检查，并配有变异验收：关掉某项控制，对应的检查必须失败。
 - **以一手来源为准**：规范、论文与源码均取原文核对，引用均附原文链接，主要资料编入[附录 C](16_appendix/C_references.md)。领域变化很快，附录同时给出持续跟踪的资源。
@@ -96,7 +96,7 @@
 先建立整体认知，再开始完整实验：
 
 1. 阅读 [1.3](01_intro/1.3_llm_vs_traditional.md) 与[第 4 章](04_prompt_injection/README.md)的提示注入示例，看攻击内容如何进入上下文并改变行为。
-2. 阅读[第 11 章](11_agent_foundations/README.md)开头的“本篇主线”，了解不可靠执行者模型与 CAS 原理。
+2. 阅读 [11.3](11_agent_foundations/11.3_unreliable_executor.md) 与 [11.5](11_agent_foundations/11.5_cas_principle.md) 的节首总述，了解不可靠执行者模型与 CAS 原理。
 3. 阅读 [14.4](14_agent_practice/14.4_case_study.md) 的邮件助手案例，比较普通链路与按信任拆分的链路，再运行下方的邮件助手实验。
 
 这五分钟用于定位问题和阅读入口；可运行实验及其验收见下方，完整的安全评估还要继续学习机制、权限与运营各章。
@@ -140,7 +140,7 @@ graph LR
 | 实验 | 连接的章节 | 需要观察的内部行为 |
 |------|------------|--------------------|
 | [邮件助手](examples/mail_assistant/README.md) | [13.2](13_agent_architecture/13.2_architectural_defenses.md)、[14.4](14_agent_practice/14.4_case_study.md)–[14.5](14_agent_practice/14.5_security_panorama.md) | 变量来源、读取授权、发送判定、参数摘要批准、发送箱与未知状态查询 |
-| [支付预算](examples/payment_budget/README.md) | [11.7](11_agent_foundations/11.7_web3_agents.md)、[12.7](12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4](13_agent_architecture/13.4_agent_identity.md) | 并发原子预留、参数绑定重放、UNKNOWN 占用与可信对账 |
+| [支付预算](examples/payment_budget/README.md) | [11.9](11_agent_foundations/11.9_web3_agents.md)、[12.7](12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4](13_agent_architecture/13.4_agent_identity.md) | 并发原子预留、参数绑定重放、UNKNOWN 占用与可信对账 |
 | [RAG 轨迹](examples/rag_trace/README.md) | [7.3](07_rag_security/7.3_retrieval_manipulation.md)、[7.5](07_rag_security/7.5_vector_database_security.md)–[7.8](07_rag_security/7.8_rag_evaluation_best_practices.md) | 候选与排序、ACL、上下文、生成判定、缓存撤销及 ASR 分母 |
 
 ```bash

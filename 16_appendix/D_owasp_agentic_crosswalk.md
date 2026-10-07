@@ -10,12 +10,12 @@ OWASP Gen AI Security Project 的 [Agentic AI – Threats and Mitigations](https
 |------------|--------------|
 | T1 记忆投毒 | [12.3](../12_agent_attack_surface/12.3_memory_poisoning.md)、[12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md) |
 | T2 工具滥用 | [12.1](../12_agent_attack_surface/12.1_tool_security.md) |
-| T3 权限提升 | [11.9](../11_agent_foundations/11.9_design_principles.md)、[12.1.6](../12_agent_attack_surface/12.1_tool_security.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
+| T3 权限提升 | [11.7](../11_agent_foundations/11.7_permission_governance.md)、[12.1.5](../12_agent_attack_surface/12.1_tool_security.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[12.7.2](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
 | T4 资源过载 | [3.1.7](../03_frameworks/3.1_owasp_top10.md)（LLM06）、[11.2](../11_agent_foundations/11.2_threat_model.md) |
-| T5 级联幻觉 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[11.6](../11_agent_foundations/11.6_hallucinated_tool_calls.md) |
-| T6 意图篡改与目标操纵 | [15.3.3](../15_governance/15.3_emerging_threats.md)、[15.3.4](../15_governance/15.3_emerging_threats.md)、[14.3](../14_agent_practice/14.3_agentic_misalignment.md) |
-| T7 错位与欺骗行为 | [14.3](../14_agent_practice/14.3_agentic_misalignment.md)、[14.2](../14_agent_practice/14.2_sabotage_ai_control.md)、[15.3.12](../15_governance/15.3_emerging_threats.md) |
-| T8 抵赖与不可追溯 | [11.8](../11_agent_foundations/11.8_dark_code.md)、[11.10](../11_agent_foundations/11.10_monitoring_audit.md)、[13.1.5](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
+| T5 级联幻觉 | [12.7.5](../12_agent_attack_surface/12.7_multi_agent_security.md)、[11.6.2](../11_agent_foundations/11.6_typical_failures.md) |
+| T6 意图篡改与目标操纵 | [15.3.6](../15_governance/15.3_emerging_threats.md)、[15.3.4](../15_governance/15.3_emerging_threats.md)、[14.3](../14_agent_practice/14.3_agentic_misalignment.md) |
+| T7 错位与欺骗行为 | [14.3](../14_agent_practice/14.3_agentic_misalignment.md)、[14.2](../14_agent_practice/14.2_sabotage_ai_control.md)、[15.3.5](../15_governance/15.3_emerging_threats.md) |
+| T8 抵赖与不可追溯 | [11.8](../11_agent_foundations/11.8_dark_code.md)、[13.1.5](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.4.3](../13_agent_architecture/13.4_agent_identity.md) |
 | T9 身份伪造与冒充 | [12.7.4](../12_agent_attack_surface/12.7_multi_agent_security.md)、[13.4.4](../13_agent_architecture/13.4_agent_identity.md) |
 | T10 淹没人工审核 | [12.6](../12_agent_attack_surface/12.6_human_layer.md) |
 | T11 意外远程代码执行 | [6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[12.1.10](../12_agent_attack_surface/12.1_tool_security.md)、[13.3](../13_agent_architecture/13.3_sandbox_egress.md)、[14.1](../14_agent_practice/14.1_coding_agents.md) |
@@ -32,9 +32,9 @@ OWASP 智能体安全倡议（Agentic Security Initiative）于 2025 年 12 月�
 
 | 官方标识符与英文名 | 中文表述 | 本书覆盖位置 |
 |--------------------|----------|--------------|
-| ASI01 Agent Goal Hijack | 智能体目标劫持 | [11.4](../11_agent_foundations/11.4_control_flow_hijacking.md)、[13.1](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.2](../13_agent_architecture/13.2_architectural_defenses.md)、[4.3](../04_prompt_injection/4.3_indirect_injection.md)、[4.1](../04_prompt_injection/4.1_principles.md) |
-| ASI02 Tool Misuse and Exploitation | 工具滥用与利用 | [12.1](../12_agent_attack_surface/12.1_tool_security.md)、[11.6](../11_agent_foundations/11.6_hallucinated_tool_calls.md) |
-| ASI03 Identity and Privilege Abuse | 身份与权限滥用 | [13.4](../13_agent_architecture/13.4_agent_identity.md)、[11.9](../11_agent_foundations/11.9_design_principles.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[8.3.4](../08_architecture/8.3_access_control.md)、[8.3.6](../08_architecture/8.3_access_control.md) |
+| ASI01 Agent Goal Hijack | 智能体目标劫持 | [11.6.1](../11_agent_foundations/11.6_typical_failures.md)、[13.1](../13_agent_architecture/13.1_agents_rule_of_two.md)、[13.2](../13_agent_architecture/13.2_architectural_defenses.md)、[4.3](../04_prompt_injection/4.3_indirect_injection.md)、[4.1](../04_prompt_injection/4.1_principles.md) |
+| ASI02 Tool Misuse and Exploitation | 工具滥用与利用 | [12.1](../12_agent_attack_surface/12.1_tool_security.md)、[11.6.2](../11_agent_foundations/11.6_typical_failures.md) |
+| ASI03 Identity and Privilege Abuse | 身份与权限滥用 | [13.4](../13_agent_architecture/13.4_agent_identity.md)、[11.7](../11_agent_foundations/11.7_permission_governance.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[8.3.4](../08_architecture/8.3_access_control.md)、[8.3.6](../08_architecture/8.3_access_control.md) |
 | ASI04 Agentic Supply Chain Vulnerabilities | 智能体供应链漏洞 | [12.2](../12_agent_attack_surface/12.2_agent_skills.md)、[12.1.8](../12_agent_attack_surface/12.1_tool_security.md)、[14.1.4](../14_agent_practice/14.1_coding_agents.md)、[14.1.5](../14_agent_practice/14.1_coding_agents.md)、[8.6.5](../08_architecture/8.6_supply_chain.md)、[6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md) |
 | ASI05 Unexpected Code Execution (RCE) | 意外代码执行（RCE） | [13.3](../13_agent_architecture/13.3_sandbox_egress.md)、[14.1](../14_agent_practice/14.1_coding_agents.md)、[6.7](../06_data_model_attacks/6.7_malicious_model_artifacts.md)、[12.1.10](../12_agent_attack_surface/12.1_tool_security.md) |
 | ASI06 Memory & Context Poisoning | 记忆与上下文投毒 | [12.3](../12_agent_attack_surface/12.3_memory_poisoning.md)、[7.2](../07_rag_security/7.2_knowledge_base_poisoning.md)、[12.7.3](../12_agent_attack_surface/12.7_multi_agent_security.md)、[4.6](../04_prompt_injection/4.6_long_context_risks.md) |
