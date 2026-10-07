@@ -169,7 +169,7 @@
 
 | 开发生命周期阶段 | 防御的核心 OWASP 风险 | 推荐部署的开源工具/基线 | 典型落地场景与章节指引 |
 |------------------|-----------------------|-------------------------|------------------------|
-| **模型训练/微调** | LLM04（供应链风险）<br>LLM05（数据投毒）| Great Expectations<br>ModelScan / picklescan<br>model-signing | 数据清洗质量强制校验、第三方模型权重扫描与签名验签（第 6、8 章） |
+| **模型训练/微调** | LLM04（供应链风险）<br>LLM05（数据与模型投毒）| Great Expectations<br>ModelScan / picklescan<br>model-signing | 数据清洗质量强制校验、第三方模型权重扫描与签名验签（第 6、8 章） |
 | **应用架构设计** | LLM03（过度自主权）<br>LLM08（隐藏上下文暴露）| OPA / Cedar / OpenFGA（策略网关）<br>Google SAIF（框架） | 会话分层架构设计、工具调用在模型外做确定性授权、人工审核（HITL）审批流预发设计（第 8、13 章） |
 | **知识检索 (RAG)** | LLM09（向量与嵌入弱点）<br>LLM07（错误信息）| 向量库自带的认证、租户隔离与前置权限过滤（Qdrant、Milvus、Weaviate 等）<br>SafeRAG 基准 | 摄取前校验与来源标记、检索前按租户与权限过滤、定期用基准加自适应攻击测试（[第 7 章](../07_rag_security/README.md)） |
 | **网关边界拦截** | LLM01（提示注入）<br>LLM06（无边界消耗）| Meta Llama Prompt Guard 2 / Llama Guard 4<br>NeMo Guardrails | 部署于最外层 API 代理作为低延迟分类器探测注入与越狱，并实施 Token 熔断限流（第 4、9 章） |

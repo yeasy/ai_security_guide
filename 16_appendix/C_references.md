@@ -157,7 +157,7 @@
 
 59. Microsoft. *PyRIT Documentation*. [PyRIT](https://microsoft.github.io/PyRIT/)
 
-60. Center for AI Safety. *HarmBench*. [GitHub](https://github.com/centerforaisafety/HarmBench)
+60. Mazeika, M., Phan, L., Yin, X., et al. (2024). *HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal*（arXiv:2402.04249）. [arXiv](https://arxiv.org/abs/2402.04249)；[GitHub](https://github.com/centerforaisafety/HarmBench)
 
 61. GitHub. (2025). *Bypass re-approval for modified MCP configuration in Cursor*. [GitHub Security Advisories](https://github.com/cursor/cursor/security/advisories/GHSA-24mc-g4xr-4395)
 
