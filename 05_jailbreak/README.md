@@ -14,23 +14,6 @@
 4. 比较 GCG、TAP、M2S、AutoDAN、STAR 在访问条件、搜索方式和对应防御视角上的差异。
 5. 为越狱场景组合前置过滤、意图识别、系统侧边界和后置审核等防线，并说明评估防御层时应监控的漏报率、误报率、延迟与成本。
 
-## 本章结构
+## 阅读路径
 
-- [5.1](5.1_jailbreak_overview.md) 越狱攻击概述：越狱是什么，与提示注入如何区分，安全对齐为什么难以根除越狱。
-- [5.2](5.2_classic_techniques.md) 经典越狱技术剖析：手工越狱有哪几类，各自如何构造输入。
-- [5.3](5.3_multimodal_attacks.md) 多模态越狱攻击：图像、音频、文档与视频如何成为越狱渠道。
-- [5.4](5.4_jailbreak_defense.md) 越狱检测与防御实践：工程上用哪些手段检测越狱，如何分层组合。
-- [5.5](5.5_multimodal_defense.md) 多模态安全防御体系：如何在输入层、融合层、模型层和输出层防御多模态越狱。
-- [5.6](5.6_automated_jailbreak_methods.md) 自动化越狱方法：GCG、TAP、M2S、AutoDAN、STAR 如何把越狱变成可规模化的搜索，防御方如何应对。
-
-各节按“定义—攻击—防御”的顺序展开：5.1 给出定义与分类口径；5.2、5.3 分别分析文本和多模态渠道的手工越狱技术；5.4、5.5 给出对应的防御；5.6 讨论自动化越狱这一攻防双方共用的方法族，并给出相应的分层防御。
-
-```mermaid
-flowchart LR
-    subgraph "越狱攻击目标"
-    A["安全对齐"] --> B["越狱技术"]
-    B --> C["生成被禁内容"]
-    B --> D["突破行为限制"]
-    B --> E["获取敏感信息"]
-    end
-```
+[5.1](5.1_jailbreak_overview.md) 确定越狱的目标与判定口径；[5.2](5.2_classic_techniques.md)、[5.3](5.3_multimodal_attacks.md) 分别分析文本与多模态输入。[5.4](5.4_jailbreak_defense.md)、[5.5](5.5_multimodal_defense.md) 将检测与系统控制组合起来，[5.6](5.6_automated_jailbreak_methods.md) 再讨论自动化搜索如何检验这些防线。

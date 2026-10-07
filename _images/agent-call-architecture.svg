@@ -169,5 +169,5 @@
   <text class="ca-legend" x="392" y="552">数据与工具实现</text>
   <rect class="ca-sw ca-z-isolated ca-f-untrusted" x="510" y="540" width="26" height="14" rx="3" />
   <text class="ca-legend" x="542" y="552">外部内容的入口</text>
-  <text class="ca-note" x="20" y="580">逻辑调用关系；各组件可同进程、跨服务或托管部署。安全控制点见图 14-2，与十二步调用的对应见 14.5.2。</text>
+  <text class="ca-note" x="20" y="580">逻辑调用关系；各组件可同进程、跨服务或托管部署。安全控制点见图 14-2，与十二步调用的对应见 14.2.2。</text>
 </svg>

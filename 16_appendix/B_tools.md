@@ -66,7 +66,7 @@
 
 ## 智能体安全工具（按架构位置）
 
-分类与位置对应 [14.5 节](../14_agent_practice/14.5_security_panorama.md)的参考架构图；每类工具保证的性质、文档写明的边界与维护状态见 [13.5](../13_agent_architecture/13.5_tooling_selection.md) 节，本节只列入口。
+分类与位置对应 [14.2 节](../14_agent_practice/14.2_security_panorama.md)的参考架构图；每类工具保证的性质、文档写明的边界与维护状态见 [13.5](../13_agent_architecture/13.5_tooling_selection.md) 节，本节只列入口。
 
 | 类别 | 图 14-2 中的位置 | 保证的性质 | 代表工具 |
 |------|--------|------------|----------|

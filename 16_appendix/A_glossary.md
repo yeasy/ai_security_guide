@@ -26,7 +26,7 @@ Google 提出的智能体间通信协议，引入了新的信任边界和攻击�
 用于验证 API 调用者身份的密钥。
 
 **Approved Scalar（获准标量）**
-隔离模型交回的结构化结果中，取值限定在有限集合（如枚举）之内的字段，例如一封邮件被归入哪一类。经代码校验后可交给规划模型，来源标记仍予保留（[13.2.2](../13_agent_architecture/13.2_architectural_defenses.md)、[14.5](../14_agent_practice/14.5_security_panorama.md)）。
+隔离模型交回的结构化结果中，取值限定在有限集合（如枚举）之内的字段，例如一封邮件被归入哪一类。经代码校验后可交给规划模型，来源标记仍予保留（[13.2.2](../13_agent_architecture/13.2_architectural_defenses.md)、[14.2](../14_agent_practice/14.2_security_panorama.md)）。
 
 ## B
 
@@ -94,7 +94,7 @@ LLM 一次能处理的最大 Token 数量。
 欧盟于 2024 年通过并分阶段生效的 AI 监管法规，对高风险 AI 与通用 AI（GPAI）提出分层合规要求。
 
 **Extraction Contract（抽取契约）**
-先于原文锁定的字段清单，规定隔离模型抽取哪些字段及其类型与取值范围，内容无权修改；按契约抽出的字段称契约字段（[14.5](../14_agent_practice/14.5_security_panorama.md)）。
+先于原文锁定的字段清单，规定隔离模型抽取哪些字段及其类型与取值范围，内容无权修改；按契约抽出的字段称契约字段（[14.2](../14_agent_practice/14.2_security_panorama.md)）。
 
 ## F
 
@@ -107,7 +107,7 @@ LLM 调用外部工具和 API 的能力。
 ## G
 
 **Gate（闸）**
-模型之外、决定一个动作能否执行的检查点，可以是代码规则，也可以是由代码强制的人工确认。检测器、护栏和第二个模型只降低频率，不属于闸（[11.3](../11_agent_foundations/11.3_unreliable_executor.md)、[14.5](../14_agent_practice/14.5_security_panorama.md)）。
+模型之外、决定一个动作能否执行的检查点，可以是代码规则，也可以是由代码强制的人工确认。检测器、护栏和第二个模型只降低频率，不属于闸（[11.3](../11_agent_foundations/11.3_unreliable_executor.md)、[14.2](../14_agent_practice/14.2_security_panorama.md)）。
 
 **GCG（Greedy Coordinate Gradient）**
 一种通过梯度优化生成对抗性后缀的攻击方法。
@@ -175,7 +175,7 @@ NIST 针对生成式 AI 场景发布的 AI RMF 配置文件，用于将治理、
 ## O
 
 **Opaque Value（不透明值）**
-由代码保管在值存储中、模型无法查看内容、只能按名称引用的值，例如无法抽取为字段的自由文本；由代码填入参数，或交给答复模型阅读（[14.5](../14_agent_practice/14.5_security_panorama.md)）。
+由代码保管在值存储中、模型无法查看内容、只能按名称引用的值，例如无法抽取为字段的自由文本；由代码填入参数，或交给答复模型阅读（[14.2](../14_agent_practice/14.2_security_panorama.md)）。
 
 **OWASP Agentic Top 10（ASI01–ASI10）**
 OWASP 智能体安全倡议（Agentic Security Initiative）发布的智能体应用十大风险清单，正式名称为 *OWASP Top 10 For Agentic Applications 2026*。该清单与 OWASP LLM Top 10 并行，不取代后者：LLM Top 10 面向模型驱动的应用，智能体十大风险面向能够规划、行动并跨系统调用的智能体。对照表见[附录 D](D_owasp_agentic_crosswalk.md)。
