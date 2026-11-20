@@ -14,7 +14,7 @@ OWASP_SOURCE = (
 NIST_SOURCE = "https://airc.nist.gov/docs/playbook.json"
 ATLAS_SOURCE = (
     "https://raw.githubusercontent.com/mitre-atlas/atlas-data/"
-    "main/dist/v6/ATLAS-2026.07.yaml"
+    "main/dist/v6/ATLAS-2026.10.yaml"
 )
 ASI_SOURCE = (
     "https://genai.owasp.org/resource/"
@@ -44,11 +44,11 @@ EXPECTED_ATLAS = {
     "AML.T0020": "Training Data Poisoning",
     "AML.T0051": "LLM Prompt Injection",
     "AML.T0053": "AI Agent Tool Invocation",
-    "AML.T0056": "Extract LLM System Prompt",
-    "AML.T0057": "LLM Data Leakage",
     "AML.T0069": "Discover LLM System Information",
     "AML.T0070": "RAG Poisoning",
     "AML.T0080": "AI Agent Context Poisoning",
+    "AML.T0085.002": "Data from AI Services: Conversation Context and Memory",
+    "AML.T0085.003": "Data from AI Services: System Instructions",
     "AML.T0086": "Exfiltration via AI Agent Tool Invocation",
     "AML.T0093": "Prompt Infiltration via Public-Facing Application",
     "AML.T0110": "AI Agent Tool Poisoning",
@@ -68,8 +68,8 @@ EXPECTED_ASI = {
 EXPECTED_MAPPINGS = {
     "owasp:LLM01:2026": ("atlas:AML.T0051", "atlas:AML.T0093"),
     "owasp:LLM02:2026": (
-        "atlas:AML.T0056",
-        "atlas:AML.T0057",
+        "atlas:AML.T0085.003",
+        "atlas:AML.T0085.002",
         "atlas:AML.T0086",
     ),
     "owasp:LLM03:2026": ("atlas:AML.T0053", "atlas:AML.T0110"),
@@ -78,7 +78,7 @@ EXPECTED_MAPPINGS = {
         "atlas:AML.T0070",
         "atlas:AML.T0080",
     ),
-    "owasp:LLM08:2026": ("atlas:AML.T0056", "atlas:AML.T0069"),
+    "owasp:LLM08:2026": ("atlas:AML.T0085.003", "atlas:AML.T0069"),
 }
 
 
@@ -122,7 +122,7 @@ class FrameworkCrosswalkTests(unittest.TestCase):
         expected = {
             "OWASP Top 10 for LLM Applications": ("2026", OWASP_SOURCE),
             "NIST AI RMF": ("1.0", NIST_SOURCE),
-            "MITRE ATLAS": ("2026.07", ATLAS_SOURCE),
+            "MITRE ATLAS": ("2026.10", ATLAS_SOURCE),
             "OWASP Top 10 for Agentic Applications": ("2026", ASI_SOURCE),
             "EU AI Act": ("2024/1689", EU_ELI),
         }
