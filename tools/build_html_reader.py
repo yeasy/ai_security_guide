@@ -75,6 +75,33 @@ def fix_inline_dollar(text):
         return "$" + inner.strip() + "$"
     return re.sub(r'\$\$(.+?)\$\$', repl, text, flags=re.DOTALL)
 
+def localize_gitbook_links(page_html, path_to_id, site):
+    """Point same-book chapter links at the pages bundled in this reader."""
+    prefix = "https://yeasy.gitbook.io/" + site + "/"
+    routes = {}
+    for path, page_id in path_to_id.items():
+        if not path.endswith(".md"):
+            continue
+        route = path.removesuffix(".md").removesuffix("/README").lower()
+        routes[route] = page_id
+
+    for route, page_id in list(routes.items()):
+        if route.startswith("examples/"):
+            routes["16_appendix/" + route.removeprefix("examples/")] = page_id
+
+    def local_href(match):
+        route = match.group(1).rstrip("/").lower()
+        page_id = routes.get(route)
+        if page_id is None:
+            # GitBook adds the SUMMARY part heading ahead of the source path.
+            part, _, chapter = route.partition("/")
+            if part.startswith("di-") or part == "fu-lu":
+                page_id = routes.get(chapter)
+        return f'href="#{page_id}"' if page_id else match.group(0)
+
+    return re.sub(r'href="' + re.escape(prefix) + r'([^"?#]+)"', local_href, page_html)
+
+
 def process_file(text, reldir, mermaid_store, path_to_id):
     def grab(m):
         idx = len(mermaid_store); mermaid_store.append(m.group(1))
@@ -320,6 +347,8 @@ def main():
     for k in range(1, len(segs), 2):
         pid, seg = segs[k], segs[k+1]
         idx = order_idx = [pm[0] for pm in page_meta].index(pid)
+        if page_meta[idx][1] == "README.md":
+            seg = localize_gitbook_links(seg, path_to_id, 'ai_security_guide')
         pages_html.append(f'<section class="page" id="{pid}" data-title="{escattr(id_to_title[pid])}">{seg}{navhtml(idx)}</section>')
     new_main = mm.group(1) + '<div id="pages">' + "".join(pages_html) + '</div>' + mm.group(3)
     html = html[:mm.start()] + new_main + html[mm.end():]
